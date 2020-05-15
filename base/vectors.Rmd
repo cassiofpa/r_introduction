@@ -133,7 +133,7 @@ p_ord
 ages[p_ord] #ordena ages pelo ordem de names
 ```
 
-## Exercícios_02 {#Exercícios_02}
+# Exercícios_02 {#Exercícios_02}
 
 1. Crie uma sequencia regular de valores entre 0 e 3000 a cada 0.25. [Solução](#19) 
 2. Qual o tamanho do vetor criado no item 1? [Solução](#20)

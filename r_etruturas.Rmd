@@ -10,7 +10,7 @@ output:
 # This is an R setup chunk, containing default options applied to all other chunks
 library(knitr)
 # This sets the chunk default options
-opts_chunk$set(echo=TRUE, cache=TRUE, collapse=TRUE, error=FALSE, prompt=TRUE,fig.align = "center")
+opts_chunk$set(echo=TRUE, cache=FALSE, collapse=TRUE, error=FALSE, prompt=TRUE,fig.align = "center")
 # This sets the chunk display theme
 thm <- knit_theme$get("edit-kwrite")
 knit_theme$set(thm)

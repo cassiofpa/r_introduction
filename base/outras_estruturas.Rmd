@@ -2,7 +2,7 @@
 
 
 
-## Matrizes
+# Matrizes
 - disposição bidimensional (linhas e colunas) 
 - os elementos devem ser todos de um mesmo tipo(numéricos, caracteres, ...)
 
@@ -119,7 +119,7 @@ m
 
 
 
-##  Data Frame
+#  Data Frame
 - É uma disposição bidimensional dos dados
 - Pode ter elementos de diferentes modos em diferentes colunas, desde que cada coluna tenha o mesmo tamanho. 
 
@@ -172,7 +172,7 @@ df
 ```
 
 
-## Listas
+# Listas
 - Coleção ordenada de componentes 
 - Como um vetor  com objetos de diferente tipos
 - Os componentes de uma lista podem ser de qualquer tipo
@@ -212,7 +212,7 @@ L
 
 
 
-## Factor
+# Factor
 - Armazena os valores nominais (sexo, religião, estado civil, 0,1,2, etc) considerados categorías 
 
 - Usado para identificar grupos com ou sem ordenação
@@ -302,7 +302,7 @@ z
 
 
 
-## Observações
+
 
 ## Identificaçõe de objetos
 
@@ -337,7 +337,7 @@ m["A",] # uma linha
 ```
 
 
-## Resumo de Funções
+# Resumo de Funções
 - $c(object,object,...)$:  **combine objects into a vector**
 - $length(object)$: **number of elements or components**
 - $class(object)$:  **class or type of an object**
@@ -349,7 +349,7 @@ m["A",] # uma linha
 - $rep()$: **repetições** 
 
 
-## Exercícios {#Exercícios_03}
+# Exercícios {#Exercícios_03}
 
 1. Crie uma matriz com 20 linhas e 20 colunas com diferentes números ímpares. ([Solução_3.01])
 2. Crie uma nova matriz com as colunas pares da matriz do item 1. ([Solução_3.02]) 

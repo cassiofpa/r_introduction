@@ -571,7 +571,8 @@ L</code></pre>
 <pre class="r"><code># p_sexo com 3 valores male e 2 valores female 
 p_sexo = c(rep(&quot;male&quot;, 3), rep(&quot;female&quot;, 2))
 p_sexo</code></pre>
-<pre><code>[1] &quot;male&quot;   &quot;male&quot;   &quot;male&quot;   &quot;female&quot; &quot;female&quot;</code></pre>
+<pre><code>[1] &quot;male&quot;   &quot;male&quot;   &quot;male&quot;   &quot;female&quot;
+[5] &quot;female&quot;</code></pre>
 <pre class="r"><code>p_sexo = factor(p_sexo) 
 # dois níveis female e male
 p_sexo</code></pre>
@@ -613,7 +614,8 @@ Levels: malex female</code></pre>
 <h2>Factor - labels</h2>
 <pre class="r"><code>p_sexo = c(rep(&quot;male&quot;, 3), rep(&quot;female&quot;, 2))
 p_sexo</code></pre>
-<pre><code>## [1] &quot;male&quot;   &quot;male&quot;   &quot;male&quot;   &quot;female&quot; &quot;female&quot;</code></pre>
+<pre><code>## [1] &quot;male&quot;   &quot;male&quot;   &quot;male&quot;   &quot;female&quot;
+## [5] &quot;female&quot;</code></pre>
 <pre class="r"><code>factor(p_sexo,levels=c(&quot;male&quot;,&quot;female&quot;), 
                labels=c(&quot;malex&quot;,&quot;female&quot;)) </code></pre>
 <pre><code>## [1] malex  malex  malex  female female
@@ -738,27 +740,48 @@ m2 = m1[, seq(2, N, by = 2)]</code></pre>
 <pre class="r"><code>nl = nrow(m2)
 m3 = cbind(m2, nl)
 m3</code></pre>
-<pre><code>##                                              nl
-##  [1,] 41 121 201 281 361 441 521 601 681 761 20
-##  [2,] 43 123 203 283 363 443 523 603 683 763 20
-##  [3,] 45 125 205 285 365 445 525 605 685 765 20
-##  [4,] 47 127 207 287 367 447 527 607 687 767 20
-##  [5,] 49 129 209 289 369 449 529 609 689 769 20
-##  [6,] 51 131 211 291 371 451 531 611 691 771 20
-##  [7,] 53 133 213 293 373 453 533 613 693 773 20
-##  [8,] 55 135 215 295 375 455 535 615 695 775 20
-##  [9,] 57 137 217 297 377 457 537 617 697 777 20
-## [10,] 59 139 219 299 379 459 539 619 699 779 20
-## [11,] 61 141 221 301 381 461 541 621 701 781 20
-## [12,] 63 143 223 303 383 463 543 623 703 783 20
-## [13,] 65 145 225 305 385 465 545 625 705 785 20
-## [14,] 67 147 227 307 387 467 547 627 707 787 20
-## [15,] 69 149 229 309 389 469 549 629 709 789 20
-## [16,] 71 151 231 311 391 471 551 631 711 791 20
-## [17,] 73 153 233 313 393 473 553 633 713 793 20
-## [18,] 75 155 235 315 395 475 555 635 715 795 20
-## [19,] 77 157 237 317 397 477 557 637 717 797 20
-## [20,] 79 159 239 319 399 479 559 639 719 799 20</code></pre>
+<pre><code>##                                     
+##  [1,] 41 121 201 281 361 441 521 601
+##  [2,] 43 123 203 283 363 443 523 603
+##  [3,] 45 125 205 285 365 445 525 605
+##  [4,] 47 127 207 287 367 447 527 607
+##  [5,] 49 129 209 289 369 449 529 609
+##  [6,] 51 131 211 291 371 451 531 611
+##  [7,] 53 133 213 293 373 453 533 613
+##  [8,] 55 135 215 295 375 455 535 615
+##  [9,] 57 137 217 297 377 457 537 617
+## [10,] 59 139 219 299 379 459 539 619
+## [11,] 61 141 221 301 381 461 541 621
+## [12,] 63 143 223 303 383 463 543 623
+## [13,] 65 145 225 305 385 465 545 625
+## [14,] 67 147 227 307 387 467 547 627
+## [15,] 69 149 229 309 389 469 549 629
+## [16,] 71 151 231 311 391 471 551 631
+## [17,] 73 153 233 313 393 473 553 633
+## [18,] 75 155 235 315 395 475 555 635
+## [19,] 77 157 237 317 397 477 557 637
+## [20,] 79 159 239 319 399 479 559 639
+##               nl
+##  [1,] 681 761 20
+##  [2,] 683 763 20
+##  [3,] 685 765 20
+##  [4,] 687 767 20
+##  [5,] 689 769 20
+##  [6,] 691 771 20
+##  [7,] 693 773 20
+##  [8,] 695 775 20
+##  [9,] 697 777 20
+## [10,] 699 779 20
+## [11,] 701 781 20
+## [12,] 703 783 20
+## [13,] 705 785 20
+## [14,] 707 787 20
+## [15,] 709 789 20
+## [16,] 711 791 20
+## [17,] 713 793 20
+## [18,] 715 795 20
+## [19,] 717 797 20
+## [20,] 719 799 20</code></pre>
 <p><a href="#59">Retorna</a></p>
 </div>
 <div id="solução_3.04" class="section level2">
@@ -769,28 +792,50 @@ m3</code></pre>
 <pre class="r"><code>nc = ncol(m3)
 m4 = rbind(nc, m3)
 m4</code></pre>
-<pre><code>##                                           nl
-## nc 11  11  11  11  11  11  11  11  11  11 11
-##    41 121 201 281 361 441 521 601 681 761 20
-##    43 123 203 283 363 443 523 603 683 763 20
-##    45 125 205 285 365 445 525 605 685 765 20
-##    47 127 207 287 367 447 527 607 687 767 20
-##    49 129 209 289 369 449 529 609 689 769 20
-##    51 131 211 291 371 451 531 611 691 771 20
-##    53 133 213 293 373 453 533 613 693 773 20
-##    55 135 215 295 375 455 535 615 695 775 20
-##    57 137 217 297 377 457 537 617 697 777 20
-##    59 139 219 299 379 459 539 619 699 779 20
-##    61 141 221 301 381 461 541 621 701 781 20
-##    63 143 223 303 383 463 543 623 703 783 20
-##    65 145 225 305 385 465 545 625 705 785 20
-##    67 147 227 307 387 467 547 627 707 787 20
-##    69 149 229 309 389 469 549 629 709 789 20
-##    71 151 231 311 391 471 551 631 711 791 20
-##    73 153 233 313 393 473 553 633 713 793 20
-##    75 155 235 315 395 475 555 635 715 795 20
-##    77 157 237 317 397 477 557 637 717 797 20
-##    79 159 239 319 399 479 559 639 719 799 20</code></pre>
+<pre><code>##                                      
+## nc 11  11  11  11  11  11  11  11  11
+##    41 121 201 281 361 441 521 601 681
+##    43 123 203 283 363 443 523 603 683
+##    45 125 205 285 365 445 525 605 685
+##    47 127 207 287 367 447 527 607 687
+##    49 129 209 289 369 449 529 609 689
+##    51 131 211 291 371 451 531 611 691
+##    53 133 213 293 373 453 533 613 693
+##    55 135 215 295 375 455 535 615 695
+##    57 137 217 297 377 457 537 617 697
+##    59 139 219 299 379 459 539 619 699
+##    61 141 221 301 381 461 541 621 701
+##    63 143 223 303 383 463 543 623 703
+##    65 145 225 305 385 465 545 625 705
+##    67 147 227 307 387 467 547 627 707
+##    69 149 229 309 389 469 549 629 709
+##    71 151 231 311 391 471 551 631 711
+##    73 153 233 313 393 473 553 633 713
+##    75 155 235 315 395 475 555 635 715
+##    77 157 237 317 397 477 557 637 717
+##    79 159 239 319 399 479 559 639 719
+##        nl
+## nc  11 11
+##    761 20
+##    763 20
+##    765 20
+##    767 20
+##    769 20
+##    771 20
+##    773 20
+##    775 20
+##    777 20
+##    779 20
+##    781 20
+##    783 20
+##    785 20
+##    787 20
+##    789 20
+##    791 20
+##    793 20
+##    795 20
+##    797 20
+##    799 20</code></pre>
 <p><a href="#59">Retorna</a></p>
 </div>
 <div id="solução_3.05" class="section level2">
@@ -807,27 +852,48 @@ ml</code></pre>
 <pre><code>## [1] 20 10</code></pre>
 <pre class="r"><code>m2[c(10, 11), c(5, 6)] = ml
 m2</code></pre>
-<pre><code>##       [,1] [,2]  [,3]  [,4]  [,5]  [,6]  [,7]  [,8]  [,9]  [,10]
-##  [1,] &quot;41&quot; &quot;121&quot; &quot;201&quot; &quot;281&quot; &quot;361&quot; &quot;441&quot; &quot;521&quot; &quot;601&quot; &quot;681&quot; &quot;761&quot;
-##  [2,] &quot;43&quot; &quot;123&quot; &quot;203&quot; &quot;283&quot; &quot;363&quot; &quot;443&quot; &quot;523&quot; &quot;603&quot; &quot;683&quot; &quot;763&quot;
-##  [3,] &quot;45&quot; &quot;125&quot; &quot;205&quot; &quot;285&quot; &quot;365&quot; &quot;445&quot; &quot;525&quot; &quot;605&quot; &quot;685&quot; &quot;765&quot;
-##  [4,] &quot;47&quot; &quot;127&quot; &quot;207&quot; &quot;287&quot; &quot;367&quot; &quot;447&quot; &quot;527&quot; &quot;607&quot; &quot;687&quot; &quot;767&quot;
-##  [5,] &quot;49&quot; &quot;129&quot; &quot;209&quot; &quot;289&quot; &quot;369&quot; &quot;449&quot; &quot;529&quot; &quot;609&quot; &quot;689&quot; &quot;769&quot;
-##  [6,] &quot;51&quot; &quot;131&quot; &quot;211&quot; &quot;291&quot; &quot;371&quot; &quot;451&quot; &quot;531&quot; &quot;611&quot; &quot;691&quot; &quot;771&quot;
-##  [7,] &quot;53&quot; &quot;133&quot; &quot;213&quot; &quot;293&quot; &quot;373&quot; &quot;453&quot; &quot;533&quot; &quot;613&quot; &quot;693&quot; &quot;773&quot;
-##  [8,] &quot;55&quot; &quot;135&quot; &quot;215&quot; &quot;295&quot; &quot;375&quot; &quot;455&quot; &quot;535&quot; &quot;615&quot; &quot;695&quot; &quot;775&quot;
-##  [9,] &quot;57&quot; &quot;137&quot; &quot;217&quot; &quot;297&quot; &quot;377&quot; &quot;457&quot; &quot;537&quot; &quot;617&quot; &quot;697&quot; &quot;777&quot;
-## [10,] &quot;59&quot; &quot;139&quot; &quot;219&quot; &quot;299&quot; &quot;a&quot;   &quot;c&quot;   &quot;539&quot; &quot;619&quot; &quot;699&quot; &quot;779&quot;
-## [11,] &quot;61&quot; &quot;141&quot; &quot;221&quot; &quot;301&quot; &quot;b&quot;   &quot;d&quot;   &quot;541&quot; &quot;621&quot; &quot;701&quot; &quot;781&quot;
-## [12,] &quot;63&quot; &quot;143&quot; &quot;223&quot; &quot;303&quot; &quot;383&quot; &quot;463&quot; &quot;543&quot; &quot;623&quot; &quot;703&quot; &quot;783&quot;
-## [13,] &quot;65&quot; &quot;145&quot; &quot;225&quot; &quot;305&quot; &quot;385&quot; &quot;465&quot; &quot;545&quot; &quot;625&quot; &quot;705&quot; &quot;785&quot;
-## [14,] &quot;67&quot; &quot;147&quot; &quot;227&quot; &quot;307&quot; &quot;387&quot; &quot;467&quot; &quot;547&quot; &quot;627&quot; &quot;707&quot; &quot;787&quot;
-## [15,] &quot;69&quot; &quot;149&quot; &quot;229&quot; &quot;309&quot; &quot;389&quot; &quot;469&quot; &quot;549&quot; &quot;629&quot; &quot;709&quot; &quot;789&quot;
-## [16,] &quot;71&quot; &quot;151&quot; &quot;231&quot; &quot;311&quot; &quot;391&quot; &quot;471&quot; &quot;551&quot; &quot;631&quot; &quot;711&quot; &quot;791&quot;
-## [17,] &quot;73&quot; &quot;153&quot; &quot;233&quot; &quot;313&quot; &quot;393&quot; &quot;473&quot; &quot;553&quot; &quot;633&quot; &quot;713&quot; &quot;793&quot;
-## [18,] &quot;75&quot; &quot;155&quot; &quot;235&quot; &quot;315&quot; &quot;395&quot; &quot;475&quot; &quot;555&quot; &quot;635&quot; &quot;715&quot; &quot;795&quot;
-## [19,] &quot;77&quot; &quot;157&quot; &quot;237&quot; &quot;317&quot; &quot;397&quot; &quot;477&quot; &quot;557&quot; &quot;637&quot; &quot;717&quot; &quot;797&quot;
-## [20,] &quot;79&quot; &quot;159&quot; &quot;239&quot; &quot;319&quot; &quot;399&quot; &quot;479&quot; &quot;559&quot; &quot;639&quot; &quot;719&quot; &quot;799&quot;</code></pre>
+<pre><code>##       [,1] [,2]  [,3]  [,4]  [,5] 
+##  [1,] &quot;41&quot; &quot;121&quot; &quot;201&quot; &quot;281&quot; &quot;361&quot;
+##  [2,] &quot;43&quot; &quot;123&quot; &quot;203&quot; &quot;283&quot; &quot;363&quot;
+##  [3,] &quot;45&quot; &quot;125&quot; &quot;205&quot; &quot;285&quot; &quot;365&quot;
+##  [4,] &quot;47&quot; &quot;127&quot; &quot;207&quot; &quot;287&quot; &quot;367&quot;
+##  [5,] &quot;49&quot; &quot;129&quot; &quot;209&quot; &quot;289&quot; &quot;369&quot;
+##  [6,] &quot;51&quot; &quot;131&quot; &quot;211&quot; &quot;291&quot; &quot;371&quot;
+##  [7,] &quot;53&quot; &quot;133&quot; &quot;213&quot; &quot;293&quot; &quot;373&quot;
+##  [8,] &quot;55&quot; &quot;135&quot; &quot;215&quot; &quot;295&quot; &quot;375&quot;
+##  [9,] &quot;57&quot; &quot;137&quot; &quot;217&quot; &quot;297&quot; &quot;377&quot;
+## [10,] &quot;59&quot; &quot;139&quot; &quot;219&quot; &quot;299&quot; &quot;a&quot;  
+## [11,] &quot;61&quot; &quot;141&quot; &quot;221&quot; &quot;301&quot; &quot;b&quot;  
+## [12,] &quot;63&quot; &quot;143&quot; &quot;223&quot; &quot;303&quot; &quot;383&quot;
+## [13,] &quot;65&quot; &quot;145&quot; &quot;225&quot; &quot;305&quot; &quot;385&quot;
+## [14,] &quot;67&quot; &quot;147&quot; &quot;227&quot; &quot;307&quot; &quot;387&quot;
+## [15,] &quot;69&quot; &quot;149&quot; &quot;229&quot; &quot;309&quot; &quot;389&quot;
+## [16,] &quot;71&quot; &quot;151&quot; &quot;231&quot; &quot;311&quot; &quot;391&quot;
+## [17,] &quot;73&quot; &quot;153&quot; &quot;233&quot; &quot;313&quot; &quot;393&quot;
+## [18,] &quot;75&quot; &quot;155&quot; &quot;235&quot; &quot;315&quot; &quot;395&quot;
+## [19,] &quot;77&quot; &quot;157&quot; &quot;237&quot; &quot;317&quot; &quot;397&quot;
+## [20,] &quot;79&quot; &quot;159&quot; &quot;239&quot; &quot;319&quot; &quot;399&quot;
+##       [,6]  [,7]  [,8]  [,9]  [,10]
+##  [1,] &quot;441&quot; &quot;521&quot; &quot;601&quot; &quot;681&quot; &quot;761&quot;
+##  [2,] &quot;443&quot; &quot;523&quot; &quot;603&quot; &quot;683&quot; &quot;763&quot;
+##  [3,] &quot;445&quot; &quot;525&quot; &quot;605&quot; &quot;685&quot; &quot;765&quot;
+##  [4,] &quot;447&quot; &quot;527&quot; &quot;607&quot; &quot;687&quot; &quot;767&quot;
+##  [5,] &quot;449&quot; &quot;529&quot; &quot;609&quot; &quot;689&quot; &quot;769&quot;
+##  [6,] &quot;451&quot; &quot;531&quot; &quot;611&quot; &quot;691&quot; &quot;771&quot;
+##  [7,] &quot;453&quot; &quot;533&quot; &quot;613&quot; &quot;693&quot; &quot;773&quot;
+##  [8,] &quot;455&quot; &quot;535&quot; &quot;615&quot; &quot;695&quot; &quot;775&quot;
+##  [9,] &quot;457&quot; &quot;537&quot; &quot;617&quot; &quot;697&quot; &quot;777&quot;
+## [10,] &quot;c&quot;   &quot;539&quot; &quot;619&quot; &quot;699&quot; &quot;779&quot;
+## [11,] &quot;d&quot;   &quot;541&quot; &quot;621&quot; &quot;701&quot; &quot;781&quot;
+## [12,] &quot;463&quot; &quot;543&quot; &quot;623&quot; &quot;703&quot; &quot;783&quot;
+## [13,] &quot;465&quot; &quot;545&quot; &quot;625&quot; &quot;705&quot; &quot;785&quot;
+## [14,] &quot;467&quot; &quot;547&quot; &quot;627&quot; &quot;707&quot; &quot;787&quot;
+## [15,] &quot;469&quot; &quot;549&quot; &quot;629&quot; &quot;709&quot; &quot;789&quot;
+## [16,] &quot;471&quot; &quot;551&quot; &quot;631&quot; &quot;711&quot; &quot;791&quot;
+## [17,] &quot;473&quot; &quot;553&quot; &quot;633&quot; &quot;713&quot; &quot;793&quot;
+## [18,] &quot;475&quot; &quot;555&quot; &quot;635&quot; &quot;715&quot; &quot;795&quot;
+## [19,] &quot;477&quot; &quot;557&quot; &quot;637&quot; &quot;717&quot; &quot;797&quot;
+## [20,] &quot;479&quot; &quot;559&quot; &quot;639&quot; &quot;719&quot; &quot;799&quot;</code></pre>
 <p><a href="#59">Retorna</a></p>
 </div>
 <div id="solução_3.06" class="section level2">

@@ -1009,9 +1009,9 @@ div.tocify {
 <li>o R executa uma operação reutilizando os valores do menor elemento até coincidir com o maior. (gera um <em>warnnig</em>)</li>
 </ul>
 <pre class="r"><code>&gt; 1:5 + 1:3 
-## Warning in 1:5 + 1:3: longer object
-## length is not a multiple of shorter
-## object length
+## Warning in 1:5 + 1:3: comprimento
+## do objeto maior não é múltiplo do
+## comprimento do objeto menor
 ## [1] 2 4 6 5 7</code></pre>
 </div>
 <div id="acrescentando-um-valor" class="section level2">
@@ -1040,8 +1040,9 @@ div.tocify {
 &gt; ages[p_ord] #ordena ages pelo ordem de names
 ## [1]  15  21  34  44  54  98  99 100</code></pre>
 </div>
-<div id="Exercícios_02" class="section level2">
-<h2>Exercícios_02</h2>
+</div>
+<div id="Exercícios_02" class="section level1">
+<h1>Exercícios_02</h1>
 <ol style="list-style-type: decimal">
 <li>Crie uma sequencia regular de valores entre 0 e 3000 a cada 0.25. <a href="#19">Solução</a></li>
 <li>Qual o tamanho do vetor criado no item 1? <a href="#20">Solução</a></li>
@@ -1050,7 +1051,6 @@ div.tocify {
 <li>Ordene o vetor do item 3 e separe em dois objetos os 10 menores e os 10 maiores valores<a href="#23">Solução</a></li>
 <li>Crie um vetor com uma sequencia de inteiros de 1 a 100.<a href="#24">Solução</a></li>
 </ol>
-</div>
 <div id="Exercícios_02_cont" class="section level2">
 <h2>Exercícios_02- continuação</h2>
 <ol start="7" style="list-style-type: decimal">
@@ -1091,9 +1091,9 @@ div.tocify {
 &gt; e3[1:5]
 ## [1]   1 159 317 475 632
 &gt; e13 = e1 - e3  # vetores com tamanhos diferentes - mensagem &quot;longer object ...&quot;
-## Warning in e1 - e3: longer object length
-## is not a multiple of shorter object
-## length
+## Warning in e1 - e3: comprimento
+## do objeto maior não é múltiplo do
+## comprimento do objeto menor
 &gt; e13[1:5]
 ## [1]   -1 -159 -316 -474 -631</code></pre>
 <p><a href="#17">Retorna</a></p>
@@ -1218,13 +1218,13 @@ div.tocify {
 &gt; # observe que rep(c(12,4,13,33,121),240) da um resultado diferente</code></pre>
 <p><a href="#17">Retorna</a></p>
 </div>
-<div id="matrizes" class="section level2">
-<h2>Matrizes</h2>
+</div>
+<div id="matrizes" class="section level1">
+<h1>Matrizes</h1>
 <ul>
 <li>disposição bidimensional (linhas e colunas)</li>
 <li>os elementos devem ser todos de um mesmo tipo(numéricos, caracteres, …)</li>
 </ul>
-</div>
 <div id="criando-uma-matriz" class="section level2">
 <h2>Criando uma Matriz</h2>
 <pre class="r"><code>&gt; ms = matrix(0, nrow = 2, ncol = 3) 
@@ -1371,13 +1371,13 @@ div.tocify {
 ## A NA NA
 ## B NA NA</code></pre>
 </div>
-<div id="data-frame" class="section level2">
-<h2>Data Frame</h2>
+</div>
+<div id="data-frame" class="section level1">
+<h1>Data Frame</h1>
 <ul>
 <li>É uma disposição bidimensional dos dados</li>
 <li>Pode ter elementos de diferentes modos em diferentes colunas, desde que cada coluna tenha o mesmo tamanho.</li>
 </ul>
-</div>
 <div id="criando-um-data-frame" class="section level2">
 <h2>Criando um Data Frame</h2>
 <pre class="r"><code>&gt; nome = c(&quot;Carlos&quot;, &quot;Jorge&quot;, &quot;Ana&quot;)
@@ -1439,14 +1439,14 @@ div.tocify {
 ## linha02  Jorge      5      6
 ## linha03    Ana      7      4</code></pre>
 </div>
-<div id="listas" class="section level2">
-<h2>Listas</h2>
+</div>
+<div id="listas" class="section level1">
+<h1>Listas</h1>
 <ul>
 <li>Coleção ordenada de componentes</li>
 <li>Como um vetor com objetos de diferente tipos</li>
 <li>Os componentes de uma lista podem ser de qualquer tipo</li>
 </ul>
-</div>
 <div id="exemplos-em-r-listas" class="section level2">
 <h2>Exemplos em R: Listas</h2>
 <pre class="r"><code>&gt; 
@@ -1489,13 +1489,13 @@ div.tocify {
 ## $B
 ## [1] &quot;Teste&quot;</code></pre>
 </div>
-<div id="factor" class="section level2">
-<h2>Factor</h2>
+</div>
+<div id="factor" class="section level1">
+<h1>Factor</h1>
 <ul>
 <li><p>Armazena os valores nominais (sexo, religião, estado civil, 0,1,2, etc) considerados categorías</p></li>
 <li><p>Usado para identificar grupos com ou sem ordenação</p></li>
 </ul>
-</div>
 <div id="factor-1" class="section level2">
 <h2>Factor</h2>
 <pre class="r"><code>&gt; # p_sexo com 3 valores male e 2 valores female 
@@ -1582,9 +1582,6 @@ Levels: malex female</code></pre>
 [1] C B A
 Levels: A &lt; B &lt; C</code></pre>
 </div>
-<div id="observações" class="section level2">
-<h2>Observações</h2>
-</div>
 <div id="identificaçõe-de-objetos" class="section level2">
 <h2>Identificaçõe de objetos</h2>
 <ul>
@@ -1623,8 +1620,9 @@ Levels: A &lt; B &lt; C</code></pre>
 ##  a  b 
 ## NA NA</code></pre>
 </div>
-<div id="resumo-de-funções" class="section level2">
-<h2>Resumo de Funções</h2>
+</div>
+<div id="resumo-de-funções" class="section level1">
+<h1>Resumo de Funções</h1>
 <ul>
 <li><span class="math inline">\(c(object,object,...)\)</span>: <strong>combine objects into a vector</strong></li>
 <li><span class="math inline">\(length(object)\)</span>: <strong>number of elements or components</strong></li>
@@ -1637,8 +1635,8 @@ Levels: A &lt; B &lt; C</code></pre>
 <li><span class="math inline">\(rep()\)</span>: <strong>repetições</strong></li>
 </ul>
 </div>
-<div id="Exercícios_03" class="section level2">
-<h2>Exercícios</h2>
+<div id="Exercícios_03" class="section level1">
+<h1>Exercícios</h1>
 <ol style="list-style-type: decimal">
 <li>Crie uma matriz com 20 linhas e 20 colunas com diferentes números ímpares. (<a href="#solução_3.01">Solução_3.01</a>)</li>
 <li>Crie uma nova matriz com as colunas pares da matriz do item 1. (<a href="#solução_3.02">Solução_3.02</a>)</li>
@@ -1649,7 +1647,6 @@ Levels: A &lt; B &lt; C</code></pre>
 <li>Suponha que a matriz do item 6 corresponda a dados de 4 pessoas ( Marcos, Pedro, Denis e Clara). Crie um objetos onde a primeira coluna seja os nomes e as demais os dados. (<a href="#solução_3.07">Solução_3.07</a>)</li>
 <li>Crie um objeto que agregue os resultados de todos os itens anteriores e ainda, inclua a data atual. (<a href="#solução_3.08">Solução_3.08</a>)</li>
 </ol>
-</div>
 <div id="solução_3.01" class="section level2">
 <h2>Solução_3.01</h2>
 <ol style="list-style-type: decimal">
