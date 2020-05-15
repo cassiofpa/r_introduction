@@ -1,0 +1,19 @@
+---
+title: "Introdução ao R"
+author:  "[Cassio Almeida - ENCE/IBGE, 14/05/2020"
+output:
+  html_document:
+    fig_width: 1
+---
+
+----
+
+Estas são notas de aula que deixo disponibilizada para consulta. Este material esta em desenvolvimento. Sugestões são bem vidas!
+
+
+
+----
+
+
+**Bibliografia**
+

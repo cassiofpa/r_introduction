@@ -1,0 +1,448 @@
+
+```{r  include=FALSE}
+# This is an R setup chunk, containing default options applied to all other chunks
+library(knitr)
+# This sets the chunk default options
+opts_chunk$set(echo=TRUE)
+# This sets some display options
+options(digits=3)
+options(out.width = "90%",fig.cap= "")
+```
+
+
+# R - O básico
+
+
+## R - primeiro passo
+
+- abra o RStudio
+- crie um script (*File* > *New File* > *R Script*)
+
+## R - Como uma calculadora
+
+```{r echo=TRUE}
+
+5 + 3 - 4
+
+
+5 ^ 20 * 2 ^ 20
+```
+
+
+## R: Criando objetos
+```{r echo=TRUE}
+# Criando objetos
+a = 3 + 2
+b = 3
+
+a
+print(a)
+
+```
+
+
+## R: Criando um objeto de objetos 
+```{r echo=TRUE}
+# Criando objetos
+c = a + b
+
+c
+print(c)
+
+```
+
+
+## R: Criando e Destruindo objetos
+
+
+```{r echo=TRUE}
+# Criando objetos
+d = pi
+d
+
+
+```
+
+
+```{r echo=TRUE}
+# Destruindo objetos (um novo valor)
+d = 25
+d
+
+```
+
+
+
+## R - Objetos
+
+- São estruturas de dados para armazenamento em memória
+
+
+
+
+## R: Criando e Destruindo objetos
+- os objetos também são chamados de variáveis 
+- os nomes de objetos se diferenciam com letras maiúsculas e minúsculas - *case sensitive* 
+- os nomes devem começar com uma letra 
+- os nomes não podem conter *espaço* e/ou caracteres especiais *@,#,&,...*
+
+## R: Tipos de Variáveis
+
+- Numéricas (numeric): Números inteiros ou reais, como idade, renda, número de filhos
+- Datas (Date): São um  tipo especial de variável numérica
+
+- Texto (character): Características puramente individuais que não podem ser utilizadas para categorizar os indivíduos
+
+- Booleanas (logical): valores podem ser VERDADEIRO ou FALSO
+
+## Exemplos em R - numeric
+```{r echo=TRUE}
+r_num = 1 / 10 ^ 7
+r_num
+# usar class() para saber o tipo da variavel
+class(r_num) 
+
+pi
+class(pi)
+
+```
+
+## Exemplos em R - Date
+```{r echo=TRUE}
+# Date
+r_date = Sys.Date()
+r_date
+class(r_date) 
+```
+
+## Exemplos em R - character
+```{r echo=TRUE}
+# caracter
+name ="Maria"
+class(name)
+
+```
+
+## Exemplos em R - logical
+```{r echo=TRUE}
+r_bool = TRUE # Logical
+r_bool
+class(r_bool)
+```
+
+## Operadores Matemáticos
+
+
+Operador  | Descrição
+------------- | -------------
+$+$ |  *soma* 
+$-$ | *subtração*  
+$/$ | *divisão*
+$*$ | *multiplicação* 
+$\wedge$ | *potência* 
+$\%\%$ | *resto da divisão* 
+$\%/\%$ | *inteiro da divisão* 
+
+
+## Exemplos em R - expressões
+```{r echo=TRUE}
+3 + 1 * 6 - 1 ^ 2
+
+(1 + (2 * 3)) * 5
+```
+
+## Exemplos em R - divisão
+```{r echo=TRUE}
+7 / 2
+7 %/% 2
+7 %% 2
+
+```
+
+
+
+
+
+
+## Operadores de Comparação e Lógicos
+
+
+Operador  | Descrição
+------------- | -------------
+$==$ | *igual a*
+$!=$ | *diferente de*
+$!$ | *negação*
+$>$ | *maior que*
+$<$ | *menor que*
+$>=$ | *maior ou igual a*
+$<=$ | *menor ou igual a*
+$\&$ | *e*
+$|$ | *ou*
+
+
+
+
+## Exemplos - maior/menor
+```{r echo=TRUE}
+3 > 2
+5 < 2
+```
+
+## Exemplos - igualdade
+```{r echo=TRUE}
+
+2 == 2   # É igual?
+2 != 2  # Não é igual?
+```
+
+## Exemplos - e/ou
+```{r echo=TRUE}
+
+(6 > 5) & (7 > 8) # operador "e"
+
+(6 > 5) | (7 > 8) # operador "ou"
+```
+
+## Inf - infinity
+
+- Inf / -Inf : Infinito
+```{r echo=TRUE}
+Inf+1
+
+```
+
+
+## NaN - not a number
+
+- NaN: "not a number", o valor não pode ser calculado
+```{r echo=TRUE}
+Inf / Inf
+
+```
+
+## NA - not avaible
+
+- NA : 
+```{r echo=TRUE}
+NA + 1
+NA | TRUE # operação ou
+```
+
+
+
+## Funções no R
+
+- os "comandos" no R são funções (programas)
+- por exemplo, digite no console: **mean(c(2,3,4,5))**
+- esta é a função que calcula a média aritmética de 2, 3, 4 e 5 
+- para entender a função digite no console: **?mean**
+
+$$mean(x, trim = 0, na.rm = FALSE, ...)$$
+
+
+## Funções no R - como funcionam
+
+$$ <function\; name>(<arg1>, <arg2>, ...)$$
+
+- *arg1, arg2,...* são os argumentos da função
+- alguns argumentos são obrigatórios
+- nome do argumento e posição (ordem)
+- informações detalhadas de uma função use o help: $?<nome\_da\_função>$
+
+
+
+
+## Funções especiais para números especiais
+
+- is.inf()
+- is.nan()
+- is.na()
+
+## Testa NA
+```{r echo=TRUE}
+a = NA
+is.na(a)
+```
+
+## Funções Matemáticas
+
+Função  | Descrição
+------------- | -------------
+$abs(x)$ | *valor absoluto*
+$sqrt(x)$ | *raiz quadrada*
+$ceiling(x)$ | *menor inteiro maior ou igual a* $x$
+$floor(x)$ | *maior inteiro menor ou igual a* $x$
+$trunc(x)$ | *parte inteira*
+$round(x, digits=n)$ | *arredondamento com n dígitos* 
+$cos(x), sin(x), tan(x)$ | *Cosseno, seno e tangente*	
+$acos(x), cosh(x), acosh(x)$ | *arco_cosseno, arco_seno e arco_tangente*
+$log(x)$ | *logarítmo natural*
+$exp(x)$ | *exponencial*
+
+
+
+## valor absoluto
+```{r echo=TRUE}
+abs(-10.3)
+```
+## raiz quadrada
+```{r echo=TRUE}
+sqrt(36) 
+```
+
+
+## Menor inteiro maior ou igual ao o argumento
+```{r echo=TRUE}
+ceiling(2.88)
+ceiling(2.1)
+ceiling(2)
+```
+
+
+## Maior inteiro menor ou igual ao argumento 
+```{r echo=TRUE}
+floor(2.88)
+floor(2.1)
+floor(2)
+```
+
+
+## Parte inteira
+```{r echo=TRUE}
+trunc(2.88)
+trunc(2.01)
+```
+
+
+## Arredondamento com n dígitos
+```{r echo=TRUE}
+round(2.88, digits=1)
+round(2.88, digits=0)
+round(2.1, digits=0)
+```
+
+
+## Cosseno, Seno e Tangente
+```{r echo=TRUE}
+cos(pi) #ângulo em radianos
+sin(pi/2)
+```
+	
+
+## arco_cosseno, arco_seno e arco_tangente
+```{r echo=TRUE}
+acos(-1)
+
+```
+
+
+
+## logarítmo
+```{r echo=TRUE}
+log(10)
+log(10,base=10)
+```
+
+## exponencial
+
+```{r echo=TRUE}
+exp(1)
+```
+
+
+## Funções especiais para números especiais
+
+Função  | Descrição
+------------- | -------------
+$is.inf(x)$ | *x é Inf?*
+$is.nan(x)$ | *x é NaN?*
+$is.na(x)$ | *x é NA?*
+
+
+## Testa NA
+```{r echo=TRUE}
+a = NA
+is.na(a)
+```
+
+## Exercícios_01 {#Exercícios_01}
+
+1. Calcule a área de uma circunferência de raio 337 ($A=\pi r^2$) 
+2. Qual a raiz quadrada de 3976? 
+3. Crie um objeto, $a$, com o valor 10, e outro, $b$ com o 30.
+4. Execute uma função que teste se $a$ é menor que o logaritmo (base 10) de $b$. 
+5. Execute uma função que teste se $a$ NÃO é igual a $b$ elevado ao quadrado e dividido por $a$ menos 1.
+6. Crie um objeto com nome *nota média* e atribua valor 10.
+7. Se *a = NA* e *b = 10*, calcule: $a^2$, $a^0$, $a+b$. Explique os resultados.
+
+## Soluções da Lista de Exercícios R - O Básico 
+
+## Solução_1.01
+
+Calcule a área de uma circunferência de raio 337
+
+$$ A = \pi \cdot r^2$$
+```{r echo=TRUE}
+r = 337
+A = pi * r ^ 2
+A
+
+```
+[Retorna](#65)
+
+## Solução_1.02
+Qual a raiz quadrada de 3976?
+
+```{r echo=TRUE}
+sqrt(3976)
+```
+[Retorna](#65)
+
+
+## Solução_1.03
+Crie o objeto a com o valor 10, b com o 30
+
+```{r echo=TRUE}
+a = 10
+b = 30
+```
+[Retorna](#65)
+
+## Solução_1.04
+Execute uma função que teste se $a$ é menor que o logaritmo (base 10) de $b$
+```{r echo=TRUE}
+a < log(b,base=10)
+```
+[Retorna](#65)
+
+## Solução_1.05
+Execute uma função que teste se $a$ NÃO é igual a $b$ elevado ao quadrado e dividido por $a$ menos 1.
+```{r echo=TRUE}
+a != b ^ 2 / a - 1
+```
+[Retorna](#65)
+
+## Solução_1.06
+
+Crie um objeto com nome *nota média* atribua valor 10
+```{r echo=TRUE}
+#nota media=10 #não funciona
+# usar "_" ou "." para conectar as palavras
+nota_media = 10
+nota.media = 10
+
+#nota%media=10 #não funciona
+```
+[Retorna](#65)
+
+## Solução_1.07
+Se *a = NA* e *b = 10*, calcule: $a^2$, $a^0$, $a+b$. Explique os resultados.
+```{r echo=TRUE}
+a = NA
+b = 10
+# NA - Not Available/ Missing Values
+a^2 # NA^2=NA
+a^0 # NA^0=1 - X^0 é 1 para qualquer valor de X (mesmo NA!)
+a+b # NA + qualquer número é sempre NA
+```
+[Retorna](#65)

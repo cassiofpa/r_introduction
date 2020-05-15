@@ -1,0 +1,236 @@
+
+
+# Gráficos
+
+## Gráficos
+
+-	Os gráficos são apresentados em janelas gráficas.
+-	Normalmente há uma única janela gráfica e esta sempre apresentará o último gráfico solicitado.
+-	No R Studio, estas janelas ficam acumuladas na aba *Plots* 
+
+
+## A função plot()
+-	Função gráfica  genérica do R.
+
+*plot(x, y, type=“p”, ...)*
+
+
+## Multiplos gráficos na Janela ativa
+
+par(mfrow=c(l ,c ))
+
+
+
+## Criando dados simulados
+```{r}
+ set.seed(333)
+ x = runif(100)
+ y = 4*x+rnorm(100)
+ grp = factor(rep(1:5,20))
+ grpl = factor(rep(LETTERS[1:5],c(15,35,22,40,8)))
+ gg=factor(rep(c("G_A","G_B","G_C"),c(40,45,35)))
+gg=sample(gg)
+```
+
+
+## plot - Argumentos (principais)
+
+Os principais argumentos da função *plot()*
+
+- *type*: tipo de gráfico (linhas, pontos, ...)
+-  *main*: título
+-  *xlab* e *ylab*: título dos eixos
+-  *col*: cor (veja *colors()*)
+
+
+## Gráfico de pontos
+```{r }
+plot(x,y,type="p",main="Título do Gráfico",
+xlab="x",ylab="y",col="blue")
+```
+
+## Gráfico de pontos
+
+```{r,eval=F}
+plot(x,y,type="p",main="Título do Gráfico",
+xlab="x",ylab="y",col="blue", pch="*",cex=3)
+```
+
+```{r , echo=FALSE}
+plot(x,y,type="p",main="Título do Gráfico",
+xlab="x",ylab="y",col="blue", pch="*",cex=5)
+text(0.02,5.5,"parâmetros pch e cex",pos=4,col="red",cex=2)
+```
+
+
+## Gráfico de linhas 
+```{r}
+plot(y,type="l",main="Título do Gráfico",
+xlab="x",ylab="y",col="red")
+```
+
+
+## Gráfico de linhas- opções
+
+```{r,eval=FALSE}
+plot(y,type="l",main="Título do Gráfico",
+xlab="x",ylab="y",col="red",lty=3, lwd=3)
+```
+
+```{r , echo=FALSE}
+plot(y,type="l",main="Título do Gráfico",
+xlab="x",ylab="y",col="red",lty=3, lwd=3)
+text(0.02,5.5,"parâmetros lty e lwd",pos=4,
+     col="blue",cex=3)
+```
+
+
+## barplot
+
+```{r}
+ barplot(table(grpl),angle = 15+10*1:5, density = 20,
+         main="barplot",col="red")
+```
+
+## barplot -vertical
+
+```{r}
+ barplot(table(grpl),col="black",  main="barplot")
+```
+
+## barplot - horizontal
+
+```{r}
+ barplot(table(grpl),col="black",horiz=TRUE, 
+         main="barplot Horizontal")
+```
+
+
+## barplot -variáveis agrupadas
+
+```{r}
+ barplot(table(gg,grpl),beside=TRUE,col=heat.colors(3),
+border="white",legend=unique(gg),  main="barplot")
+```
+
+
+
+
+## histograma
+```{r}
+hist(y,density=10,main="hist", col="blue")
+```
+
+
+
+## boxplot
+```{r}
+ boxplot(split(y,grp),names=paste("Grp ",1:5,sep=""),
+         main="boxplot")
+```
+
+## points- adiciona pontos
+```{r}
+ plot(x,y,type="p",main="points")
+ points(c(0.2,0.4,0.6),c(1,3,5),pch=9,cex=4, col="red")
+```
+
+
+
+## abline - adiciona uma reta
+```{r}
+ plot(x,y,main="abline")
+ abline(lsfit(x,y))
+ abline(a=0,b=4.5,col="red")
+```
+
+
+
+## lines - adiciona linhas
+```{r}
+plot(y,type="l",main="lines")
+ lines(c(y[-1]+1,0), col="red")
+```
+
+
+## text - adiciona texto
+```{r}
+plot(x,y,type="n",main="text")
+text(x,y,cex=2)
+text(0.02,5.5,"detalhes: ?text", pos=4, cex=3,col="red")
+```
+
+ 
+## title - gerenciando títulos
+
+```{r}
+plot(x,y,xlab=NA, ylab=NA)
+title("Título", cex.main = 2,   font.main= 4, 
+      col.main= "blue",xlab = "Eixo x",ylab = "Eixo y",
+      cex.lab = 0.75, font.lab = 3, col.lab = "red")
+```
+
+## Parâmetros Gráficos
+
+- para detalhes veja *?par*
+- font:  1(plain text), 2(bold face), 3 (italic) e 
+4 (bold italic)
+- lty: 0=blank, 1=solid (default), 2=dashed, 3=dotted, 
+4=dotdash, 5=longdash, 6=twodash
+- pch: veja *?points*
+
+
+## Funções Gráficas de Baixo Nível 
+-	Points - Adiciona  pontos	
+-	text - Adiciona texto	
+-	lines - Adiciona linhas  conectando pontos	
+-	abline - Adiciona linha reta		
+
+##Funções Gráficas de Baixo Nível
+-	Title - Adiciona título	
+-	legend - Adiciona legenda	
+-	identify - identifica pontos interativamente  	
+
+## Multiplos gráficos na Janela ativa
+
+par(mfrow=c(l ,c ))
+
+## Funções de Gráficos 
+-	barplot() Gráfico de barras simples 
+-	boxplot() - box plot simples 
+-	hist() - histograma
+-	dotchart() - Gráfico de pontos 	
+-	piechart() - Gráfico de pizza 
+- qqnorm() - Gráfico quantile-quantile para uma amostra
+contra a normal padrão
+-	qqplot	quantile-quantile plot para duas amostras	
+
+
+
+
+## Gráficos melhores
+
+- Para melhores resultados com gráficos use o package
+$$**ggplot2**$$
+- http://www.r-graph-gallery.com/portfolio/ggplot2-package/
+
+
+## Exercícios {#Exercícios_07}
+
+1. Suponha a variável v2=rnorm(150,1,2). Represente-a em um gráfico de linhas. ([Solução_7.01])
+2. No gráfico do item 1, inclua outra série, v3=rnorm(150,1,4), em verde escuro. As duas series ficaram bem representadas? ([Solução_7.02])
+3. Sejam os dados referenes a tres marcas de carros.Faça um gráfico de pontos identificando cada marca. ([Solução_7.03])
+
+Marca | Vel | Dist
+------| -----|----------
+A | 4 | 2
+B | 10 | 18
+C | 15 | 20
+-------------------
+
+4. Inclua mais um resultado no gráfico do item 03. Marca D, Velocidade 35 e Distância 25. Use a cor amarela. ([Solução_7.04])
+
+5. Faça um gráfico de pontos relacionando x e y identificando por cores os grupos **grp**. (dados simulados - slide *Criando dados Simulados*) ([Solução_7.05])
+
+
+

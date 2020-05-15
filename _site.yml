@@ -1,0 +1,15 @@
+name: "R Markdown Websites Tutorial"
+navbar:
+  title: "HOME"
+  left:
+    - text: "R e RStudio"
+      href: o_r_software.html
+    - text: "R Estruturas"
+      href: r_etruturas.html
+output_dir: "."
+output:
+  html_document:
+    theme: yeti
+    highlight: textmate
+#    include:
+#      after_body: _footer.html

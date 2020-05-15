@@ -1,0 +1,344 @@
+# Trabalhando com Texto 
+
+## Concatena caracteres *paste()*
+
+Concatena caracteres:
+```{r}
+x= "Estatística"
+paste(x,"Computacional")
+```
+
+## *paste()* - separação de palavras
+
+Concatena caracteres:
+
+a. sem espaço entre palavras
+    - *paste(x,"Computacional",sep="")* $$`r paste(x,"Computacional",sep="")`$$
+
+b. outros separadores entre palavras 
+    - *paste(x,"Computacional",sep=";")* $$`r paste(x,"Computacional",sep=";")`$$
+
+
+## *paste()* - escolhendo o separados
+```{r}
+
+paste("Prezado", "Sr.", "R", sep = "-")
+
+```
+
+## *paste()* - objetos de tamanho diferentes
+
+```{r}
+paste("V", 101:105, sep = ".")
+
+
+```
+
+
+## *paste()* - com *collapse*
+
+```{r}
+# collapse = "")
+paste("V", 101:105, sep = ".", collapse = "")
+
+# collapse = "/")
+paste("V", 101:105, sep = ".", collapse = "/")
+
+```
+
+## *cat()* - concatena e "print"
+
+```{r}
+nome="Jorge"
+
+cat(nome, "Aprovado",  sep = " -> ")
+```
+
+
+
+## Subdivide caracteres - *strsplit()*
+
+
+```{r}
+x=c("romualdo/ronaldo")
+strsplit(x,"/")
+```
+
+
+
+
+## Substitui caracteres - *sub()*
+
+Substitui caracteres:
+
+```{r}
+x=c("rondonia", "roraima")
+sub("r","R",x)
+
+#veja também o gsub()
+```
+
+## Número de caracteres - *nchar()*
+
+
+```{r}
+x= c("caracter","outro caracter")
+nchar(x)
+```
+
+
+
+## Subdividindo palavras - *substr()*
+
+
+```{r}
+x=c("nome01","nome02")
+substr(x, start=1, stop=4)
+```
+
+## *substr()*
+
+```{r}
+x=c("nome01","nome02")
+substr(x, start=5,stop=6)
+```
+
+
+## combinação formatada - *sprintf()*
+
+```{r}
+a <- seq(1,101,25)
+sprintf("%03d", a)
+
+sprintf("name_%03d", a)
+```
+
+
+## Maiúsculas - *toupper() e tolower()*
+
+```{r}
+x= c("maiuscula", "minuscula")
+# tudo minúsculo
+toupper(x)
+```
+
+## Minúsculas - tolower()*
+
+```{r}
+x= c("MAIUSCULA","MINUSCULA")
+tolower(x)
+
+
+```
+
+## Exercício {#Exercícios_04}
+
+
+
+1. Seja o vetor de códigos x = 0012,0013,0014,0015. Construa um novo vetor incluindo o prefixo 33 a cada elemento de x.([Solução_4.01])
+
+2. Sejam os usuários de um sistema: alm33, jcc41 e wrg17. Construa um vetor com os e-mails sabendo que o provedor  é o "gmai.com". ([Solução_4.02])
+
+
+## Exercício (continuação)
+
+3. E um diretório tem os arquivos Aj1.csv,Aj2.xls,Bf1.csv,bf2.csv,Bg3.xls. Quantos são os "xls" e os "csv". Construa uma tabela. ([Solução_4.03]) 
+
+4. Uma lista de nomes: jose, antonio, paula e marita devem iniciar com maiúscula. Construa um programa para isso. ([Solução_4.04])
+
+5. Seja o vetor com o nome de tabelas: tabela1,tabela2,tabela11,tabela101. Crie um vetor com o nome das tabelas. Ordene de forma crescente. A tabela101 é a última? Como deve ser arrumado a nomenclatura das tabelas para correta ordenação? ([Solução_4.05])
+
+
+
+## Solução_4.01
+1. Seja o vetor de códigos x = 0012,0013,0014,0015. Construa um novo vetor incluindo o prefixo 33 a cada elemento de x.
+```{r}
+x=c("0012","0013","0014","0015")
+paste("33",x,sep="")
+```
+[Retorna](#Exercícios_04)
+
+## Solução_4.02
+2. Sejam os usuários de um sistema: alm33, jcc41 e wrg17. Construa um vetor com os e-mails sabendo que o provedor  é o "gmai.com".
+```{r}
+user=c("alm33", "jcc41", "wrg17")
+email=paste(user,"gmail.com",sep="@")
+```
+[Retorna](#Exercícios_04)
+
+## Solução_4.03
+3. E um diretório tem os arquivos Aj1.csv,Aj2.xls,Bf1.csv,bf2.csv,Bg3.xls. Quantos são os "xls" e os "csv". Construa uma tabela.
+```{r}
+files=c("A1.csv","A2.xls","B1.csv","b2.csv","B3.xls")
+sep_file=strsplit(files,"[.]")
+extent=unlist(sep_file)[c(2,4,6,8,10)]
+table(extent)
+```
+[Retorna](#Exercícios_04)
+
+## Solução_4.04
+4. Uma lista de nomes: jose, antonio, paula e marita devem iniciar com maiúscula. Construa um programa para isso.
+```{r}
+nomes=c("jose", "antonio", "paula" , "marita")
+substr(nomes,1,1)=toupper(substr(nomes,1,1))
+nomes
+```
+[Retorna](#Exercícios_04)
+
+## Solução_4.05
+5. Seja o vetor com o nome de tabelas: tabela1,tabela2,tabela11,tabela101. Crie um vetor com o nome das tabelas. Ordene de forma crescente. A tabela101 é a última? Como deve ser arrumado a nomenclatura das tabelas para correta ordenação?
+
+```{r}
+tabelas=c("tabela1","tabela2","tabela11","tabela101")
+sort(tabelas)
+# tabela101 é a segunda (ordem lexicográfica)
+ord=sub("tabela","",tabelas)
+ord
+sprintf("tabela_%03i", as.numeric(ord)) 
+```
+[Retorna](#Exercícios_04)
+
+
+
+
+
+
+
+
+
+
+# Trabalhando com Datas 
+
+
+## *as.Date()*
+
+Transformando *character* em *Date*
+
+```{r}
+xd = as.Date("2017-09-13")
+xd
+class(xd)
+```
+
+## *as.Date()* formato
+
+```{r}
+xd = "2017/09/13"
+as.Date(xd, "%Y/%m/%d")
+```
+
+## *as.Date()* formato
+
+```{r}
+xd = "13/09/17"
+as.Date(xd, "%d/%m/%y")
+```
+
+## *weekdays()*
+
+```{r}
+xd = as.Date("2017-09-13")
+weekdays(xd)
+```
+
+## Soma e Subtração com datas
+
+```{r}
+xd + 7
+```
+
+## Sequencias de datas
+
+```{r}
+xd+ 0:6
+```
+
+## Datas com *seq()*
+
+```{r}
+ini=as.Date("2015-01-01")
+xm = seq(ini, by="6 months", length.out=6)
+xm
+
+```
+
+## *months()*
+
+```{r}
+months(xm)
+```
+
+## data do sistema operacional
+
+```{r}
+Sys.Date()
+```
+
+## data do sistema operacional (format)
+
+```{r}
+format(Sys.Date(), "%d %b %Y") 
+```
+
+## Data e hora
+
+```{r}
+## read in date/time info in format 'm/d/y h:m:s'
+dates <- c("02/27/92", "02/27/92", "01/14/92", "02/28/92", "02/01/92")
+times <- c("23:03:20", "22:29:56", "01:03:30", "18:21:03", "16:56:26")
+x <- paste(dates, times)
+strptime(x, "%m/%d/%y %H:%M:%S")
+
+```
+
+
+
+
+## funções com datas
+
+- são dependentes das configurações do comptador (local, lingua...)
+- para mais informações sobre formatação de data e hora (*?strptime*)
+
+
+## Exercícios {#Exercícios_05}
+
+1. Crie o vetor de datas: 10.09.17, 11.09.17, 12.09.17, 13.09.17. ([Solução_5.01])
+
+2. Usando o vetor do item 01. Quantos dias úteis tem no referido mês? ([Solução_5.02])
+
+3. Construa um programa para calcular o tempo, em dias, de uma data de referencia até o dia de hoje. Quantos dias se passaram desde o Mundial da Russia (15 de julho de 2018)? Quantos dias faltam para o Mundial do Catar (21/11/2022)? ([Solução_5.03])
+
+
+## Solução_5.01
+1. Crie o vetor de datas: 10.09.17, 11.09.17, 12.09.17, 13.09.17.
+```{r}
+x=as.Date(c("10.09.17", "11.09.17", 
+            "12.09.17", "13.09.17"),"%d.%m.%y")
+```
+[Retorna](#Exercícios_05)
+
+## Solução_5.02
+2. Usando o vetor do item 01. Quantos dias úteis tem o mês de setembro no referido ano?
+```{r}
+# considerando que não há feriados
+#
+x1=seq(x[1]-9, x[1]+20, by= "day" )
+weekdays(x1)
+# considerando os dias como números
+wd=strftime(x1,"%u") #(7 = "domingo")
+length(as.numeric(wd)<6)
+
+```
+[Retorna](#Exercícios_05)
+
+## Solução_5.03
+3. Construa um programa para calcular o tempo, em dias, de uma data de referencia até o dia de hoje. Quantos dias se passaram do Mundial da Russia (15 de julho de 2018)? Quantos dias faltam para o Mundial do Catar (21/11/2022)?
+```{r}
+as.Date("2018-07-15")-Sys.Date()
+as.Date("2022-11-21")-Sys.Date()
+```
+[Retorna](#Exercícios_05)
+
+
+
+

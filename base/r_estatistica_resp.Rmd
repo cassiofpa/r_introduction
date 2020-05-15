@@ -1,0 +1,153 @@
+## Medidas Estatísticas Básicas
+ - min() , max()
+ - sum() 
+ - mean(), median()
+ - quantile()
+ - var(), sd()
+ - summary()
+ - table()
+
+
+## mean 
+```{r}
+x=rnorm(20,10)
+mean(x)
+x1=c(x,NA)
+mean(x1)
+mean(x1, na.rm=T)
+```
+
+
+
+
+## summary
+
+```{r}
+summary(x1)
+summary(cars)
+```
+
+## tabela de frequencia
+```{r}
+x=sample(letters[1:5],60,replace=T) #?sample
+table(x)
+```
+
+
+
+## Exercícios
+
+1. Carregue a base de dados votos.txt ([https://tinyurl.com/votos-txt])
+2. Qual a dimensão do objeto? (linhas e colunas)
+3. Quais são as variáveis?
+4. Corrija os nomes das colunas como segue: uf, candidatos, partido, log_votos, sexo, resultado
+5. Qual a frequencia de partidos e de sexo dos candidatos?
+6. Qual o partido com a representatividade por sexo mais equilibrada?
+7. Qual a media de votos dos eleitos?
+
+
+## Exercício 01 
+1- Carregue a base de dados votos.txt
+```{r}
+votos=read.table("../data/votos.txt",sep="\t",dec=",",header=T)
+head(votos)
+```
+
+## Exercício 02 
+
+2- Qual a dimensão do objeto? (linhas e colunas)
+```{r}
+dim(votos)
+```
+
+## Exercício 03 
+3- Quais são as variáveis?
+```{r}
+colnames(votos)
+```
+
+## Exercício 04 
+4- Corrija os nomes das colunas como segue: *uf, candidatos, partido, log_votos, sexo, resultado*.
+```{r}
+colnames(votos)=c("uf","candidatos", "partido", 
+                  "log_votos", "sexo", "resultado")
+head(votos)
+```
+
+## Exercício 05 - Parte 1
+
+5- Qual a frequencia de partidos?
+```{r}
+table(votos$partido)
+# varios problemas: 
+#  - Letra maiusculas e minusculas nas siglas
+#  - espaços ante ? depois das siglas
+
+# Padronizando: tudo em letras maiúsculas
+votos$partido=toupper(votos$partido)
+table(votos$partido)
+```
+
+## Exercício 05 - Parte 2
+
+```{r}
+# removendo os espaços antes/depois das palavras
+votos$partido=trimws(votos$partido, which="both")
+table(votos$partido)
+```
+
+
+## Exercício 06 - Parte 01
+6- Qual o partido com a representatividade por sexo mais equilibrada?
+
+```{r}
+head(table(votos$partido,votos$sexo),12)
+```
+
+
+## Exercício 06 - Parte 02
+```{r}
+# a variável sexo não esta com a escrita padronizada
+# deve ser padronizada: se masculino: Masculino e 
+#                       se feminino: Feminino
+
+# o comando sub não faz a tarefa adequadamente
+#sub(c("Fem."),c("Feminino"),votos$sexo,)
+
+# Atenção que a variável sexo é um factor
+# Transforme em character
+votos$sexo=as.character(votos$sexo)
+
+# substituindo os termos 
+votos$sexo[votos$sexo=="Fem."]="Feminino"
+votos$sexo[votos$sexo=="feminino"]="Feminino"
+votos$sexo[votos$sexo=="masculino"|votos$sexo=="Masc."]=
+        "Masculino"
+
+# Transforme em factor
+votos$sexo=as.factor(votos$sexo)
+# olhando a tabela
+head(table(votos$partido,votos$sexo),3)
+```
+
+
+## Exercício 06 - Parte 03
+```{r}
+# um indicador de representatividade cand_Fem/cand_Masc
+#- quanto mais próximo de 1, mais equlibrado
+# ( cuidado com as pequenas amostras )
+x=(table(votos$partido,votos$sexo))
+
+x=as.matrix(x)
+repres= x[,1]/x[,2]
+sort(repres)
+```
+
+## Exercício 07 
+7. Qual a media de votos dos eleitos?
+
+```{r}
+mean(votos$log_votos)
+
+```
+

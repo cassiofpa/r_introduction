@@ -1,0 +1,151 @@
+
+
+# Leitura de Microdados IBGE
+
+- São Arquivos com formato especial **largura fixa**
+- A largura fixa é como se representa a divisão das variáveis em um registro 
+
+
+```{r out.width = "200px" , echo=FALSE}
+knitr::include_graphics("figures/formato_fixo.png",)
+```
+
+
+## Vantagens
+
+- muito compacta - menor tamanho do arquivo para armazenamento
+- rápido de acessar com um software adequado
+
+## Desvantagem
+
+- Necessita de um arquivo auxiliar (dicionário) com as *larguras* e identificação das variáveis
+- É necessários construir o código descrevendo as posições
+
+
+
+## Lendo arquivo Morador - POF
+
+
+```{r eval=FALSE}
+MORADOR <- 
+  read.fwf("../pof/MORADOR.txt" 
+    , widths = c(2,4,1,9,2,1,2,2,1,2,2,4,3,1,1,14,14,10)
+    , na.strings=c(" ")
+    , col.names = c("UF"
+               , "ESTRATO_POF", "TIPO_SITUACAO_REG"
+               , "COD_UPA", "NUM_DOM", "NUM_UC"
+               , "COD_INFORMANTE", "V0306", "V0401"
+               , "V04021", "V04022", "V04023", "V0403"
+               , "V0404", "V0405", "PESO", "PESO_FINAL"
+               , "RENDA_TOTAL")
+           , dec="."
+           )   
+
+
+```
+
+
+## read.fwf
+
+- esta função faz o trabalho, mas tem baixa performance
+- no arquivo Morador com 13.1MB (178431,18)
+- no r: object.size(MORADOR) - ~14MB
+- tempo de leitura: ~72s (com arquivo em HD)
+
+
+## Opção mais eficiente read_fwf
+
+- é uma função do package **readr** 
+- observe que o comando é diferente (usa "_" como separador)
+- os parâmetros também são diferentes
+- é 300 vezes mais rápido (na leitura do exemplo MORADOR)
+
+## Lendo arquivo Morador - POF (read_fwf)
+
+```{r eval=FALSE}
+w=c(2,4,1,9,2,1,2,2,1,2,2,4,3,1,1,14,14,10)
+end1=cumsum(x)
+start1=end1-(x-1)
+vars = c("UF", "ESTRATO_POF", "TIPO_SITUACAO_REG"
+              , "COD_UPA", "NUM_DOM", "NUM_UC"
+              , "COD_INFORMANTE", "V0306", "V0401"
+              , "V04021", "V04022", "V04023", "V0403"
+              , "V0404", "V0405", "PESO", "PESO_FINAL"
+              , "RENDA_TOTAL")
+
+MORADOR = readr::read_fwf("../pof/MORADOR.txt"
+          ,col_positions = readr::fwf_widths(w, vars) )  
+
+```
+
+
+
+## Leitura PNAD-Contínua
+
+- há um package que facilita a leitura: PNADcIBGE
+- package feito pelo IBGE
+- Está disponivel no site do R (CRAN)
+- use: **install.packages("PNADcIBGE")**
+
+## PNADcIBGE - get_pnadc
+
+- get_pnadc: faz o download e leitura de um arquivo PNAD_c
+
+```{r eval=FALSE}
+
+get_pnadc(year, quarter = NULL, interview = NULL, 
+  vars = NULL,  labels = T, design = T,
+  savedir = tempdir())
+```
+
+
+## PNADcIBGE - read_pnadc
+
+- read_pnadc: faz leitura de um arquivo PNAD_c
+
+```{r eval=FALSE}
+
+read_pnadc(microdata, input_txt, vars = NULL)
+```
+
+- microdata - arquivo txt da PNADc
+- input_txt - arquivo txt com o código de leitura SAS
+- vars -  variáveis desejadas 
+
+
+## Lendo dados PNADc - comandos
+
+```{r eval=FALSE}
+input_path <- pnadc_example(path="input_example.txt")
+data_path <- pnadc_example(path="exampledata.txt")
+pnadc.df <- read_pnadc(microdata=data_path, 
+                input_txt=input_path, vars="VD4002")
+```
+
+
+## input_example.txt
+
+```{r out.width = "400px"}
+knitr::include_graphics("figures/input_txt.png")
+```
+
+##  exampledata.txt
+
+```{r out.width = "400px"}
+knitr::include_graphics("figures/exemplodata_txt.png")
+```
+
+
+## Lendo dados PNADc - comandos
+
+```{r }
+library(PNADcIBGE)
+input_path <- pnadc_example(path="input_example.txt")
+data_path <- pnadc_example(path="exampledata.txt")
+pnadc.df <- read_pnadc(microdata=data_path, 
+                  input_txt=input_path, vars="VD4002")
+
+head(pnadc.df,3)
+```
+
+

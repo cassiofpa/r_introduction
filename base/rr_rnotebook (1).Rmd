@@ -1,0 +1,149 @@
+
+# R Notebook
+
+## Nível 1: Usuário Iniciante em R 
+
+
+```{r,out.width = "50%", fig.cap= ""}
+knitr::include_graphics("figures/level-1.png")
+```
+
+> - Trabalha direto na console do R
+> - Utilização simples do R
+> - Não reproduzível
+
+
+## Nível 2: Usuário Intermediário em R
+
+
+```{r,out.width = "50%", fig.cap= ""}
+knitr::include_graphics("figures/level-2.png")
+```
+
+
+
+> - Estrátégia da maioria dos usuários de R
+> - Escrever o código em um editor 
+> - As saídas são salvas separadamente
+> - *Export/copy/paste* são necessários
+> - Geralmente não há documentação 
+
+
+## Nível 3: Usuário Avançado em R
+
+```{r, out.width = "50%",fig.cap= ""}
+knitr::include_graphics("figures/level-3.png")
+```
+
+> - Utiliza ferramentas para integrar código e texto
+> - Gera documentos, mas ainda precisa das janelas de comandos e de visualização 
+
+
+## Nível 4: Usuário de R Notebooks
+
+> - Integra código e texto
+> - Gera documentos sem depender da console ou do visualizador
+> - Usa o *Notebook*
+
+
+
+```{r, out.width = "50%",fig.cap= ""}
+knitr::include_graphics("figures/level-4.png")
+```
+
+## R Notebooks Summary
+
+1. Utiliza R Markdown (linguagem de marcação transforma texto em XHTML válido.)
+1. Interage com o  R em um **fluxo contínuo**.
+1. **Interção rápida**; código e resultado juntos.Visualização imediata 
+1. Gera um **arquivo reproduzível** com boa qualidade (output).
+1. **Compartilha e Publica** facilmente.
+1. **One-click export** para PDF, Word, etc.
+
+
+## A melhor ferramenta para análise
+
+>- Um documento HTML (self-contained)
+>- Fácil compartilhamento
+>- Uso de Funções dinâmicas
+>- Veja exemplo: [html_dinamico](file:///C:/Users/Cassio/Documents/cassio/Trabalhos/Programas%20em%20R/rmark/html_dinamico.html)
+
+## Criando um RNotebooks - open
+
+
+```{r, out.width = "60%",fig.cap= ""}
+knitr::include_graphics("figures/open.png")
+```
+
+
+## Estrutura básica
+
+- Cabeçalho (*YAML*)
+- *chunks*
+- texto
+
+```{r, out.width = "100%",fig.cap= ""}
+knitr::include_graphics("figures/rnotebook.png")
+```
+
+
+
+## Cabeçalho - *YAML*
+
+```{r, out.width = "60%",fig.cap= ""}
+knitr::include_graphics("figures/yaml.png")
+```
+
+
+
+## Cabeçalho - Complementos
+
+- "author: nome "
+- "date: 11/09/2017"
+
+## O *chunk* 
+
+
+```{r, out.width = "50%",fig.cap= ""}
+knitr::include_graphics("figures/chunk1.png")
+```
+
+
+```{r}
+summary(cars)
+```
+
+
+## Incluindo código R no texto
+
+Para executar um código r no texto: 
+
+```{r, out.width = "120%",fig.cap= ""}
+knitr::include_graphics("figures/rnotexto.png")
+```
+
+
+ **O valor máximo em "c(5, 7, 15)" é `r max(c(5, 7, 15))`**
+
+
+
+## Crie um notebook!
+
+Crie um documento html conforme segue:
+
+1. Simule 100 valores de uma distribuição Normal(0,1).(x=rnorm(100))
+1. Faça um histograma (hist(x))
+1. Escreva um paragrafo explicitando:
+    - valor da média (mean(x)), 
+    - desvio padrão (sd(x)), 
+    - mínimo e máximo (min(x) e max(x)).
+    
+
+
+
+## Referências
+
+- RStudio Preview: site: https://www.rstudio.com/products/rstudio/download/preview/
+
+- R Notebooks: site: http://rmarkdown.rstudio.com/r_notebooks.html
+

@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>outras_estruturas.utf8</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/yeti.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 45px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 50px;
+  margin-top: -50px;
+}
+.section h2 {
+  padding-top: 50px;
+  margin-top: -50px;
+}
+.section h3 {
+  padding-top: 50px;
+  margin-top: -50px;
+}
+.section h4 {
+  padding-top: 50px;
+  margin-top: -50px;
+}
+.section h5 {
+  padding-top: 50px;
+  margin-top: -50px;
+}
+.section h6 {
+  padding-top: 50px;
+  margin-top: -50px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">HOME</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="o_r_software.html">R e RStudio</a>
+</li>
+<li>
+  <a href="r_etruturas.html">R Estruturas</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+
+</div>
+
+
+<div id="matrizes" class="section level2">
+<h2>Matrizes</h2>
+<ul>
+<li>disposição bidimensional (linhas e colunas)</li>
+<li>os elementos devem ser todos de um mesmo tipo(numéricos, caracteres, …)</li>
+</ul>
+</div>
+<div id="criando-uma-matriz" class="section level2">
+<h2>Criando uma Matriz</h2>
+<pre class="r"><code>ms = matrix(0, nrow = 2, ncol = 3) 
+ms</code></pre>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    0    0    0
+## [2,]    0    0    0</code></pre>
+</div>
+<div id="criando-uma-matriz-1" class="section level2">
+<h2>Criando uma Matriz</h2>
+<pre class="r"><code># criação
+x = c(2, 4, 3, 5, 6, 7, 6, 8, 7)
+nc = 3
+ms = matrix(x, ncol = nc, byrow = TRUE)
+ms</code></pre>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    2    4    3
+## [2,]    5    6    7
+## [3,]    6    8    7</code></pre>
+</div>
+<div id="dimensão-da-matriz" class="section level2">
+<h2>Dimensão da matriz</h2>
+<pre class="r"><code>dim(ms)</code></pre>
+<pre><code>## [1] 3 3</code></pre>
+<pre class="r"><code>ncol(ms)</code></pre>
+<pre><code>## [1] 3</code></pre>
+<pre class="r"><code>nrow(ms)</code></pre>
+<pre><code>## [1] 3</code></pre>
+<ul>
+<li>o resultado refer-se ao número de linhas e colunas (nesta ordem)</li>
+</ul>
+</div>
+<div id="selecionando-elementos-da-matriz" class="section level2">
+<h2>Selecionando elementos da matriz</h2>
+<pre class="r"><code># elemento da linha 1 e coluna 3
+ms[1, 3] </code></pre>
+<pre><code>## [1] 3</code></pre>
+<pre class="r"><code># elementos da linha 2 e coluna 2 e 3
+ms[2, c(2, 3)]</code></pre>
+<pre><code>## [1] 6 7</code></pre>
+</div>
+<div id="selecionando-elementos-da-matriz-1" class="section level2">
+<h2>Selecionando elementos da matriz</h2>
+<ul>
+<li>para selecionar uma dimensão inteira, deixe sem valor</li>
+</ul>
+<pre class="r"><code># todos os elemento da  coluna 3
+ms[, 3] </code></pre>
+<pre><code>## [1] 3 7 7</code></pre>
+<pre class="r"><code># todos os elemento da  linha 2
+ms[2, ]</code></pre>
+<pre><code>## [1] 5 6 7</code></pre>
+</div>
+<div id="substituindo-valores" class="section level2">
+<h2>Substituindo valores</h2>
+<pre class="r"><code>ms[2, 3] = 10
+ms[2, ] = c(7, 7, 7)
+ms</code></pre>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    2    4    3
+## [2,]    7    7    7
+## [3,]    6    8    7</code></pre>
+</div>
+<div id="adicionando-colunas-e-linhas" class="section level2">
+<h2>Adicionando Colunas e linhas</h2>
+<pre class="r"><code># adicionando nova coluna
+ms = cbind(ms, c(3, 3, 3)) 
+
+# adicionando nova linha
+ms = rbind(ms, c(1, 1, 1, 1)) 
+
+ms</code></pre>
+<pre><code>##      [,1] [,2] [,3] [,4]
+## [1,]    2    4    3    3
+## [2,]    7    7    7    3
+## [3,]    6    8    7    3
+## [4,]    1    1    1    1</code></pre>
+</div>
+<div id="combinando-matrizes" class="section level2">
+<h2>Combinando matrizes</h2>
+<pre class="r"><code>m = matrix(2, 2, 3)
+m</code></pre>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    2    2    2
+## [2,]    2    2    2</code></pre>
+<pre class="r"><code>cbind(m, m) # novas colunas</code></pre>
+<pre><code>##      [,1] [,2] [,3] [,4] [,5] [,6]
+## [1,]    2    2    2    2    2    2
+## [2,]    2    2    2    2    2    2</code></pre>
+<pre class="r"><code>rbind(m, m) # novas linhas</code></pre>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    2    2    2
+## [2,]    2    2    2
+## [3,]    2    2    2
+## [4,]    2    2    2</code></pre>
+</div>
+<div id="operações-com-matrizes" class="section level2">
+<h2>Operações com Matrizes</h2>
+<pre class="r"><code>ms * 2 # recycling rule</code></pre>
+<pre><code>##      [,1] [,2] [,3] [,4]
+## [1,]    4    8    6    6
+## [2,]   14   14   14    6
+## [3,]   12   16   14    6
+## [4,]    2    2    2    2</code></pre>
+</div>
+<div id="produto-matricial" class="section level2">
+<h2>Produto Matricial</h2>
+<pre class="r"><code>ms %*% t(ms) # produto matricial</code></pre>
+<pre><code>##      [,1] [,2] [,3] [,4]
+## [1,]   38   72   74   12
+## [2,]   72  156  156   24
+## [3,]   74  156  158   24
+## [4,]   12   24   24    4</code></pre>
+</div>
+<div id="identificando-elementos-de-objetos" class="section level2">
+<h2>Identificando elementos de objetos</h2>
+<ul>
+<li><span class="math inline">\(dimnames()\)</span></li>
+</ul>
+<pre class="r"><code>m=matrix(NA,2,2)
+m # sem nomes em linhas e colunas</code></pre>
+<pre><code>##      [,1] [,2]
+## [1,]   NA   NA
+## [2,]   NA   NA</code></pre>
+<pre class="r"><code>dimnames(m)=list(c(&quot;A&quot;,&quot;B&quot;),c(&quot;a&quot;,&quot;b&quot;))
+m</code></pre>
+<pre><code>##    a  b
+## A NA NA
+## B NA NA</code></pre>
+</div>
+<div id="identificando-linhas-e-colunas" class="section level2">
+<h2>Identificando linhas e colunas</h2>
+<ul>
+<li><span class="math inline">\(colnames()\)</span></li>
+<li><span class="math inline">\(rownames()\)</span></li>
+</ul>
+<pre class="r"><code>m=matrix(NA,2,2)
+rownames(m)=c(&quot;A&quot;,&quot;B&quot;)
+colnames(m)=c(&quot;a&quot;,&quot;b&quot;)
+m</code></pre>
+<pre><code>##    a  b
+## A NA NA
+## B NA NA</code></pre>
+</div>
+<div id="data-frame" class="section level2">
+<h2>Data Frame</h2>
+<ul>
+<li>É uma disposição bidimensional dos dados</li>
+<li>Pode ter elementos de diferentes modos em diferentes colunas, desde que cada coluna tenha o mesmo tamanho.</li>
+</ul>
+</div>
+<div id="criando-um-data-frame" class="section level2">
+<h2>Criando um Data Frame</h2>
+<pre class="r"><code>nome = c(&quot;Carlos&quot;, &quot;Jorge&quot;, &quot;Ana&quot;)
+nota01 = c(7, 5, 7)
+nota02 = c(8, 6, 4)
+df = data.frame(nome, nota01, nota02)
+df</code></pre>
+<pre><code>##     nome nota01 nota02
+## 1 Carlos      7      8
+## 2  Jorge      5      6
+## 3    Ana      7      4</code></pre>
+</div>
+<div id="selecionando-elementos-do-data-frame" class="section level2">
+<h2>Selecionando elementos do Data Frame</h2>
+<pre class="r"><code># similar a um Matriz
+
+df[1, 2]</code></pre>
+<pre><code>## [1] 7</code></pre>
+<pre class="r"><code>df[1,]</code></pre>
+<pre><code>##     nome nota01 nota02
+## 1 Carlos      7      8</code></pre>
+<pre class="r"><code>df[, &quot;nota01&quot;]</code></pre>
+<pre><code>## [1] 7 5 7</code></pre>
+</div>
+<div id="dimensão-do-data-frame" class="section level2">
+<h2>Dimensão do Data Frame</h2>
+<pre class="r"><code>dim(df)</code></pre>
+<pre><code>## [1] 3 3</code></pre>
+<pre class="r"><code>ncol(df)</code></pre>
+<pre><code>## [1] 3</code></pre>
+<pre class="r"><code>nrow(df)</code></pre>
+<pre><code>## [1] 3</code></pre>
+</div>
+<div id="ordenando-data-frame" class="section level2">
+<h2>Ordenando Data Frame</h2>
+<ul>
+<li>Ordenando o data frame por uma coluna</li>
+</ul>
+<pre class="r"><code># ordena df pela nota01
+df[order(df$nota01), ]</code></pre>
+<pre><code>##     nome nota01 nota02
+## 2  Jorge      5      6
+## 1 Carlos      7      8
+## 3    Ana      7      4</code></pre>
+</div>
+<div id="identificando-linhas-e-colunas-1" class="section level2">
+<h2>Identificando linhas e colunas</h2>
+<ul>
+<li><span class="math inline">\(colnames()\)</span></li>
+<li><span class="math inline">\(rownames()\)</span></li>
+</ul>
+<pre class="r"><code>rownames(df)=c(&quot;linha01&quot;,&quot;linha02&quot;,&quot;linha03&quot;)
+colnames(df)=c(&quot;Nome&quot;, &quot;Nota01&quot;, &quot;Nota02&quot;)
+df</code></pre>
+<pre><code>##           Nome Nota01 Nota02
+## linha01 Carlos      7      8
+## linha02  Jorge      5      6
+## linha03    Ana      7      4</code></pre>
+</div>
+<div id="listas" class="section level2">
+<h2>Listas</h2>
+<ul>
+<li>Coleção ordenada de componentes</li>
+<li>Como um vetor com objetos de diferente tipos</li>
+<li>Os componentes de uma lista podem ser de qualquer tipo</li>
+</ul>
+</div>
+<div id="exemplos-em-r-listas" class="section level2">
+<h2>Exemplos em R: Listas</h2>
+<pre class="r"><code>l = list(c(1:10), df)
+l</code></pre>
+<pre><code>## [[1]]
+##  [1]  1  2  3  4  5  6  7  8  9 10
+## 
+## [[2]]
+##           Nome Nota01 Nota02
+## linha01 Carlos      7      8
+## linha02  Jorge      5      6
+## linha03    Ana      7      4</code></pre>
+</div>
+<div id="extraindo-elementos-de-uma-listas" class="section level2">
+<h2>Extraindo elementos de uma Listas</h2>
+<pre class="r"><code># obter o elemento da posição 2 da lista l
+l[[2]]</code></pre>
+<pre><code>##           Nome Nota01 Nota02
+## linha01 Carlos      7      8
+## linha02  Jorge      5      6
+## linha03    Ana      7      4</code></pre>
+</div>
+<div id="dimensão-de-uma-listas" class="section level2">
+<h2>Dimensão de uma Listas</h2>
+<pre class="r"><code>length(l)</code></pre>
+<pre><code>## [1] 2</code></pre>
+</div>
+<div id="identificando-lista" class="section level2">
+<h2>Identificando lista</h2>
+<ul>
+<li><span class="math inline">\(names()\)</span></li>
+</ul>
+<pre class="r"><code>L=list(1:10,&quot;Teste&quot;)
+names(L)=c(&quot;A&quot;,&quot;B&quot;)
+L</code></pre>
+<pre><code>## $A
+##  [1]  1  2  3  4  5  6  7  8  9 10
+## 
+## $B
+## [1] &quot;Teste&quot;</code></pre>
+</div>
+<div id="factor" class="section level2">
+<h2>Factor</h2>
+<ul>
+<li><p>Armazena os valores nominais (sexo, religião, estado civil, 0,1,2, etc) considerados categorías</p></li>
+<li><p>Usado para identificar grupos com ou sem ordenação</p></li>
+</ul>
+</div>
+<div id="factor-1" class="section level2">
+<h2>Factor</h2>
+<pre class="r"><code># p_sexo com 3 valores male e 2 valores female 
+p_sexo = c(rep(&quot;male&quot;, 3), rep(&quot;female&quot;, 2))
+p_sexo</code></pre>
+<pre><code>[1] &quot;male&quot;   &quot;male&quot;   &quot;male&quot;   &quot;female&quot; &quot;female&quot;</code></pre>
+<pre class="r"><code>p_sexo = factor(p_sexo) 
+# dois níveis female e male
+p_sexo</code></pre>
+<pre><code>[1] male   male   male   female female
+Levels: female male</code></pre>
+</div>
+<div id="factor---levels" class="section level2">
+<h2>Factor - levels</h2>
+<ul>
+<li>define a ordenação dos fatores</li>
+</ul>
+<pre class="r"><code># os levels são female e male 
+# ordem alfabética quando não especificado
+p_sexo</code></pre>
+<pre><code>[1] male   male   male   female female
+Levels: female male</code></pre>
+<pre class="r"><code>p_sexo = factor(p_sexo, levels=c(&quot;male&quot;,&quot;female&quot;)) 
+p_sexo</code></pre>
+<pre><code>[1] male   male   male   female female
+Levels: male female</code></pre>
+</div>
+<div id="factor---labels" class="section level2">
+<h2>Factor - labels</h2>
+<ul>
+<li>define os labels (segue a ordenação - levels)</li>
+</ul>
+<pre class="r"><code># os levels são female e male 
+p_sexo = factor(c(rep(&quot;male&quot;, 3), rep(&quot;female&quot;, 2)))
+p_sexo</code></pre>
+<pre><code>[1] male   male   male   female female
+Levels: female male</code></pre>
+<pre class="r"><code># os labels seguem a ordenação do level
+
+factor(p_sexo, labels=c(&quot;malex&quot;,&quot;female&quot;)) </code></pre>
+<pre><code>[1] female female female malex  malex 
+Levels: malex female</code></pre>
+</div>
+<div id="factor---labels-1" class="section level2">
+<h2>Factor - labels</h2>
+<pre class="r"><code>p_sexo = c(rep(&quot;male&quot;, 3), rep(&quot;female&quot;, 2))
+p_sexo</code></pre>
+<pre><code>## [1] &quot;male&quot;   &quot;male&quot;   &quot;male&quot;   &quot;female&quot; &quot;female&quot;</code></pre>
+<pre class="r"><code>factor(p_sexo,levels=c(&quot;male&quot;,&quot;female&quot;), 
+               labels=c(&quot;malex&quot;,&quot;female&quot;)) </code></pre>
+<pre><code>## [1] malex  malex  malex  female female
+## Levels: malex female</code></pre>
+</div>
+<div id="factor---na" class="section level2">
+<h2>Factor - NA</h2>
+<ul>
+<li>NA não é considerado um fator (level)</li>
+<li>mas pode ser mantido</li>
+</ul>
+<pre class="r"><code>factor(c(1:2, NA))</code></pre>
+<pre><code>## [1] 1    2    &lt;NA&gt;
+## Levels: 1 2</code></pre>
+<pre class="r"><code># mas é possível marter os NA 
+factor(c(1:2, NA), exclude =  &quot;&quot; ) </code></pre>
+<pre><code>## [1] 1    2    &lt;NA&gt;
+## Levels: 1 2 &lt;NA&gt;</code></pre>
+<pre class="r"><code># factor(c(1:2, NA), exclude = NULL) </code></pre>
+</div>
+<div id="factor---ordered" class="section level2">
+<h2>Factor - ordered</h2>
+<ul>
+<li>define os labels (segue a ordenação - levels)</li>
+</ul>
+<pre class="r"><code>z &lt;- factor(LETTERS[3:1], ordered = TRUE)
+z</code></pre>
+<pre><code>[1] C B A
+Levels: A &lt; B &lt; C</code></pre>
+</div>
+<div id="observações" class="section level2">
+<h2>Observações</h2>
+</div>
+<div id="identificaçõe-de-objetos" class="section level2">
+<h2>Identificaçõe de objetos</h2>
+<ul>
+<li><span class="math inline">\(is.character()\)</span></li>
+<li><span class="math inline">\(is.logical()\)</span></li>
+<li><span class="math inline">\(is.numeric()\)</span></li>
+<li><span class="math inline">\(is.vector()\)</span></li>
+<li><span class="math inline">\(is.matrix()\)</span></li>
+<li><span class="math inline">\(is.list()\)</span></li>
+<li><span class="math inline">\(is.data.frame()\)</span></li>
+<li><span class="math inline">\(is.factor()\)</span></li>
+</ul>
+</div>
+<div id="identificando-vetor" class="section level2">
+<h2>Identificando vetor</h2>
+<ul>
+<li><span class="math inline">\(names()\)</span></li>
+</ul>
+<pre class="r"><code>v=1:4
+names(v)=c(&quot;A&quot;,&quot;B&quot;,&quot;C&quot;,&quot;D&quot;)
+v</code></pre>
+<pre><code>## A B C D 
+## 1 2 3 4</code></pre>
+</div>
+<div id="selecionando-elemento-pelo-nome" class="section level2">
+<h2>Selecionando elemento pelo nome</h2>
+<pre class="r"><code># List
+L$A</code></pre>
+<pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
+<pre class="r"><code>#matrix
+m[,&quot;a&quot;] # uma coluna</code></pre>
+<pre><code>##  A  B 
+## NA NA</code></pre>
+<pre class="r"><code>m[&quot;A&quot;,] # uma linha</code></pre>
+<pre><code>##  a  b 
+## NA NA</code></pre>
+</div>
+<div id="resumo-de-funções" class="section level2">
+<h2>Resumo de Funções</h2>
+<ul>
+<li><span class="math inline">\(c(object,object,...)\)</span>: <strong>combine objects into a vector</strong></li>
+<li><span class="math inline">\(length(object)\)</span>: <strong>number of elements or components</strong></li>
+<li><span class="math inline">\(class(object)\)</span>: <strong>class or type of an object</strong></li>
+<li><span class="math inline">\(names(object)\)</span>: <strong>names</strong></li>
+<li><span class="math inline">\(rownames() / colnames()\)</span>: <strong>nomes de linhas e colunas</strong></li>
+<li><span class="math inline">\(cbind(object, object, ...)\)</span>: <strong>combine objects as columns</strong></li>
+<li><span class="math inline">\(rbind(object, object, ...)\)</span>: <strong>combine objects as rows</strong></li>
+<li><span class="math inline">\(seq()\)</span>: <strong>sequencia regular</strong></li>
+<li><span class="math inline">\(rep()\)</span>: <strong>repetições</strong></li>
+</ul>
+</div>
+<div id="Exercícios_03" class="section level2">
+<h2>Exercícios</h2>
+<ol style="list-style-type: decimal">
+<li>Crie uma matriz com 20 linhas e 20 colunas com diferentes números ímpares. (<a href="#solução_3.01">Solução_3.01</a>)</li>
+<li>Crie uma nova matriz com as colunas pares da matriz do item 1. (<a href="#solução_3.02">Solução_3.02</a>)</li>
+<li>Na matriz do item 2 inclua uma coluna, na última posição, com valores iguais ao número de linhas. (<a href="#solução_3.03">Solução_3.03</a>)</li>
+<li>Na matriz do item 3 inclua uma linha, na primeira posição, com valores iguais ao número de colunas. (<a href="#solução_3.04">Solução_3.04</a>)</li>
+<li>Crie uma matriz de 2 linhas e 2 colunas com letras e coloque-a (substitua) no centro da matriz do item 2. O que aconteceu com a matriz? (<a href="#solução_3.05">Solução_3.05</a>)</li>
+<li>Crie uma matriz com 4 linhas iguais a: 1,2,3,4. Faça um teste para verificar se todos os elementos da coluna 1 são iguais a 1. (<a href="#solução_3.06">Solução_3.06</a>)</li>
+<li>Suponha que a matriz do item 6 corresponda a dados de 4 pessoas ( Marcos, Pedro, Denis e Clara). Crie um objetos onde a primeira coluna seja os nomes e as demais os dados. (<a href="#solução_3.07">Solução_3.07</a>)</li>
+<li>Crie um objeto que agregue os resultados de todos os itens anteriores e ainda, inclua a data atual. (<a href="#solução_3.08">Solução_3.08</a>)</li>
+</ol>
+</div>
+<div id="solução_3.01" class="section level2">
+<h2>Solução_3.01</h2>
+<ol style="list-style-type: decimal">
+<li>Crie uma matriz com 20 linhas e 20 colunas com diferentes números ímpares.</li>
+</ol>
+<pre class="r"><code># numareos ímpares
+imp = seq(1, 800, by = 2)
+m1 = matrix(imp, 20, 20)</code></pre>
+<p><a href="#59">Retorna</a></p>
+</div>
+<div id="solução_3.02" class="section level2">
+<h2>Solução_3.02</h2>
+<ol start="2" style="list-style-type: decimal">
+<li>Crie uma nova matriz com as colunas pares da matriz do item 1</li>
+</ol>
+<pre class="r"><code>N = dim(m1)[2]
+m2 = m1[, seq(2, N, by = 2)]</code></pre>
+<p><a href="#59">Retorna</a></p>
+</div>
+<div id="solução_3.03" class="section level2">
+<h2>Solução_3.03</h2>
+<ol start="3" style="list-style-type: decimal">
+<li>Na matriz do item 2 inclua uma coluna, na última posição, com valores iguais ao número de linhas.</li>
+</ol>
+<pre class="r"><code>nl = nrow(m2)
+m3 = cbind(m2, nl)
+m3</code></pre>
+<pre><code>##                                              nl
+##  [1,] 41 121 201 281 361 441 521 601 681 761 20
+##  [2,] 43 123 203 283 363 443 523 603 683 763 20
+##  [3,] 45 125 205 285 365 445 525 605 685 765 20
+##  [4,] 47 127 207 287 367 447 527 607 687 767 20
+##  [5,] 49 129 209 289 369 449 529 609 689 769 20
+##  [6,] 51 131 211 291 371 451 531 611 691 771 20
+##  [7,] 53 133 213 293 373 453 533 613 693 773 20
+##  [8,] 55 135 215 295 375 455 535 615 695 775 20
+##  [9,] 57 137 217 297 377 457 537 617 697 777 20
+## [10,] 59 139 219 299 379 459 539 619 699 779 20
+## [11,] 61 141 221 301 381 461 541 621 701 781 20
+## [12,] 63 143 223 303 383 463 543 623 703 783 20
+## [13,] 65 145 225 305 385 465 545 625 705 785 20
+## [14,] 67 147 227 307 387 467 547 627 707 787 20
+## [15,] 69 149 229 309 389 469 549 629 709 789 20
+## [16,] 71 151 231 311 391 471 551 631 711 791 20
+## [17,] 73 153 233 313 393 473 553 633 713 793 20
+## [18,] 75 155 235 315 395 475 555 635 715 795 20
+## [19,] 77 157 237 317 397 477 557 637 717 797 20
+## [20,] 79 159 239 319 399 479 559 639 719 799 20</code></pre>
+<p><a href="#59">Retorna</a></p>
+</div>
+<div id="solução_3.04" class="section level2">
+<h2>Solução_3.04</h2>
+<ol start="4" style="list-style-type: decimal">
+<li>Na matriz do item 3 inclua uma linha, na primeira posição, com valores iguais ao número de colunas.</li>
+</ol>
+<pre class="r"><code>nc = ncol(m3)
+m4 = rbind(nc, m3)
+m4</code></pre>
+<pre><code>##                                           nl
+## nc 11  11  11  11  11  11  11  11  11  11 11
+##    41 121 201 281 361 441 521 601 681 761 20
+##    43 123 203 283 363 443 523 603 683 763 20
+##    45 125 205 285 365 445 525 605 685 765 20
+##    47 127 207 287 367 447 527 607 687 767 20
+##    49 129 209 289 369 449 529 609 689 769 20
+##    51 131 211 291 371 451 531 611 691 771 20
+##    53 133 213 293 373 453 533 613 693 773 20
+##    55 135 215 295 375 455 535 615 695 775 20
+##    57 137 217 297 377 457 537 617 697 777 20
+##    59 139 219 299 379 459 539 619 699 779 20
+##    61 141 221 301 381 461 541 621 701 781 20
+##    63 143 223 303 383 463 543 623 703 783 20
+##    65 145 225 305 385 465 545 625 705 785 20
+##    67 147 227 307 387 467 547 627 707 787 20
+##    69 149 229 309 389 469 549 629 709 789 20
+##    71 151 231 311 391 471 551 631 711 791 20
+##    73 153 233 313 393 473 553 633 713 793 20
+##    75 155 235 315 395 475 555 635 715 795 20
+##    77 157 237 317 397 477 557 637 717 797 20
+##    79 159 239 319 399 479 559 639 719 799 20</code></pre>
+<p><a href="#59">Retorna</a></p>
+</div>
+<div id="solução_3.05" class="section level2">
+<h2>Solução_3.05</h2>
+<ol start="5" style="list-style-type: decimal">
+<li>Crie uma matriz de 2 linhas e 2 colunas com letras e coloque-a (substitua) no centro da matriz do item 2. O que aconteceu com a matriz?</li>
+</ol>
+<pre class="r"><code>ml = matrix(letters, ncol = 2, nrow = 2)
+ml</code></pre>
+<pre><code>##      [,1] [,2]
+## [1,] &quot;a&quot;  &quot;c&quot; 
+## [2,] &quot;b&quot;  &quot;d&quot;</code></pre>
+<pre class="r"><code>dim(m2)</code></pre>
+<pre><code>## [1] 20 10</code></pre>
+<pre class="r"><code>m2[c(10, 11), c(5, 6)] = ml
+m2</code></pre>
+<pre><code>##       [,1] [,2]  [,3]  [,4]  [,5]  [,6]  [,7]  [,8]  [,9]  [,10]
+##  [1,] &quot;41&quot; &quot;121&quot; &quot;201&quot; &quot;281&quot; &quot;361&quot; &quot;441&quot; &quot;521&quot; &quot;601&quot; &quot;681&quot; &quot;761&quot;
+##  [2,] &quot;43&quot; &quot;123&quot; &quot;203&quot; &quot;283&quot; &quot;363&quot; &quot;443&quot; &quot;523&quot; &quot;603&quot; &quot;683&quot; &quot;763&quot;
+##  [3,] &quot;45&quot; &quot;125&quot; &quot;205&quot; &quot;285&quot; &quot;365&quot; &quot;445&quot; &quot;525&quot; &quot;605&quot; &quot;685&quot; &quot;765&quot;
+##  [4,] &quot;47&quot; &quot;127&quot; &quot;207&quot; &quot;287&quot; &quot;367&quot; &quot;447&quot; &quot;527&quot; &quot;607&quot; &quot;687&quot; &quot;767&quot;
+##  [5,] &quot;49&quot; &quot;129&quot; &quot;209&quot; &quot;289&quot; &quot;369&quot; &quot;449&quot; &quot;529&quot; &quot;609&quot; &quot;689&quot; &quot;769&quot;
+##  [6,] &quot;51&quot; &quot;131&quot; &quot;211&quot; &quot;291&quot; &quot;371&quot; &quot;451&quot; &quot;531&quot; &quot;611&quot; &quot;691&quot; &quot;771&quot;
+##  [7,] &quot;53&quot; &quot;133&quot; &quot;213&quot; &quot;293&quot; &quot;373&quot; &quot;453&quot; &quot;533&quot; &quot;613&quot; &quot;693&quot; &quot;773&quot;
+##  [8,] &quot;55&quot; &quot;135&quot; &quot;215&quot; &quot;295&quot; &quot;375&quot; &quot;455&quot; &quot;535&quot; &quot;615&quot; &quot;695&quot; &quot;775&quot;
+##  [9,] &quot;57&quot; &quot;137&quot; &quot;217&quot; &quot;297&quot; &quot;377&quot; &quot;457&quot; &quot;537&quot; &quot;617&quot; &quot;697&quot; &quot;777&quot;
+## [10,] &quot;59&quot; &quot;139&quot; &quot;219&quot; &quot;299&quot; &quot;a&quot;   &quot;c&quot;   &quot;539&quot; &quot;619&quot; &quot;699&quot; &quot;779&quot;
+## [11,] &quot;61&quot; &quot;141&quot; &quot;221&quot; &quot;301&quot; &quot;b&quot;   &quot;d&quot;   &quot;541&quot; &quot;621&quot; &quot;701&quot; &quot;781&quot;
+## [12,] &quot;63&quot; &quot;143&quot; &quot;223&quot; &quot;303&quot; &quot;383&quot; &quot;463&quot; &quot;543&quot; &quot;623&quot; &quot;703&quot; &quot;783&quot;
+## [13,] &quot;65&quot; &quot;145&quot; &quot;225&quot; &quot;305&quot; &quot;385&quot; &quot;465&quot; &quot;545&quot; &quot;625&quot; &quot;705&quot; &quot;785&quot;
+## [14,] &quot;67&quot; &quot;147&quot; &quot;227&quot; &quot;307&quot; &quot;387&quot; &quot;467&quot; &quot;547&quot; &quot;627&quot; &quot;707&quot; &quot;787&quot;
+## [15,] &quot;69&quot; &quot;149&quot; &quot;229&quot; &quot;309&quot; &quot;389&quot; &quot;469&quot; &quot;549&quot; &quot;629&quot; &quot;709&quot; &quot;789&quot;
+## [16,] &quot;71&quot; &quot;151&quot; &quot;231&quot; &quot;311&quot; &quot;391&quot; &quot;471&quot; &quot;551&quot; &quot;631&quot; &quot;711&quot; &quot;791&quot;
+## [17,] &quot;73&quot; &quot;153&quot; &quot;233&quot; &quot;313&quot; &quot;393&quot; &quot;473&quot; &quot;553&quot; &quot;633&quot; &quot;713&quot; &quot;793&quot;
+## [18,] &quot;75&quot; &quot;155&quot; &quot;235&quot; &quot;315&quot; &quot;395&quot; &quot;475&quot; &quot;555&quot; &quot;635&quot; &quot;715&quot; &quot;795&quot;
+## [19,] &quot;77&quot; &quot;157&quot; &quot;237&quot; &quot;317&quot; &quot;397&quot; &quot;477&quot; &quot;557&quot; &quot;637&quot; &quot;717&quot; &quot;797&quot;
+## [20,] &quot;79&quot; &quot;159&quot; &quot;239&quot; &quot;319&quot; &quot;399&quot; &quot;479&quot; &quot;559&quot; &quot;639&quot; &quot;719&quot; &quot;799&quot;</code></pre>
+<p><a href="#59">Retorna</a></p>
+</div>
+<div id="solução_3.06" class="section level2">
+<h2>Solução_3.06</h2>
+<ol start="6" style="list-style-type: decimal">
+<li>Crie uma matriz com 4 linhas iguais a: 1,2,3,4. Faça um teste para verificar se todos os elementos da coluna 1 são iguais a 1.</li>
+</ol>
+<pre class="r"><code>m6 = matrix(c(1, 2, 3, 4), ncol = 4, nrow = 4, byrow = T)
+m6</code></pre>
+<pre><code>##      [,1] [,2] [,3] [,4]
+## [1,]    1    2    3    4
+## [2,]    1    2    3    4
+## [3,]    1    2    3    4
+## [4,]    1    2    3    4</code></pre>
+<pre class="r"><code>m6[,1]==1</code></pre>
+<pre><code>## [1] TRUE TRUE TRUE TRUE</code></pre>
+<p><a href="#59">Retorna</a></p>
+</div>
+<div id="solução_3.07" class="section level2">
+<h2>Solução_3.07</h2>
+<ol start="7" style="list-style-type: decimal">
+<li>Suponha que a matriz do item 6 corresponda a dados de 4 pessoas ( Marcos, Pedro, Denis e Clara). Crie um objetos onde a primeira coluna seja os nomes e as demais os dados.</li>
+</ol>
+<pre class="r"><code>nomes = c(&quot;Marcos&quot;, &quot;Pedro&quot;, &quot;Denis&quot; , &quot;Clara&quot;)
+data.frame(nomes, m6)</code></pre>
+<pre><code>##    nomes X1 X2 X3 X4
+## 1 Marcos  1  2  3  4
+## 2  Pedro  1  2  3  4
+## 3  Denis  1  2  3  4
+## 4  Clara  1  2  3  4</code></pre>
+<p><a href="#59">Retorna</a></p>
+</div>
+<div id="solução_3.08" class="section level2">
+<h2>Solução_3.08</h2>
+<ol start="8" style="list-style-type: decimal">
+<li>Crie um objeto que agregue os resultados de todos os itens anteriores e ainda, inclua a data atual.</li>
+</ol>
+<pre class="r"><code>L=list(ex1=m1,ex2=m2,ex3=m3,ex4=m4,data=Sys.Date())</code></pre>
+<p><a href="#59">Retorna</a></p>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,442 @@
+
+
+
+
+## Matrizes
+- disposição bidimensional (linhas e colunas) 
+- os elementos devem ser todos de um mesmo tipo(numéricos, caracteres, ...)
+
+
+## Criando uma Matriz
+```{r}
+ms = matrix(0, nrow = 2, ncol = 3) 
+ms
+
+```
+
+## Criando uma Matriz
+```{r warning=FALSE}
+# criação
+x = c(2, 4, 3, 5, 6, 7, 6, 8, 7)
+nc = 3
+ms = matrix(x, ncol = nc, byrow = TRUE)
+ms
+```
+
+## Dimensão da matriz
+```{r}
+dim(ms)
+ncol(ms)
+nrow(ms)
+```
+- o resultado refer-se ao número de linhas e colunas (nesta ordem)
+
+## Selecionando elementos da matriz
+```{r}
+# elemento da linha 1 e coluna 3
+ms[1, 3] 
+
+# elementos da linha 2 e coluna 2 e 3
+ms[2, c(2, 3)]
+```
+
+
+## Selecionando elementos da matriz
+- para selecionar uma dimensão inteira, deixe sem valor
+```{r}
+# todos os elemento da  coluna 3
+ms[, 3] 
+
+# todos os elemento da  linha 2
+ms[2, ]
+```
+
+## Substituindo valores
+
+```{r}
+ms[2, 3] = 10
+ms[2, ] = c(7, 7, 7)
+ms
+
+```
+
+## Adicionando Colunas e linhas 
+
+```{r}
+# adicionando nova coluna
+ms = cbind(ms, c(3, 3, 3)) 
+
+# adicionando nova linha
+ms = rbind(ms, c(1, 1, 1, 1)) 
+
+ms
+
+
+```
+
+## Combinando matrizes
+```{r}
+m = matrix(2, 2, 3)
+m
+cbind(m, m) # novas colunas
+rbind(m, m) # novas linhas
+```
+
+
+## Operações com Matrizes
+```{r}
+ms * 2 # recycling rule
+
+```
+
+## Produto Matricial
+```{r}
+ms %*% t(ms) # produto matricial
+```
+
+
+## Identificando elementos de objetos
+
+- $dimnames()$
+```{r}
+m=matrix(NA,2,2)
+m # sem nomes em linhas e colunas
+dimnames(m)=list(c("A","B"),c("a","b"))
+m
+```
+
+
+## Identificando linhas e colunas
+
+- $colnames()$
+- $rownames()$
+```{r}
+m=matrix(NA,2,2)
+rownames(m)=c("A","B")
+colnames(m)=c("a","b")
+m
+```
+
+
+
+##  Data Frame
+- É uma disposição bidimensional dos dados
+- Pode ter elementos de diferentes modos em diferentes colunas, desde que cada coluna tenha o mesmo tamanho. 
+
+
+## Criando um Data Frame
+```{r}
+nome = c("Carlos", "Jorge", "Ana")
+nota01 = c(7, 5, 7)
+nota02 = c(8, 6, 4)
+df = data.frame(nome, nota01, nota02)
+df
+```
+
+## Selecionando elementos do Data Frame
+```{r}
+# similar a um Matriz
+
+df[1, 2]
+
+df[1,]
+
+df[, "nota01"]
+
+```
+
+## Dimensão do Data Frame
+```{r}
+dim(df)
+ncol(df)
+nrow(df)
+```
+
+## Ordenando Data Frame
+- Ordenando o data frame por uma coluna
+```{r}
+# ordena df pela nota01
+df[order(df$nota01), ]
+```
+
+
+
+## Identificando linhas e colunas
+
+- $colnames()$
+- $rownames()$
+```{r}
+rownames(df)=c("linha01","linha02","linha03")
+colnames(df)=c("Nome", "Nota01", "Nota02")
+df
+```
+
+
+## Listas
+- Coleção ordenada de componentes 
+- Como um vetor  com objetos de diferente tipos
+- Os componentes de uma lista podem ser de qualquer tipo
+
+## Exemplos em R: Listas
+```{r}
+
+l = list(c(1:10), df)
+l
+
+```
+
+## Extraindo elementos de uma Listas
+```{r}
+# obter o elemento da posição 2 da lista l
+l[[2]]
+
+```
+
+
+## Dimensão de uma Listas
+```{r}
+length(l)
+
+```
+
+
+## Identificando lista
+
+- $names()$
+```{r}
+L=list(1:10,"Teste")
+names(L)=c("A","B")
+L
+```
+
+
+
+
+## Factor
+- Armazena os valores nominais (sexo, religião, estado civil, 0,1,2, etc) considerados categorías 
+
+- Usado para identificar grupos com ou sem ordenação
+
+
+## Factor 
+```{r comment=""}
+#p_sexo com 3 valores male e 2 valores female 
+p_sexo = c(rep("male", 3), rep("female", 2))
+p_sexo
+
+p_sexo = factor(p_sexo) 
+# dois níveis female e male
+p_sexo
+
+```
+
+## Factor - levels
+
+- define a ordenação dos fatores
+```{r comment=""}
+# os levels são female e male 
+# ordem alfabética quando não especificado
+p_sexo
+
+p_sexo = factor(p_sexo, levels=c("male",
+                                 "female")) 
+p_sexo
+
+```
+
+## Factor - labels
+
+- define os labels (segue a ordenação - levels)
+```{r comment=""}
+# os levels são female e male 
+p_sexo = factor(c(rep("male", 3), 
+                  rep("female", 2)))
+p_sexo
+
+# os labels seguem a ordenação do level
+
+factor(p_sexo, labels=c("malex","female")) 
+
+```
+
+## Factor - labels
+
+```{r}
+p_sexo = c(rep("male", 3), rep("female", 2))
+p_sexo
+
+factor(p_sexo,levels=c("male","female"), 
+               labels=c("malex","female")) 
+
+```
+
+
+## Factor - NA
+
+- NA não é considerado um fator (level)
+- mas pode ser mantido  
+
+```{r}
+factor(c(1:2, NA))
+
+# mas é possível marter os NA 
+factor(c(1:2, NA), exclude =  "" ) 
+
+# factor(c(1:2, NA), exclude = NULL) 
+```
+
+
+
+
+
+
+## Factor - ordered
+
+- define os labels (segue a ordenação - levels)
+```{r comment=""}
+z <- factor(LETTERS[3:1], ordered = TRUE)
+z
+```
+
+
+## Identificaçõe de objetos
+
+- $is.character()$
+- $is.logical()$
+- $is.numeric()$
+- $is.vector()$
+- $is.matrix()$
+- $is.list()$
+- $is.data.frame()$
+- $is.factor()$
+
+
+
+## Identificando vetor
+
+- $names()$
+```{r}
+v=1:4
+names(v)=c("A","B","C","D")
+v
+```
+
+## Selecionando elemento pelo nome
+```{r}
+# List
+L$A
+
+#matrix
+m[,"a"] # uma coluna
+m["A",] # uma linha
+```
+
+
+## Resumo de Funções
+- $c(object,object,...)$:  **combine objects into a vector**
+- $length(object)$: **number of elements or components**
+- $class(object)$:  **class or type of an object**
+- $names(object)$:  **names**
+- $rownames() / colnames()$: **nomes de linhas e colunas**
+- $cbind(object, object, ...)$: **combine objects as columns**
+- $rbind(object, object, ...)$: **combine objects as rows** 
+- $seq()$: **sequencia regular**
+- $rep()$: **repetições** 
+
+
+## Exercícios {#Exercícios_03}
+
+1. Crie uma matriz com 20 linhas e 20 colunas com diferentes números ímpares. ([Solução_3.01])
+2. Crie uma nova matriz com as colunas pares da matriz do item 1. ([Solução_3.02]) 
+3. Na matriz do item 2 inclua uma coluna, na última posição, com valores iguais ao número de linhas. ([Solução_3.03])
+4. Na matriz do item 3 inclua uma linha, na primeira posição, com valores iguais ao número de colunas. ([Solução_3.04])
+5. Crie uma matriz de 2 linhas e 2 colunas com letras e coloque-a (substitua) no centro da matriz do item 2. O que aconteceu com a matriz?  ([Solução_3.05])
+6. Crie uma matriz com 4 linhas iguais a: 1,2,3,4. Faça um teste para verificar se todos os elementos da coluna 1 são iguais a 1. ([Solução_3.06])
+
+
+## Exercícios Continuação {#Exercícios_03.1}
+
+7. Suponha que a matriz do item 6 corresponda a dados de 4 pessoas ( Marcos, Pedro, Denis e Clara). Crie um objetos onde a primeira coluna seja os nomes e as demais os dados. ([Solução_3.07])
+8. Crie um objeto que agregue os resultados de todos os itens anteriores e ainda, inclua a data atual. ([Solução_3.08])
+
+
+
+
+## Solução_3.01
+1. Crie uma matriz com 20 linhas e 20 colunas com diferentes números ímpares.
+```{r}
+# numareos ímpares
+imp = seq(1, 800, by = 2)
+m1 = matrix(imp, 20, 20)
+
+```
+[Retorna](#59)
+
+## Solução_3.02
+2. Crie uma nova matriz com as colunas pares da matriz do item 1
+```{r}
+N = dim(m1)[2]
+m2 = m1[, seq(2, N, by = 2)]
+
+```
+[Retorna](#59)
+
+## Solução_3.03
+3. Na matriz do item 2 inclua uma coluna, na última posição, com valores iguais ao número de linhas.
+```{r}
+nl = nrow(m2)
+m3 = cbind(m2, nl)
+m3
+
+```
+[Retorna](#59)
+
+## Solução_3.04
+4. Na matriz do item 3 inclua uma linha, na primeira posição, com valores iguais ao número de colunas.
+```{r}
+nc = ncol(m3)
+m4 = rbind(nc, m3)
+m4
+
+```
+[Retorna](#59)
+
+## Solução_3.05
+5. Crie uma matriz de 2 linhas e 2 colunas com letras e coloque-a (substitua) no centro da matriz do item 2. O que aconteceu com a matriz? 
+```{r}
+ml = matrix(letters, ncol = 2, nrow = 2)
+ml
+dim(m2)
+
+m2[c(10, 11), c(5, 6)] = ml
+m2
+```
+[Retorna](#59)
+
+## Solução_3.06
+6. Crie uma matriz com 4 linhas iguais a: 1,2,3,4. Faça um teste para verificar se todos os elementos da coluna 1 são iguais a 1.
+```{r}
+m6 = matrix(c(1, 2, 3, 4), ncol = 4, nrow = 4,
+            byrow = T)
+m6
+m6[,1]==1
+```
+[Retorna](#59)
+
+## Solução_3.07
+7. Suponha que a matriz do item 6 corresponda a dados de 4 pessoas ( Marcos, Pedro, Denis e Clara). Crie um objetos onde a primeira coluna seja os nomes e as demais os dados.
+```{r}
+nomes = c("Marcos", "Pedro", "Denis" , "Clara")
+data.frame(nomes, m6)
+
+```
+[Retorna](#59)
+
+## Solução_3.08
+8. Crie um objeto que agregue os resultados de todos os itens anteriores e ainda, inclua a data atual.
+```{r}
+L=list(ex1=m1,ex2=m2,ex3=m3,ex4=m4,
+       data=Sys.Date())
+```
+[Retorna](#59)
+

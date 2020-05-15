@@ -1,0 +1,76 @@
+
+#  Medidas Estatísticas Básicas
+
+##  Funções Básicas
+ - min() , max()
+ - sum() 
+ - mean(), median()
+ - quantile()
+ - var(), sd()
+ - summary()
+ - table()
+
+
+## mean 
+
+```{r}
+x=1:11
+x
+mean(x)
+
+```
+
+
+
+## median
+
+```{r}
+
+x
+median(x)
+```
+
+## quaintile
+
+```{r}
+x
+quantile(x,c(0.2,0.5))
+```
+
+## summary
+
+```{r}
+x
+summary(x)
+```
+
+## Dados com NA
+
+```{r}
+x1=c(x,NA)
+mean(x1)
+mean(x1, na.rm=T)
+```
+
+
+
+## tabela de frequencia
+```{r}
+x=sample(letters[1:5],60,replace=T) #?sample
+x
+table(x)
+```
+
+
+
+## Exercícios
+
+1. Carregue a base de dados votos.txt ([https://tinyurl.com/votos-txt])
+2. Qual a dimensão do objeto? (linhas e colunas)
+3. Quais são as variáveis?
+4. Corrija os nomes das colunas como segue: uf, candidatos, partido, log_votos, sexo, resultado
+5. Qual a frequencia de partidos e de sexo dos candidatos?
+6. Qual o partido com a representatividade por sexo mais equilibrada?
+7. Qual a media de votos dos eleitos?
+
+

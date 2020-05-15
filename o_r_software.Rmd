@@ -1,0 +1,39 @@
+---
+title: "O R"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+---
+---
+title: "Introdução ao Software R"
+subtitle: "Aula 01: Instalação e comandos básicos"
+author: "Cassio Almeida"
+date: "22 de outubro de 2018"
+output:
+    ioslides_presentation:
+      logo: logoence.png
+      css: my2.css
+      widescreen: true
+      smaller: true
+      toc: yes
+---
+
+```{r setup, include=FALSE}
+# This is an R setup chunk, containing default options applied to all other chunks
+library(knitr)
+# This sets the chunk default options
+opts_chunk$set(echo=FALSE, cache=TRUE, collapse=TRUE, error=FALSE, prompt=TRUE,fig.align = "center")
+# This sets the chunk display theme
+thm <- knit_theme$get("edit-kwrite")
+knit_theme$set(thm)
+# This sets some display options
+options(digits=3)
+options(width=40)
+```
+
+
+
+```{r child = 'base/r_software.Rmd'}
+```
+

@@ -1,0 +1,38 @@
+
+
+
+
+# O Curso
+
+Instituição   |**ENCE/IBGE - Curso de Capacitação**  
+------------- | -------------
+Curso|**Introdução ao Software R (16h)**   
+Professor|**Prof. Cassio Almeida** (ENCE/IBGE) 
+Datas|3, 5, 10 e 12 de Dez. das 13:30 às 17:30   
+Local|ENCE/ Lab. 104
+
+
+# Objetivo
+
+Capacitar o aluno  a manipular  e extrair informações de dados  utilizando o software R.
+
+
+
+# Ementa
+
+- O software R 
+    - História
+    - Repositório e Instalação
+    - Estrutura do software 
+- O R-Studio - Introdução 
+    - O *R* e o *R-studio*
+    - Principais funções 
+- R Notebook
+- Utilizando o *R*  (Console e Help) 
+- Tipos de Dados 
+- Objetos 
+- Operações Lógicas e Matemáticas 
+- Leitura e gravação de dados 
+- Manipulação de dados 
+- Gráficos 
+

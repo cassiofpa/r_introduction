@@ -1,0 +1,84 @@
+
+
+# Leitura e Gravação de Dados
+
+
+
+## Importação de dados
+
+- O R permite importar e exportar dados em varios formatos ("xls","xlsx","csv","txt", "dbf")
+- também arquivos de outros softwares: SAS, SPSS, STATA
+
+## leitura de tabelas
+
+- separador de colunas: **vírgula(,)**, **ponto e vírgula(;)"**, **espaço(" ")**, ...
+- separador decimal: **"vírgula(,)"** ou **ponto(.)**
+- valores não observados: **"NA"**
+- geralmente com os nomes das colunas na primeira linha (*header*)
+
+## *read.table()*
+
+read.table(file, header = FALSE, sep = "", quote = "\"'",
+           dec = ".", numerals = c("allow.loss", "warn.loss", "no.loss"),
+           row.names, col.names, as.is = !stringsAsFactors,
+           na.strings = "NA", ...
+
+## Arquivos csv
+
+- padrão nacional: *sep=";"* e *dec=","* - *read.csv2()*
+- outros países: *sep=","* e *dec="."* - *read.csv()*
+
+## Exportação de dados - csv
+
+- *write.csv()* ou *write.csv2()*
+
+## Exercícios 
+
+**Download do arquivo** [https://tinyurl.com/Int-R01-zip]
+
+1. sejam os vetores: x=rnorm(10) e y=rnorm(10,30), crie um objeto com x e y em duas colunas e nomeie como M. Exporte este objeto com write.csv(M,"M.csv")e write.csv2 (M,"M2.csv"). 
+1. Carregue o arquivo renda_BR_01
+2. Carregue o arquivo renda_BR_02
+3. Carregue o arquivo renda_BR_03
+
+
+## Resolução 01
+
+1- Sejam os vetores: x=rnorm(10) e y=rnorm(10,30), crie um objeto com x e y em duas colunas e nomeie como M. Exporte este objeto com write.csv(M,"M.csv")e write.csv2 (M,"M2.csv"). 
+
+```{r eval=FALSE}
+x=rnorm(10)
+y=rnorm(10,30)
+M=data.frame(x,y)
+write.csv(M,"M.csv")
+write.csv2(M,"M2.csv")
+```
+
+
+## Resolução 02
+
+2- Carregue o arquivo renda_BR_01
+
+```{r eval=FALSE}
+x=read.csv("../data/renda_BR_01.csv")
+head(x)
+```
+
+## Resolução 03
+
+3- Carregue o arquivo renda_BR_02
+
+```{r eval=FALSE}
+x=read.csv2("../data/renda_BR_02.csv",header=T)
+head(x)
+```
+
+
+## Resolução 04
+
+4- Carregue o arquivo renda_BR_03
+
+```{r}
+x=read.table("../data/renda_BR_03.txt", sep="", header=T)
+head(x)
+```
