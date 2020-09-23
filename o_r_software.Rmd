@@ -9,7 +9,6 @@ output:
 title: "Introdução ao Software R"
 subtitle: "Aula 01: Instalação e comandos básicos"
 author: "Cassio Almeida"
-date: "22 de outubro de 2018"
 output:
     ioslides_presentation:
       logo: logoence.png
