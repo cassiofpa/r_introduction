@@ -10,6 +10,6 @@ output_dir: "."
 output:
   html_document:
     theme: yeti
-    highlight: textmate
+    highlight: haddock
 #    include:
 #      after_body: _footer.html
