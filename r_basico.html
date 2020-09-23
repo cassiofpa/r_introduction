@@ -23,25 +23,97 @@
 <link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
 <script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
-<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<script src="site_libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+
 
 <style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; } /* Alert */
+code span.an { color: #008000; } /* Annotation */
+code span.at { } /* Attribute */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #0000ff; } /* ControlFlow */
+code span.ch { color: #008080; } /* Char */
+code span.cn { } /* Constant */
+code span.co { color: #008000; } /* Comment */
+code span.cv { color: #008000; } /* CommentVar */
+code span.do { color: #008000; } /* Documentation */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.im { } /* Import */
+code span.in { color: #008000; } /* Information */
+code span.kw { color: #0000ff; } /* Keyword */
+code span.op { } /* Operator */
+code span.ot { color: #ff4000; } /* Other */
+code span.pp { color: #ff4000; } /* Preprocessor */
+code span.sc { color: #008080; } /* SpecialChar */
+code span.ss { color: #008080; } /* SpecialString */
+code span.st { color: #008080; } /* String */
+code span.va { } /* Variable */
+code span.vs { color: #008080; } /* VerbatimString */
+code span.wa { color: #008000; font-weight: bold; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
 <style type="text/css">
   pre:not([class]) {
     background-color: white;
   }
 </style>
-<script type="text/javascript">
-if (window.hljs) {
-  hljs.configure({languages: []});
-  hljs.initHighlightingOnLoad();
-  if (document.readyState && document.readyState === "complete") {
-    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
-  }
-}
-</script>
-
 
 
 <style type="text/css">
@@ -382,13 +454,13 @@ div.tocify {
 </div>
 <div id="r---como-uma-calculadora" class="section level2">
 <h2>R - Como uma calculadora</h2>
-<pre class="r"><code>&gt; 
-&gt; 5 + 3 - 4
-## [1] 4
-&gt; 
-&gt; 
-&gt; 5 ^ 20 * 2 ^ 20
-## [1] 1e+20</code></pre>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="op">&gt;</span><span class="st"> </span></span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="er">&gt;</span><span class="st"> </span><span class="dv">5</span> <span class="op">+</span><span class="st"> </span><span class="dv">3</span> <span class="op">-</span><span class="st"> </span><span class="dv">4</span></span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="co">## [1] 4</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="op">&gt;</span><span class="st"> </span></span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="er">&gt;</span><span class="st"> </span></span>
+<span id="cb1-6"><a href="#cb1-6"></a><span class="er">&gt;</span><span class="st"> </span><span class="dv">5</span> <span class="op">^</span><span class="st"> </span><span class="dv">20</span> <span class="op">*</span><span class="st"> </span><span class="dv">2</span> <span class="op">^</span><span class="st"> </span><span class="dv">20</span></span>
+<span id="cb1-7"><a href="#cb1-7"></a><span class="co">## [1] 1e+20</span></span></code></pre></div>
 </div>
 <div id="r---objetos" class="section level2">
 <h2>R - Objetos</h2>
@@ -398,45 +470,45 @@ div.tocify {
 </div>
 <div id="r-criando-objetos" class="section level2">
 <h2>R: Criando objetos</h2>
-<pre class="r"><code>&gt; # Criando objetos
-&gt; a = 3 + 2
-&gt; b = 3
-&gt; 
-&gt; a
-## [1] 5
-&gt; print(a)
-## [1] 5</code></pre>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="op">&gt;</span><span class="st"> </span><span class="co"># Criando objetos</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="er">&gt;</span><span class="st"> </span>a =<span class="st"> </span><span class="dv">3</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span></span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="op">&gt;</span><span class="st"> </span>b =<span class="st"> </span><span class="dv">3</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a><span class="op">&gt;</span><span class="st"> </span></span>
+<span id="cb2-5"><a href="#cb2-5"></a><span class="er">&gt;</span><span class="st"> </span>a</span>
+<span id="cb2-6"><a href="#cb2-6"></a><span class="co">## [1] 5</span></span>
+<span id="cb2-7"><a href="#cb2-7"></a><span class="op">&gt;</span><span class="st"> </span><span class="kw">print</span>(a)</span>
+<span id="cb2-8"><a href="#cb2-8"></a><span class="co">## [1] 5</span></span></code></pre></div>
 </div>
 <div id="r-criando-um-objeto-de-objetos" class="section level2">
 <h2>R: Criando um objeto de objetos</h2>
-<pre class="r"><code>&gt; # Criando objetos
-&gt; c = a + b
-&gt; 
-&gt; c
-## [1] 8
-&gt; print(c)
-## [1] 8</code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="op">&gt;</span><span class="st"> </span><span class="co"># Criando objetos</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="er">&gt;</span><span class="st"> </span>c =<span class="st"> </span>a <span class="op">+</span><span class="st"> </span>b</span>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="op">&gt;</span><span class="st"> </span></span>
+<span id="cb3-4"><a href="#cb3-4"></a><span class="er">&gt;</span><span class="st"> </span>c</span>
+<span id="cb3-5"><a href="#cb3-5"></a><span class="co">## [1] 8</span></span>
+<span id="cb3-6"><a href="#cb3-6"></a><span class="op">&gt;</span><span class="st"> </span><span class="kw">print</span>(c)</span>
+<span id="cb3-7"><a href="#cb3-7"></a><span class="co">## [1] 8</span></span></code></pre></div>
 </div>
 <div id="r-criando-e-destruindo-objetos" class="section level2">
 <h2>R: Criando e Destruindo objetos</h2>
-<pre class="r"><code>&gt; # Criando objetos
-&gt; d = pi
-&gt; d
-## [1] 3.14</code></pre>
-<pre class="r"><code>&gt; # Destruindo objetos (um novo valor)
-&gt; d = 25
-&gt; d
-## [1] 25</code></pre>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="op">&gt;</span><span class="st"> </span><span class="co"># Criando objetos</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="er">&gt;</span><span class="st"> </span>d =<span class="st"> </span>pi</span>
+<span id="cb4-3"><a href="#cb4-3"></a><span class="op">&gt;</span><span class="st"> </span>d</span>
+<span id="cb4-4"><a href="#cb4-4"></a><span class="co">## [1] 3.14</span></span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="op">&gt;</span><span class="st"> </span><span class="co"># Destruindo objetos (um novo valor)</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="er">&gt;</span><span class="st"> </span>d =<span class="st"> </span><span class="dv">25</span></span>
+<span id="cb5-3"><a href="#cb5-3"></a><span class="op">&gt;</span><span class="st"> </span>d</span>
+<span id="cb5-4"><a href="#cb5-4"></a><span class="co">## [1] 25</span></span></code></pre></div>
 </div>
 <div id="r-removendo-um-objeto-apagando" class="section level2">
 <h2>R: Removendo um objeto (Apagando)</h2>
-<pre class="r"><code>&gt; 
-&gt; d = 223
-&gt; d
-## [1] 223
-&gt; # Apagando o objetos 
-&gt; rm(d)
-&gt; </code></pre>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="op">&gt;</span><span class="st"> </span></span>
+<span id="cb6-2"><a href="#cb6-2"></a><span class="er">&gt;</span><span class="st"> </span>d =<span class="st"> </span><span class="dv">223</span></span>
+<span id="cb6-3"><a href="#cb6-3"></a><span class="op">&gt;</span><span class="st"> </span>d</span>
+<span id="cb6-4"><a href="#cb6-4"></a><span class="co">## [1] 223</span></span>
+<span id="cb6-5"><a href="#cb6-5"></a><span class="op">&gt;</span><span class="st"> </span><span class="co"># Apagando o objetos </span></span>
+<span id="cb6-6"><a href="#cb6-6"></a><span class="er">&gt;</span><span class="st"> </span><span class="kw">rm</span>(d)</span>
+<span id="cb6-7"><a href="#cb6-7"></a><span class="op">&gt;</span><span class="st"> </span></span></code></pre></div>
 </div>
 <div id="r-criando-e-destruindo-objetos-1" class="section level2">
 <h2>R: Criando e Destruindo objetos</h2>
@@ -450,7 +522,7 @@ div.tocify {
 <div id="r-tipos-de-variáveis-modo-da-variável" class="section level2">
 <h2>R: Tipos de Variáveis (modo da variável)</h2>
 <ul>
-<li>Numéricas (numeric): Números inteiros ou reais, como idade, renda, número de filhos</li>
+<li><p>Numéricas (numeric): Números inteiros ou reais, como idade, renda, número de filhos</p></li>
 <li><p>Datas (Date): São um tipo especial de variável numérica</p></li>
 <li><p>Texto (character): Características puramente individuais que não podem ser utilizadas para categorizar os indivíduos</p></li>
 <li><p>Booleanas (logical): valores podem ser VERDADEIRO ou FALSO</p></li>
@@ -458,38 +530,38 @@ div.tocify {
 </div>
 <div id="exemplos-em-r---numeric" class="section level2">
 <h2>Exemplos em R - numeric</h2>
-<pre class="r"><code>&gt; r_num = 1 / 10 ^ 7
-&gt; r_num
-## [1] 1e-07
-&gt; mode(r_num) # usar class() para saber o tipo da variavel
-## [1] &quot;numeric&quot;
-&gt; 
-&gt; pi
-## [1] 3.14
-&gt; mode(pi)
-## [1] &quot;numeric&quot;</code></pre>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="op">&gt;</span><span class="st"> </span>r_num =<span class="st"> </span><span class="dv">1</span> <span class="op">/</span><span class="st"> </span><span class="dv">10</span> <span class="op">^</span><span class="st"> </span><span class="dv">7</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a><span class="op">&gt;</span><span class="st"> </span>r_num</span>
+<span id="cb7-3"><a href="#cb7-3"></a><span class="co">## [1] 1e-07</span></span>
+<span id="cb7-4"><a href="#cb7-4"></a><span class="op">&gt;</span><span class="st"> </span><span class="kw">mode</span>(r_num) <span class="co"># usar class() para saber o tipo da variavel</span></span>
+<span id="cb7-5"><a href="#cb7-5"></a><span class="co">## [1] &quot;numeric&quot;</span></span>
+<span id="cb7-6"><a href="#cb7-6"></a><span class="op">&gt;</span><span class="st"> </span></span>
+<span id="cb7-7"><a href="#cb7-7"></a><span class="er">&gt;</span><span class="st"> </span>pi</span>
+<span id="cb7-8"><a href="#cb7-8"></a><span class="co">## [1] 3.14</span></span>
+<span id="cb7-9"><a href="#cb7-9"></a><span class="op">&gt;</span><span class="st"> </span><span class="kw">mode</span>(pi)</span>
+<span id="cb7-10"><a href="#cb7-10"></a><span class="co">## [1] &quot;numeric&quot;</span></span></code></pre></div>
 </div>
 <div id="exemplos-em-r---character" class="section level2">
 <h2>Exemplos em R - character</h2>
-<pre class="r"><code>&gt; # caracter
-&gt; name =&quot;Maria&quot;
-&gt; mode(name)
-## [1] &quot;character&quot;</code></pre>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="op">&gt;</span><span class="st"> </span><span class="co"># caracter</span></span>
+<span id="cb8-2"><a href="#cb8-2"></a><span class="er">&gt;</span><span class="st"> </span>name =<span class="st">&quot;Maria&quot;</span></span>
+<span id="cb8-3"><a href="#cb8-3"></a><span class="op">&gt;</span><span class="st"> </span><span class="kw">mode</span>(name)</span>
+<span id="cb8-4"><a href="#cb8-4"></a><span class="co">## [1] &quot;character&quot;</span></span></code></pre></div>
 </div>
 <div id="exemplos-em-r---logical" class="section level2">
 <h2>Exemplos em R - logical</h2>
-<pre class="r"><code>&gt; r_bool = TRUE # Logical
-&gt; r_bool
-## [1] TRUE
-&gt; mode(r_bool)
-## [1] &quot;logical&quot;</code></pre>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="op">&gt;</span><span class="st"> </span>r_bool =<span class="st"> </span><span class="ot">TRUE</span> <span class="co"># Logical</span></span>
+<span id="cb9-2"><a href="#cb9-2"></a><span class="op">&gt;</span><span class="st"> </span>r_bool</span>
+<span id="cb9-3"><a href="#cb9-3"></a><span class="co">## [1] TRUE</span></span>
+<span id="cb9-4"><a href="#cb9-4"></a><span class="op">&gt;</span><span class="st"> </span><span class="kw">mode</span>(r_bool)</span>
+<span id="cb9-5"><a href="#cb9-5"></a><span class="co">## [1] &quot;logical&quot;</span></span></code></pre></div>
 </div>
 <div id="r-tipos-de-armazenamento-de-uma-variáveistypeof" class="section level2">
 <h2>R: Tipos de armazenamento de uma Variáveis(<em>typeof</em>)</h2>
 <ul>
 <li><p><strong>A maioria só tem um tipo de armazenamento</strong></p></li>
-<li>Se for <em>logical</em>, então o tipo é <em>logical</em></li>
-<li>Se for <em>character</em>, então o tipo é <em>character</em></li>
+<li><p>Se for <em>logical</em>, então o tipo é <em>logical</em></p></li>
+<li><p>Se for <em>character</em>, então o tipo é <em>character</em></p></li>
 <li><p>Se for <em>numeric</em>, então o tipo pode ser <em>integer</em> ou <em>double</em></p></li>
 </ul>
 </div>
@@ -536,20 +608,20 @@ div.tocify {
 </div>
 <div id="exemplos-em-r---expressões" class="section level2">
 <h2>Exemplos em R - expressões</h2>
-<pre class="r"><code>&gt; 3 + 1 * 6 - 1 ^ 2
-## [1] 8
-&gt; 
-&gt; (1 + (2 * 3)) * 5
-## [1] 35</code></pre>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="op">&gt;</span><span class="st"> </span><span class="dv">3</span> <span class="op">+</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span><span class="dv">6</span> <span class="op">-</span><span class="st"> </span><span class="dv">1</span> <span class="op">^</span><span class="st"> </span><span class="dv">2</span></span>
+<span id="cb10-2"><a href="#cb10-2"></a><span class="co">## [1] 8</span></span>
+<span id="cb10-3"><a href="#cb10-3"></a><span class="op">&gt;</span><span class="st"> </span></span>
+<span id="cb10-4"><a href="#cb10-4"></a><span class="er">&gt;</span><span class="st"> </span>(<span class="dv">1</span> <span class="op">+</span><span class="st"> </span>(<span class="dv">2</span> <span class="op">*</span><span class="st"> </span><span class="dv">3</span>)) <span class="op">*</span><span class="st"> </span><span class="dv">5</span></span>
+<span id="cb10-5"><a href="#cb10-5"></a><span class="co">## [1] 35</span></span></code></pre></div>
 </div>
 <div id="exemplos-em-r---divisão" class="section level2">
 <h2>Exemplos em R - divisão</h2>
-<pre class="r"><code>&gt; 7 / 2
-## [1] 3.5
-&gt; 7 %/% 2
-## [1] 3
-&gt; 7 %% 2
-## [1] 1</code></pre>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="op">&gt;</span><span class="st"> </span><span class="dv">7</span> <span class="op">/</span><span class="st"> </span><span class="dv">2</span></span>
+<span id="cb11-2"><a href="#cb11-2"></a><span class="co">## [1] 3.5</span></span>
+<span id="cb11-3"><a href="#cb11-3"></a><span class="op">&gt;</span><span class="st"> </span><span class="dv">7</span> <span class="op">%/%</span><span class="st"> </span><span class="dv">2</span></span>
+<span id="cb11-4"><a href="#cb11-4"></a><span class="co">## [1] 3</span></span>
+<span id="cb11-5"><a href="#cb11-5"></a><span class="op">&gt;</span><span class="st"> </span><span class="dv">7</span> <span class="op">%%</span><span class="st"> </span><span class="dv">2</span></span>
+<span id="cb11-6"><a href="#cb11-6"></a><span class="co">## [1] 1</span></span></code></pre></div>
 </div>
 <div id="operadores-de-comparação-e-lógicos" class="section level2">
 <h2>Operadores de Comparação e Lógicos</h2>
@@ -602,53 +674,53 @@ div.tocify {
 </div>
 <div id="exemplos-em-r---maiormenor" class="section level2">
 <h2>Exemplos em R - maior/menor</h2>
-<pre class="r"><code>&gt; 3 &gt; 2
-## [1] TRUE
-&gt; 5 &lt; 2
-## [1] FALSE</code></pre>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="op">&gt;</span><span class="st"> </span><span class="dv">3</span> <span class="op">&gt;</span><span class="st"> </span><span class="dv">2</span></span>
+<span id="cb12-2"><a href="#cb12-2"></a><span class="co">## [1] TRUE</span></span>
+<span id="cb12-3"><a href="#cb12-3"></a><span class="op">&gt;</span><span class="st"> </span><span class="dv">5</span> <span class="op">&lt;</span><span class="st"> </span><span class="dv">2</span></span>
+<span id="cb12-4"><a href="#cb12-4"></a><span class="co">## [1] FALSE</span></span></code></pre></div>
 </div>
 <div id="exemplos-em-r---igualdade" class="section level2">
 <h2>Exemplos em R - igualdade</h2>
-<pre class="r"><code>&gt; 
-&gt; 2 == 2
-## [1] TRUE
-&gt; 2 != 2
-## [1] FALSE</code></pre>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="op">&gt;</span><span class="st"> </span></span>
+<span id="cb13-2"><a href="#cb13-2"></a><span class="er">&gt;</span><span class="st"> </span><span class="dv">2</span> <span class="op">==</span><span class="st"> </span><span class="dv">2</span></span>
+<span id="cb13-3"><a href="#cb13-3"></a><span class="co">## [1] TRUE</span></span>
+<span id="cb13-4"><a href="#cb13-4"></a><span class="op">&gt;</span><span class="st"> </span><span class="dv">2</span> <span class="op">!=</span><span class="st"> </span><span class="dv">2</span></span>
+<span id="cb13-5"><a href="#cb13-5"></a><span class="co">## [1] FALSE</span></span></code></pre></div>
 </div>
 <div id="exemplos-em-r---eou" class="section level2">
 <h2>Exemplos em R - e/ou</h2>
-<pre class="r"><code>&gt; 
-&gt; (6 &gt; 5) &amp; (7 &gt; 8)
-## [1] FALSE
-&gt; 
-&gt; (6 &gt; 5) | (7 &gt; 8)
-## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="op">&gt;</span><span class="st"> </span></span>
+<span id="cb14-2"><a href="#cb14-2"></a><span class="er">&gt;</span><span class="st"> </span>(<span class="dv">6</span> <span class="op">&gt;</span><span class="st"> </span><span class="dv">5</span>) <span class="op">&amp;</span><span class="st"> </span>(<span class="dv">7</span> <span class="op">&gt;</span><span class="st"> </span><span class="dv">8</span>)</span>
+<span id="cb14-3"><a href="#cb14-3"></a><span class="co">## [1] FALSE</span></span>
+<span id="cb14-4"><a href="#cb14-4"></a><span class="op">&gt;</span><span class="st"> </span></span>
+<span id="cb14-5"><a href="#cb14-5"></a><span class="er">&gt;</span><span class="st"> </span>(<span class="dv">6</span> <span class="op">&gt;</span><span class="st"> </span><span class="dv">5</span>) <span class="op">|</span><span class="st"> </span>(<span class="dv">7</span> <span class="op">&gt;</span><span class="st"> </span><span class="dv">8</span>)</span>
+<span id="cb14-6"><a href="#cb14-6"></a><span class="co">## [1] TRUE</span></span></code></pre></div>
 </div>
 <div id="inf---infinity" class="section level2">
 <h2>Inf - infinity</h2>
 <ul>
 <li>Inf / -Inf : Infinito</li>
 </ul>
-<pre class="r"><code>&gt; Inf+1
-## [1] Inf</code></pre>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="op">&gt;</span><span class="st"> </span><span class="ot">Inf</span><span class="op">+</span><span class="dv">1</span></span>
+<span id="cb15-2"><a href="#cb15-2"></a><span class="co">## [1] Inf</span></span></code></pre></div>
 </div>
 <div id="nan---not-a-number" class="section level2">
 <h2>NaN - not a number</h2>
 <ul>
 <li>NaN: “not a number”, o valor não pode ser calculado</li>
 </ul>
-<pre class="r"><code>&gt; Inf / Inf
-## [1] NaN</code></pre>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="op">&gt;</span><span class="st"> </span><span class="ot">Inf</span> <span class="op">/</span><span class="st"> </span><span class="ot">Inf</span></span>
+<span id="cb16-2"><a href="#cb16-2"></a><span class="co">## [1] NaN</span></span></code></pre></div>
 </div>
 <div id="na---not-avaible" class="section level2">
 <h2>NA - not avaible</h2>
 <ul>
 <li>NA :</li>
 </ul>
-<pre class="r"><code>&gt; NA + 1
-## [1] NA
-&gt; NA | TRUE # operação ou
-## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="op">&gt;</span><span class="st"> </span><span class="ot">NA</span> <span class="op">+</span><span class="st"> </span><span class="dv">1</span></span>
+<span id="cb17-2"><a href="#cb17-2"></a><span class="co">## [1] NA</span></span>
+<span id="cb17-3"><a href="#cb17-3"></a><span class="op">&gt;</span><span class="st"> </span><span class="ot">NA</span> <span class="op">|</span><span class="st"> </span><span class="ot">TRUE</span> <span class="co"># operação ou</span></span>
+<span id="cb17-4"><a href="#cb17-4"></a><span class="co">## [1] TRUE</span></span></code></pre></div>
 </div>
 <div id="funções-no-r" class="section level2">
 <h2>Funções no R</h2>
@@ -690,9 +762,9 @@ div.tocify {
 </div>
 <div id="testa-na" class="section level2">
 <h2>Testa NA</h2>
-<pre class="r"><code>&gt; a = NA
-&gt; is.na(a)
-## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="op">&gt;</span><span class="st"> </span>a =<span class="st"> </span><span class="ot">NA</span></span>
+<span id="cb18-2"><a href="#cb18-2"></a><span class="op">&gt;</span><span class="st"> </span><span class="kw">is.na</span>(a)</span>
+<span id="cb18-3"><a href="#cb18-3"></a><span class="co">## [1] TRUE</span></span></code></pre></div>
 </div>
 <div id="funções-matemáticas" class="section level2">
 <h2>Funções Matemáticas</h2>
@@ -749,71 +821,71 @@ div.tocify {
 </div>
 <div id="valor-absoluto" class="section level2">
 <h2>valor absoluto</h2>
-<pre class="r"><code>&gt; abs(-10.3)
-## [1] 10.3</code></pre>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="op">&gt;</span><span class="st"> </span><span class="kw">abs</span>(<span class="op">-</span><span class="fl">10.3</span>)</span>
+<span id="cb19-2"><a href="#cb19-2"></a><span class="co">## [1] 10.3</span></span></code></pre></div>
 </div>
 <div id="raiz-quadrada" class="section level2">
 <h2>raiz quadrada</h2>
-<pre class="r"><code>&gt; sqrt(36) 
-## [1] 6</code></pre>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="op">&gt;</span><span class="st"> </span><span class="kw">sqrt</span>(<span class="dv">36</span>) </span>
+<span id="cb20-2"><a href="#cb20-2"></a><span class="co">## [1] 6</span></span></code></pre></div>
 </div>
 <div id="menor-inteiro-maior-ou-igual-ao-o-argumento" class="section level2">
 <h2>Menor inteiro maior ou igual ao o argumento</h2>
-<pre class="r"><code>&gt; ceiling(2.88)
-## [1] 3
-&gt; ceiling(2.1)
-## [1] 3
-&gt; ceiling(2)
-## [1] 2</code></pre>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="op">&gt;</span><span class="st"> </span><span class="kw">ceiling</span>(<span class="fl">2.88</span>)</span>
+<span id="cb21-2"><a href="#cb21-2"></a><span class="co">## [1] 3</span></span>
+<span id="cb21-3"><a href="#cb21-3"></a><span class="op">&gt;</span><span class="st"> </span><span class="kw">ceiling</span>(<span class="fl">2.1</span>)</span>
+<span id="cb21-4"><a href="#cb21-4"></a><span class="co">## [1] 3</span></span>
+<span id="cb21-5"><a href="#cb21-5"></a><span class="op">&gt;</span><span class="st"> </span><span class="kw">ceiling</span>(<span class="dv">2</span>)</span>
+<span id="cb21-6"><a href="#cb21-6"></a><span class="co">## [1] 2</span></span></code></pre></div>
 </div>
 <div id="maior-inteiro-menor-ou-igual-ao-argumento" class="section level2">
 <h2>Maior inteiro menor ou igual ao argumento</h2>
-<pre class="r"><code>&gt; floor(2.88)
-## [1] 2
-&gt; floor(2.1)
-## [1] 2
-&gt; floor(2)
-## [1] 2</code></pre>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="op">&gt;</span><span class="st"> </span><span class="kw">floor</span>(<span class="fl">2.88</span>)</span>
+<span id="cb22-2"><a href="#cb22-2"></a><span class="co">## [1] 2</span></span>
+<span id="cb22-3"><a href="#cb22-3"></a><span class="op">&gt;</span><span class="st"> </span><span class="kw">floor</span>(<span class="fl">2.1</span>)</span>
+<span id="cb22-4"><a href="#cb22-4"></a><span class="co">## [1] 2</span></span>
+<span id="cb22-5"><a href="#cb22-5"></a><span class="op">&gt;</span><span class="st"> </span><span class="kw">floor</span>(<span class="dv">2</span>)</span>
+<span id="cb22-6"><a href="#cb22-6"></a><span class="co">## [1] 2</span></span></code></pre></div>
 </div>
 <div id="parte-inteira" class="section level2">
 <h2>Parte inteira</h2>
-<pre class="r"><code>&gt; trunc(2.88)
-## [1] 2
-&gt; trunc(2.01)
-## [1] 2</code></pre>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="op">&gt;</span><span class="st"> </span><span class="kw">trunc</span>(<span class="fl">2.88</span>)</span>
+<span id="cb23-2"><a href="#cb23-2"></a><span class="co">## [1] 2</span></span>
+<span id="cb23-3"><a href="#cb23-3"></a><span class="op">&gt;</span><span class="st"> </span><span class="kw">trunc</span>(<span class="fl">2.01</span>)</span>
+<span id="cb23-4"><a href="#cb23-4"></a><span class="co">## [1] 2</span></span></code></pre></div>
 </div>
 <div id="arredondamento-com-n-dígitos" class="section level2">
 <h2>Arredondamento com n dígitos</h2>
-<pre class="r"><code>&gt; round(2.88, digits=1)
-## [1] 2.9
-&gt; round(2.88, digits=0)
-## [1] 3
-&gt; round(2.1, digits=0)
-## [1] 2</code></pre>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="op">&gt;</span><span class="st"> </span><span class="kw">round</span>(<span class="fl">2.88</span>, <span class="dt">digits=</span><span class="dv">1</span>)</span>
+<span id="cb24-2"><a href="#cb24-2"></a><span class="co">## [1] 2.9</span></span>
+<span id="cb24-3"><a href="#cb24-3"></a><span class="op">&gt;</span><span class="st"> </span><span class="kw">round</span>(<span class="fl">2.88</span>, <span class="dt">digits=</span><span class="dv">0</span>)</span>
+<span id="cb24-4"><a href="#cb24-4"></a><span class="co">## [1] 3</span></span>
+<span id="cb24-5"><a href="#cb24-5"></a><span class="op">&gt;</span><span class="st"> </span><span class="kw">round</span>(<span class="fl">2.1</span>, <span class="dt">digits=</span><span class="dv">0</span>)</span>
+<span id="cb24-6"><a href="#cb24-6"></a><span class="co">## [1] 2</span></span></code></pre></div>
 </div>
 <div id="cosseno-seno-e-tangente" class="section level2">
 <h2>Cosseno, Seno e Tangente</h2>
-<pre class="r"><code>&gt; cos(pi) #ângulo em radianos
-## [1] -1
-&gt; sin(pi/2)
-## [1] 1</code></pre>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="op">&gt;</span><span class="st"> </span><span class="kw">cos</span>(pi) <span class="co">#ângulo em radianos</span></span>
+<span id="cb25-2"><a href="#cb25-2"></a><span class="co">## [1] -1</span></span>
+<span id="cb25-3"><a href="#cb25-3"></a><span class="op">&gt;</span><span class="st"> </span><span class="kw">sin</span>(pi<span class="op">/</span><span class="dv">2</span>)</span>
+<span id="cb25-4"><a href="#cb25-4"></a><span class="co">## [1] 1</span></span></code></pre></div>
 </div>
 <div id="arco_cosseno-arco_seno-e-arco_tangente" class="section level2">
 <h2>arco_cosseno, arco_seno e arco_tangente</h2>
-<pre class="r"><code>&gt; acos(-1)
-## [1] 3.14</code></pre>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a><span class="op">&gt;</span><span class="st"> </span><span class="kw">acos</span>(<span class="op">-</span><span class="dv">1</span>)</span>
+<span id="cb26-2"><a href="#cb26-2"></a><span class="co">## [1] 3.14</span></span></code></pre></div>
 </div>
 <div id="logarítmo" class="section level2">
 <h2>logarítmo</h2>
-<pre class="r"><code>&gt; log(10)
-## [1] 2.3
-&gt; log(10,base=10)
-## [1] 1</code></pre>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a><span class="op">&gt;</span><span class="st"> </span><span class="kw">log</span>(<span class="dv">10</span>)</span>
+<span id="cb27-2"><a href="#cb27-2"></a><span class="co">## [1] 2.3</span></span>
+<span id="cb27-3"><a href="#cb27-3"></a><span class="op">&gt;</span><span class="st"> </span><span class="kw">log</span>(<span class="dv">10</span>,<span class="dt">base=</span><span class="dv">10</span>)</span>
+<span id="cb27-4"><a href="#cb27-4"></a><span class="co">## [1] 1</span></span></code></pre></div>
 </div>
 <div id="exponencial" class="section level2">
 <h2>exponencial</h2>
-<pre class="r"><code>&gt; exp(1)
-## [1] 2.72</code></pre>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a><span class="op">&gt;</span><span class="st"> </span><span class="kw">exp</span>(<span class="dv">1</span>)</span>
+<span id="cb28-2"><a href="#cb28-2"></a><span class="co">## [1] 2.72</span></span></code></pre></div>
 </div>
 <div id="Exercícios_01" class="section level2">
 <h2>Exercícios_01</h2>
@@ -834,63 +906,63 @@ div.tocify {
 <h2>Solução_1.01</h2>
 <p>Calcule a área de uma circunferência de raio 337</p>
 <p><span class="math display">\[ A = \pi \cdot r^2\]</span></p>
-<pre class="r"><code>&gt; r = 337
-&gt; A = pi * r ^ 2
-&gt; A
-## [1] 356788</code></pre>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a><span class="op">&gt;</span><span class="st"> </span>r =<span class="st"> </span><span class="dv">337</span></span>
+<span id="cb29-2"><a href="#cb29-2"></a><span class="op">&gt;</span><span class="st"> </span>A =<span class="st"> </span>pi <span class="op">*</span><span class="st"> </span>r <span class="op">^</span><span class="st"> </span><span class="dv">2</span></span>
+<span id="cb29-3"><a href="#cb29-3"></a><span class="op">&gt;</span><span class="st"> </span>A</span>
+<span id="cb29-4"><a href="#cb29-4"></a><span class="co">## [1] 356788</span></span></code></pre></div>
 <p><a href="#65">Retorna</a></p>
 </div>
 <div id="solução_1.02" class="section level2">
 <h2>Solução_1.02</h2>
 <p>Qual a raiz quadrada de 3976?</p>
-<pre class="r"><code>&gt; sqrt(3976)
-## [1] 63.1</code></pre>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a><span class="op">&gt;</span><span class="st"> </span><span class="kw">sqrt</span>(<span class="dv">3976</span>)</span>
+<span id="cb30-2"><a href="#cb30-2"></a><span class="co">## [1] 63.1</span></span></code></pre></div>
 <p><a href="#65">Retorna</a></p>
 </div>
 <div id="solução_1.03" class="section level2">
 <h2>Solução_1.03</h2>
 <p>Crie o objeto a com o valor 10, b com o 30</p>
-<pre class="r"><code>&gt; a = 10
-&gt; b = 30</code></pre>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a><span class="op">&gt;</span><span class="st"> </span>a =<span class="st"> </span><span class="dv">10</span></span>
+<span id="cb31-2"><a href="#cb31-2"></a><span class="op">&gt;</span><span class="st"> </span>b =<span class="st"> </span><span class="dv">30</span></span></code></pre></div>
 <p><a href="#65">Retorna</a></p>
 </div>
 <div id="solução_1.04" class="section level2">
 <h2>Solução_1.04</h2>
 <p>Execute uma função que teste se <span class="math inline">\(a\)</span> é menor que o logaritmo (base 10) de <span class="math inline">\(b\)</span></p>
-<pre class="r"><code>&gt; a &lt; log(b,base=10)
-## [1] FALSE</code></pre>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a><span class="op">&gt;</span><span class="st"> </span>a <span class="op">&lt;</span><span class="st"> </span><span class="kw">log</span>(b,<span class="dt">base=</span><span class="dv">10</span>)</span>
+<span id="cb32-2"><a href="#cb32-2"></a><span class="co">## [1] FALSE</span></span></code></pre></div>
 <p><a href="#65">Retorna</a></p>
 </div>
 <div id="solução_1.05" class="section level2">
 <h2>Solução_1.05</h2>
 <p>Execute uma função que teste se <span class="math inline">\(a\)</span> NÃO é igual a <span class="math inline">\(b\)</span> elevado ao quadrado e dividido por <span class="math inline">\(a\)</span> menos 1.</p>
-<pre class="r"><code>&gt; a != b ^ 2 / a - 1
-## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a><span class="op">&gt;</span><span class="st"> </span>a <span class="op">!=</span><span class="st"> </span>b <span class="op">^</span><span class="st"> </span><span class="dv">2</span> <span class="op">/</span><span class="st"> </span>a <span class="op">-</span><span class="st"> </span><span class="dv">1</span></span>
+<span id="cb33-2"><a href="#cb33-2"></a><span class="co">## [1] TRUE</span></span></code></pre></div>
 <p><a href="#65">Retorna</a></p>
 </div>
 <div id="solução_1.06" class="section level2">
 <h2>Solução_1.06</h2>
 <p>Crie um objeto com nome <em>nota média</em> atribua valor 10</p>
-<pre class="r"><code>&gt; #nota media=10 #não funciona
-&gt; # usar &quot;_&quot; ou &quot;.&quot; para conectar as palavras
-&gt; nota_media = 10
-&gt; nota.media = 10
-&gt; 
-&gt; #nota%media=10 #não funciona</code></pre>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1"></a><span class="op">&gt;</span><span class="st"> </span><span class="co">#nota media=10 #não funciona</span></span>
+<span id="cb34-2"><a href="#cb34-2"></a><span class="er">&gt;</span><span class="st"> </span><span class="co"># usar &quot;_&quot; ou &quot;.&quot; para conectar as palavras</span></span>
+<span id="cb34-3"><a href="#cb34-3"></a><span class="er">&gt;</span><span class="st"> </span>nota_media =<span class="st"> </span><span class="dv">10</span></span>
+<span id="cb34-4"><a href="#cb34-4"></a><span class="op">&gt;</span><span class="st"> </span>nota.media =<span class="st"> </span><span class="dv">10</span></span>
+<span id="cb34-5"><a href="#cb34-5"></a><span class="op">&gt;</span><span class="st"> </span></span>
+<span id="cb34-6"><a href="#cb34-6"></a><span class="er">&gt;</span><span class="st"> </span><span class="co">#nota%media=10 #não funciona</span></span></code></pre></div>
 <p><a href="#65">Retorna</a></p>
 </div>
 <div id="solução_1.07" class="section level2">
 <h2>Solução_1.07</h2>
 <p>Se <em>a = NA</em> e <em>b = 10</em>, calcule: <span class="math inline">\(a^2\)</span>, <span class="math inline">\(a^0\)</span>, <span class="math inline">\(a+b\)</span>. Explique os resultados.</p>
-<pre class="r"><code>&gt; a = NA
-&gt; b = 10
-&gt; # NA - Not Available/ Missing Values
-&gt; a^2 # NA^2=NA
-## [1] NA
-&gt; a^0 # NA^0=1 - X^0 é 1 para qualquer valor de X (mesmo NA!)
-## [1] 1
-&gt; a+b # NA + qualquer número é sempre NA
-## [1] NA</code></pre>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a><span class="op">&gt;</span><span class="st"> </span>a =<span class="st"> </span><span class="ot">NA</span></span>
+<span id="cb35-2"><a href="#cb35-2"></a><span class="op">&gt;</span><span class="st"> </span>b =<span class="st"> </span><span class="dv">10</span></span>
+<span id="cb35-3"><a href="#cb35-3"></a><span class="op">&gt;</span><span class="st"> </span><span class="co"># NA - Not Available/ Missing Values</span></span>
+<span id="cb35-4"><a href="#cb35-4"></a><span class="er">&gt;</span><span class="st"> </span>a<span class="op">^</span><span class="dv">2</span> <span class="co"># NA^2=NA</span></span>
+<span id="cb35-5"><a href="#cb35-5"></a><span class="co">## [1] NA</span></span>
+<span id="cb35-6"><a href="#cb35-6"></a><span class="op">&gt;</span><span class="st"> </span>a<span class="op">^</span><span class="dv">0</span> <span class="co"># NA^0=1 - X^0 é 1 para qualquer valor de X (mesmo NA!)</span></span>
+<span id="cb35-7"><a href="#cb35-7"></a><span class="co">## [1] 1</span></span>
+<span id="cb35-8"><a href="#cb35-8"></a><span class="op">&gt;</span><span class="st"> </span>a<span class="op">+</span>b <span class="co"># NA + qualquer número é sempre NA</span></span>
+<span id="cb35-9"><a href="#cb35-9"></a><span class="co">## [1] NA</span></span></code></pre></div>
 <p><a href="#65">Retorna</a></p>
 </div>
 </div>
@@ -945,7 +1017,7 @@ $(document).ready(function ()  {
       theme: "bootstrap3",
       context: '.toc-content',
       hashGenerator: function (text) {
-        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
       },
       ignoreSelector: ".toc-ignore",
       scrollTo: 0

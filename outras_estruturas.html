@@ -20,25 +20,97 @@
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
-<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<script src="site_libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+
 
 <style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; } /* Alert */
+code span.an { color: #008000; } /* Annotation */
+code span.at { } /* Attribute */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #0000ff; } /* ControlFlow */
+code span.ch { color: #008080; } /* Char */
+code span.cn { } /* Constant */
+code span.co { color: #008000; } /* Comment */
+code span.cv { color: #008000; } /* CommentVar */
+code span.do { color: #008000; } /* Documentation */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.im { } /* Import */
+code span.in { color: #008000; } /* Information */
+code span.kw { color: #0000ff; } /* Keyword */
+code span.op { } /* Operator */
+code span.ot { color: #ff4000; } /* Other */
+code span.pp { color: #ff4000; } /* Preprocessor */
+code span.sc { color: #008080; } /* SpecialChar */
+code span.ss { color: #008080; } /* SpecialString */
+code span.st { color: #008080; } /* String */
+code span.va { } /* Variable */
+code span.vs { color: #008080; } /* VerbatimString */
+code span.wa { color: #008000; font-weight: bold; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
 <style type="text/css">
   pre:not([class]) {
     background-color: white;
   }
 </style>
-<script type="text/javascript">
-if (window.hljs) {
-  hljs.configure({languages: []});
-  hljs.initHighlightingOnLoad();
-  if (document.readyState && document.readyState === "complete") {
-    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
-  }
-}
-</script>
-
 
 
 <style type="text/css">
@@ -302,19 +374,19 @@ $(document).ready(function () {
 </div>
 <div id="criando-uma-matriz" class="section level2">
 <h2>Criando uma Matriz</h2>
-<pre class="r"><code>ms = matrix(0, nrow = 2, ncol = 3) 
-ms</code></pre>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>ms =<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">0</span>, <span class="dt">nrow =</span> <span class="dv">2</span>, <span class="dt">ncol =</span> <span class="dv">3</span>) </span>
+<span id="cb1-2"><a href="#cb1-2"></a>ms</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    0    0    0
 ## [2,]    0    0    0</code></pre>
 </div>
 <div id="criando-uma-matriz-1" class="section level2">
 <h2>Criando uma Matriz</h2>
-<pre class="r"><code># criação
-x = c(2, 4, 3, 5, 6, 7, 6, 8, 7)
-nc = 3
-ms = matrix(x, ncol = nc, byrow = TRUE)
-ms</code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="co"># criação</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a>x =<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">6</span>, <span class="dv">8</span>, <span class="dv">7</span>)</span>
+<span id="cb3-3"><a href="#cb3-3"></a>nc =<span class="st"> </span><span class="dv">3</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a>ms =<span class="st"> </span><span class="kw">matrix</span>(x, <span class="dt">ncol =</span> nc, <span class="dt">byrow =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb3-5"><a href="#cb3-5"></a>ms</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    2    4    3
 ## [2,]    5    6    7
@@ -322,11 +394,11 @@ ms</code></pre>
 </div>
 <div id="dimensão-da-matriz" class="section level2">
 <h2>Dimensão da matriz</h2>
-<pre class="r"><code>dim(ms)</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="kw">dim</span>(ms)</span></code></pre></div>
 <pre><code>## [1] 3 3</code></pre>
-<pre class="r"><code>ncol(ms)</code></pre>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="kw">ncol</span>(ms)</span></code></pre></div>
 <pre><code>## [1] 3</code></pre>
-<pre class="r"><code>nrow(ms)</code></pre>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="kw">nrow</span>(ms)</span></code></pre></div>
 <pre><code>## [1] 3</code></pre>
 <ul>
 <li>o resultado refer-se ao número de linhas e colunas (nesta ordem)</li>
@@ -334,11 +406,11 @@ ms</code></pre>
 </div>
 <div id="selecionando-elementos-da-matriz" class="section level2">
 <h2>Selecionando elementos da matriz</h2>
-<pre class="r"><code># elemento da linha 1 e coluna 3
-ms[1, 3] </code></pre>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="co"># elemento da linha 1 e coluna 3</span></span>
+<span id="cb11-2"><a href="#cb11-2"></a>ms[<span class="dv">1</span>, <span class="dv">3</span>] </span></code></pre></div>
 <pre><code>## [1] 3</code></pre>
-<pre class="r"><code># elementos da linha 2 e coluna 2 e 3
-ms[2, c(2, 3)]</code></pre>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="co"># elementos da linha 2 e coluna 2 e 3</span></span>
+<span id="cb13-2"><a href="#cb13-2"></a>ms[<span class="dv">2</span>, <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">3</span>)]</span></code></pre></div>
 <pre><code>## [1] 6 7</code></pre>
 </div>
 <div id="selecionando-elementos-da-matriz-1" class="section level2">
@@ -346,18 +418,18 @@ ms[2, c(2, 3)]</code></pre>
 <ul>
 <li>para selecionar uma dimensão inteira, deixe sem valor</li>
 </ul>
-<pre class="r"><code># todos os elemento da  coluna 3
-ms[, 3] </code></pre>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="co"># todos os elemento da  coluna 3</span></span>
+<span id="cb15-2"><a href="#cb15-2"></a>ms[, <span class="dv">3</span>] </span></code></pre></div>
 <pre><code>## [1] 3 7 7</code></pre>
-<pre class="r"><code># todos os elemento da  linha 2
-ms[2, ]</code></pre>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="co"># todos os elemento da  linha 2</span></span>
+<span id="cb17-2"><a href="#cb17-2"></a>ms[<span class="dv">2</span>, ]</span></code></pre></div>
 <pre><code>## [1] 5 6 7</code></pre>
 </div>
 <div id="substituindo-valores" class="section level2">
 <h2>Substituindo valores</h2>
-<pre class="r"><code>ms[2, 3] = 10
-ms[2, ] = c(7, 7, 7)
-ms</code></pre>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>ms[<span class="dv">2</span>, <span class="dv">3</span>] =<span class="st"> </span><span class="dv">10</span></span>
+<span id="cb19-2"><a href="#cb19-2"></a>ms[<span class="dv">2</span>, ] =<span class="st"> </span><span class="kw">c</span>(<span class="dv">7</span>, <span class="dv">7</span>, <span class="dv">7</span>)</span>
+<span id="cb19-3"><a href="#cb19-3"></a>ms</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    2    4    3
 ## [2,]    7    7    7
@@ -365,13 +437,13 @@ ms</code></pre>
 </div>
 <div id="adicionando-colunas-e-linhas" class="section level2">
 <h2>Adicionando Colunas e linhas</h2>
-<pre class="r"><code># adicionando nova coluna
-ms = cbind(ms, c(3, 3, 3)) 
-
-# adicionando nova linha
-ms = rbind(ms, c(1, 1, 1, 1)) 
-
-ms</code></pre>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="co"># adicionando nova coluna</span></span>
+<span id="cb21-2"><a href="#cb21-2"></a>ms =<span class="st"> </span><span class="kw">cbind</span>(ms, <span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">3</span>)) </span>
+<span id="cb21-3"><a href="#cb21-3"></a></span>
+<span id="cb21-4"><a href="#cb21-4"></a><span class="co"># adicionando nova linha</span></span>
+<span id="cb21-5"><a href="#cb21-5"></a>ms =<span class="st"> </span><span class="kw">rbind</span>(ms, <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>)) </span>
+<span id="cb21-6"><a href="#cb21-6"></a></span>
+<span id="cb21-7"><a href="#cb21-7"></a>ms</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3] [,4]
 ## [1,]    2    4    3    3
 ## [2,]    7    7    7    3
@@ -380,16 +452,16 @@ ms</code></pre>
 </div>
 <div id="combinando-matrizes" class="section level2">
 <h2>Combinando matrizes</h2>
-<pre class="r"><code>m = matrix(2, 2, 3)
-m</code></pre>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a>m =<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
+<span id="cb23-2"><a href="#cb23-2"></a>m</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    2    2    2
 ## [2,]    2    2    2</code></pre>
-<pre class="r"><code>cbind(m, m) # novas colunas</code></pre>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="kw">cbind</span>(m, m) <span class="co"># novas colunas</span></span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3] [,4] [,5] [,6]
 ## [1,]    2    2    2    2    2    2
 ## [2,]    2    2    2    2    2    2</code></pre>
-<pre class="r"><code>rbind(m, m) # novas linhas</code></pre>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a><span class="kw">rbind</span>(m, m) <span class="co"># novas linhas</span></span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    2    2    2
 ## [2,]    2    2    2
@@ -398,7 +470,7 @@ m</code></pre>
 </div>
 <div id="operações-com-matrizes" class="section level2">
 <h2>Operações com Matrizes</h2>
-<pre class="r"><code>ms * 2 # recycling rule</code></pre>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a>ms <span class="op">*</span><span class="st"> </span><span class="dv">2</span> <span class="co"># recycling rule</span></span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3] [,4]
 ## [1,]    4    8    6    6
 ## [2,]   14   14   14    6
@@ -407,7 +479,7 @@ m</code></pre>
 </div>
 <div id="produto-matricial" class="section level2">
 <h2>Produto Matricial</h2>
-<pre class="r"><code>ms %*% t(ms) # produto matricial</code></pre>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a>ms <span class="op">%*%</span><span class="st"> </span><span class="kw">t</span>(ms) <span class="co"># produto matricial</span></span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3] [,4]
 ## [1,]   38   72   74   12
 ## [2,]   72  156  156   24
@@ -419,13 +491,13 @@ m</code></pre>
 <ul>
 <li><span class="math inline">\(dimnames()\)</span></li>
 </ul>
-<pre class="r"><code>m=matrix(NA,2,2)
-m # sem nomes em linhas e colunas</code></pre>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a>m=<span class="kw">matrix</span>(<span class="ot">NA</span>,<span class="dv">2</span>,<span class="dv">2</span>)</span>
+<span id="cb33-2"><a href="#cb33-2"></a>m <span class="co"># sem nomes em linhas e colunas</span></span></code></pre></div>
 <pre><code>##      [,1] [,2]
 ## [1,]   NA   NA
 ## [2,]   NA   NA</code></pre>
-<pre class="r"><code>dimnames(m)=list(c(&quot;A&quot;,&quot;B&quot;),c(&quot;a&quot;,&quot;b&quot;))
-m</code></pre>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a><span class="kw">dimnames</span>(m)=<span class="kw">list</span>(<span class="kw">c</span>(<span class="st">&quot;A&quot;</span>,<span class="st">&quot;B&quot;</span>),<span class="kw">c</span>(<span class="st">&quot;a&quot;</span>,<span class="st">&quot;b&quot;</span>))</span>
+<span id="cb35-2"><a href="#cb35-2"></a>m</span></code></pre></div>
 <pre><code>##    a  b
 ## A NA NA
 ## B NA NA</code></pre>
@@ -436,10 +508,10 @@ m</code></pre>
 <li><span class="math inline">\(colnames()\)</span></li>
 <li><span class="math inline">\(rownames()\)</span></li>
 </ul>
-<pre class="r"><code>m=matrix(NA,2,2)
-rownames(m)=c(&quot;A&quot;,&quot;B&quot;)
-colnames(m)=c(&quot;a&quot;,&quot;b&quot;)
-m</code></pre>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a>m=<span class="kw">matrix</span>(<span class="ot">NA</span>,<span class="dv">2</span>,<span class="dv">2</span>)</span>
+<span id="cb37-2"><a href="#cb37-2"></a><span class="kw">rownames</span>(m)=<span class="kw">c</span>(<span class="st">&quot;A&quot;</span>,<span class="st">&quot;B&quot;</span>)</span>
+<span id="cb37-3"><a href="#cb37-3"></a><span class="kw">colnames</span>(m)=<span class="kw">c</span>(<span class="st">&quot;a&quot;</span>,<span class="st">&quot;b&quot;</span>)</span>
+<span id="cb37-4"><a href="#cb37-4"></a>m</span></code></pre></div>
 <pre><code>##    a  b
 ## A NA NA
 ## B NA NA</code></pre>
@@ -453,11 +525,11 @@ m</code></pre>
 </div>
 <div id="criando-um-data-frame" class="section level2">
 <h2>Criando um Data Frame</h2>
-<pre class="r"><code>nome = c(&quot;Carlos&quot;, &quot;Jorge&quot;, &quot;Ana&quot;)
-nota01 = c(7, 5, 7)
-nota02 = c(8, 6, 4)
-df = data.frame(nome, nota01, nota02)
-df</code></pre>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1"></a>nome =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Carlos&quot;</span>, <span class="st">&quot;Jorge&quot;</span>, <span class="st">&quot;Ana&quot;</span>)</span>
+<span id="cb39-2"><a href="#cb39-2"></a>nota01 =<span class="st"> </span><span class="kw">c</span>(<span class="dv">7</span>, <span class="dv">5</span>, <span class="dv">7</span>)</span>
+<span id="cb39-3"><a href="#cb39-3"></a>nota02 =<span class="st"> </span><span class="kw">c</span>(<span class="dv">8</span>, <span class="dv">6</span>, <span class="dv">4</span>)</span>
+<span id="cb39-4"><a href="#cb39-4"></a>df =<span class="st"> </span><span class="kw">data.frame</span>(nome, nota01, nota02)</span>
+<span id="cb39-5"><a href="#cb39-5"></a>df</span></code></pre></div>
 <pre><code>##     nome nota01 nota02
 ## 1 Carlos      7      8
 ## 2  Jorge      5      6
@@ -465,23 +537,23 @@ df</code></pre>
 </div>
 <div id="selecionando-elementos-do-data-frame" class="section level2">
 <h2>Selecionando elementos do Data Frame</h2>
-<pre class="r"><code># similar a um Matriz
-
-df[1, 2]</code></pre>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1"></a><span class="co"># similar a um Matriz</span></span>
+<span id="cb41-2"><a href="#cb41-2"></a></span>
+<span id="cb41-3"><a href="#cb41-3"></a>df[<span class="dv">1</span>, <span class="dv">2</span>]</span></code></pre></div>
 <pre><code>## [1] 7</code></pre>
-<pre class="r"><code>df[1,]</code></pre>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1"></a>df[<span class="dv">1</span>,]</span></code></pre></div>
 <pre><code>##     nome nota01 nota02
 ## 1 Carlos      7      8</code></pre>
-<pre class="r"><code>df[, &quot;nota01&quot;]</code></pre>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1"></a>df[, <span class="st">&quot;nota01&quot;</span>]</span></code></pre></div>
 <pre><code>## [1] 7 5 7</code></pre>
 </div>
 <div id="dimensão-do-data-frame" class="section level2">
 <h2>Dimensão do Data Frame</h2>
-<pre class="r"><code>dim(df)</code></pre>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1"></a><span class="kw">dim</span>(df)</span></code></pre></div>
 <pre><code>## [1] 3 3</code></pre>
-<pre class="r"><code>ncol(df)</code></pre>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1"></a><span class="kw">ncol</span>(df)</span></code></pre></div>
 <pre><code>## [1] 3</code></pre>
-<pre class="r"><code>nrow(df)</code></pre>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1"></a><span class="kw">nrow</span>(df)</span></code></pre></div>
 <pre><code>## [1] 3</code></pre>
 </div>
 <div id="ordenando-data-frame" class="section level2">
@@ -489,8 +561,8 @@ df[1, 2]</code></pre>
 <ul>
 <li>Ordenando o data frame por uma coluna</li>
 </ul>
-<pre class="r"><code># ordena df pela nota01
-df[order(df$nota01), ]</code></pre>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1"></a><span class="co"># ordena df pela nota01</span></span>
+<span id="cb53-2"><a href="#cb53-2"></a>df[<span class="kw">order</span>(df<span class="op">$</span>nota01), ]</span></code></pre></div>
 <pre><code>##     nome nota01 nota02
 ## 2  Jorge      5      6
 ## 1 Carlos      7      8
@@ -502,9 +574,9 @@ df[order(df$nota01), ]</code></pre>
 <li><span class="math inline">\(colnames()\)</span></li>
 <li><span class="math inline">\(rownames()\)</span></li>
 </ul>
-<pre class="r"><code>rownames(df)=c(&quot;linha01&quot;,&quot;linha02&quot;,&quot;linha03&quot;)
-colnames(df)=c(&quot;Nome&quot;, &quot;Nota01&quot;, &quot;Nota02&quot;)
-df</code></pre>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1"></a><span class="kw">rownames</span>(df)=<span class="kw">c</span>(<span class="st">&quot;linha01&quot;</span>,<span class="st">&quot;linha02&quot;</span>,<span class="st">&quot;linha03&quot;</span>)</span>
+<span id="cb55-2"><a href="#cb55-2"></a><span class="kw">colnames</span>(df)=<span class="kw">c</span>(<span class="st">&quot;Nome&quot;</span>, <span class="st">&quot;Nota01&quot;</span>, <span class="st">&quot;Nota02&quot;</span>)</span>
+<span id="cb55-3"><a href="#cb55-3"></a>df</span></code></pre></div>
 <pre><code>##           Nome Nota01 Nota02
 ## linha01 Carlos      7      8
 ## linha02  Jorge      5      6
@@ -520,8 +592,8 @@ df</code></pre>
 </div>
 <div id="exemplos-em-r-listas" class="section level2">
 <h2>Exemplos em R: Listas</h2>
-<pre class="r"><code>l = list(c(1:10), df)
-l</code></pre>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1"></a>l =<span class="st"> </span><span class="kw">list</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>), df)</span>
+<span id="cb57-2"><a href="#cb57-2"></a>l</span></code></pre></div>
 <pre><code>## [[1]]
 ##  [1]  1  2  3  4  5  6  7  8  9 10
 ## 
@@ -533,8 +605,8 @@ l</code></pre>
 </div>
 <div id="extraindo-elementos-de-uma-listas" class="section level2">
 <h2>Extraindo elementos de uma Listas</h2>
-<pre class="r"><code># obter o elemento da posição 2 da lista l
-l[[2]]</code></pre>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1"></a><span class="co"># obter o elemento da posição 2 da lista l</span></span>
+<span id="cb59-2"><a href="#cb59-2"></a>l[[<span class="dv">2</span>]]</span></code></pre></div>
 <pre><code>##           Nome Nota01 Nota02
 ## linha01 Carlos      7      8
 ## linha02  Jorge      5      6
@@ -542,7 +614,7 @@ l[[2]]</code></pre>
 </div>
 <div id="dimensão-de-uma-listas" class="section level2">
 <h2>Dimensão de uma Listas</h2>
-<pre class="r"><code>length(l)</code></pre>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1"></a><span class="kw">length</span>(l)</span></code></pre></div>
 <pre><code>## [1] 2</code></pre>
 </div>
 <div id="identificando-lista" class="section level2">
@@ -550,9 +622,9 @@ l[[2]]</code></pre>
 <ul>
 <li><span class="math inline">\(names()\)</span></li>
 </ul>
-<pre class="r"><code>L=list(1:10,&quot;Teste&quot;)
-names(L)=c(&quot;A&quot;,&quot;B&quot;)
-L</code></pre>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1"></a>L=<span class="kw">list</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>,<span class="st">&quot;Teste&quot;</span>)</span>
+<span id="cb63-2"><a href="#cb63-2"></a><span class="kw">names</span>(L)=<span class="kw">c</span>(<span class="st">&quot;A&quot;</span>,<span class="st">&quot;B&quot;</span>)</span>
+<span id="cb63-3"><a href="#cb63-3"></a>L</span></code></pre></div>
 <pre><code>## $A
 ##  [1]  1  2  3  4  5  6  7  8  9 10
 ## 
@@ -568,14 +640,14 @@ L</code></pre>
 </div>
 <div id="factor-1" class="section level2">
 <h2>Factor</h2>
-<pre class="r"><code># p_sexo com 3 valores male e 2 valores female 
-p_sexo = c(rep(&quot;male&quot;, 3), rep(&quot;female&quot;, 2))
-p_sexo</code></pre>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1"></a><span class="co"># p_sexo com 3 valores male e 2 valores female </span></span>
+<span id="cb65-2"><a href="#cb65-2"></a>p_sexo =<span class="st"> </span><span class="kw">c</span>(<span class="kw">rep</span>(<span class="st">&quot;male&quot;</span>, <span class="dv">3</span>), <span class="kw">rep</span>(<span class="st">&quot;female&quot;</span>, <span class="dv">2</span>))</span>
+<span id="cb65-3"><a href="#cb65-3"></a>p_sexo</span></code></pre></div>
 <pre><code>[1] &quot;male&quot;   &quot;male&quot;   &quot;male&quot;   &quot;female&quot;
 [5] &quot;female&quot;</code></pre>
-<pre class="r"><code>p_sexo = factor(p_sexo) 
-# dois níveis female e male
-p_sexo</code></pre>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1"></a>p_sexo =<span class="st"> </span><span class="kw">factor</span>(p_sexo) </span>
+<span id="cb67-2"><a href="#cb67-2"></a><span class="co"># dois níveis female e male</span></span>
+<span id="cb67-3"><a href="#cb67-3"></a>p_sexo</span></code></pre></div>
 <pre><code>[1] male   male   male   female female
 Levels: female male</code></pre>
 </div>
@@ -584,13 +656,13 @@ Levels: female male</code></pre>
 <ul>
 <li>define a ordenação dos fatores</li>
 </ul>
-<pre class="r"><code># os levels são female e male 
-# ordem alfabética quando não especificado
-p_sexo</code></pre>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1"></a><span class="co"># os levels são female e male </span></span>
+<span id="cb69-2"><a href="#cb69-2"></a><span class="co"># ordem alfabética quando não especificado</span></span>
+<span id="cb69-3"><a href="#cb69-3"></a>p_sexo</span></code></pre></div>
 <pre><code>[1] male   male   male   female female
 Levels: female male</code></pre>
-<pre class="r"><code>p_sexo = factor(p_sexo, levels=c(&quot;male&quot;,&quot;female&quot;)) 
-p_sexo</code></pre>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1"></a>p_sexo =<span class="st"> </span><span class="kw">factor</span>(p_sexo, <span class="dt">levels=</span><span class="kw">c</span>(<span class="st">&quot;male&quot;</span>,<span class="st">&quot;female&quot;</span>)) </span>
+<span id="cb71-2"><a href="#cb71-2"></a>p_sexo</span></code></pre></div>
 <pre><code>[1] male   male   male   female female
 Levels: male female</code></pre>
 </div>
@@ -599,25 +671,25 @@ Levels: male female</code></pre>
 <ul>
 <li>define os labels (segue a ordenação - levels)</li>
 </ul>
-<pre class="r"><code># os levels são female e male 
-p_sexo = factor(c(rep(&quot;male&quot;, 3), rep(&quot;female&quot;, 2)))
-p_sexo</code></pre>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1"></a><span class="co"># os levels são female e male </span></span>
+<span id="cb73-2"><a href="#cb73-2"></a>p_sexo =<span class="st"> </span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="kw">rep</span>(<span class="st">&quot;male&quot;</span>, <span class="dv">3</span>), <span class="kw">rep</span>(<span class="st">&quot;female&quot;</span>, <span class="dv">2</span>)))</span>
+<span id="cb73-3"><a href="#cb73-3"></a>p_sexo</span></code></pre></div>
 <pre><code>[1] male   male   male   female female
 Levels: female male</code></pre>
-<pre class="r"><code># os labels seguem a ordenação do level
-
-factor(p_sexo, labels=c(&quot;malex&quot;,&quot;female&quot;)) </code></pre>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1"></a><span class="co"># os labels seguem a ordenação do level</span></span>
+<span id="cb75-2"><a href="#cb75-2"></a></span>
+<span id="cb75-3"><a href="#cb75-3"></a><span class="kw">factor</span>(p_sexo, <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;malex&quot;</span>,<span class="st">&quot;female&quot;</span>)) </span></code></pre></div>
 <pre><code>[1] female female female malex  malex 
 Levels: malex female</code></pre>
 </div>
 <div id="factor---labels-1" class="section level2">
 <h2>Factor - labels</h2>
-<pre class="r"><code>p_sexo = c(rep(&quot;male&quot;, 3), rep(&quot;female&quot;, 2))
-p_sexo</code></pre>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1"></a>p_sexo =<span class="st"> </span><span class="kw">c</span>(<span class="kw">rep</span>(<span class="st">&quot;male&quot;</span>, <span class="dv">3</span>), <span class="kw">rep</span>(<span class="st">&quot;female&quot;</span>, <span class="dv">2</span>))</span>
+<span id="cb77-2"><a href="#cb77-2"></a>p_sexo</span></code></pre></div>
 <pre><code>## [1] &quot;male&quot;   &quot;male&quot;   &quot;male&quot;   &quot;female&quot;
 ## [5] &quot;female&quot;</code></pre>
-<pre class="r"><code>factor(p_sexo,levels=c(&quot;male&quot;,&quot;female&quot;), 
-               labels=c(&quot;malex&quot;,&quot;female&quot;)) </code></pre>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1"></a><span class="kw">factor</span>(p_sexo,<span class="dt">levels=</span><span class="kw">c</span>(<span class="st">&quot;male&quot;</span>,<span class="st">&quot;female&quot;</span>), </span>
+<span id="cb79-2"><a href="#cb79-2"></a>               <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;malex&quot;</span>,<span class="st">&quot;female&quot;</span>)) </span></code></pre></div>
 <pre><code>## [1] malex  malex  malex  female female
 ## Levels: malex female</code></pre>
 </div>
@@ -627,22 +699,22 @@ p_sexo</code></pre>
 <li>NA não é considerado um fator (level)</li>
 <li>mas pode ser mantido</li>
 </ul>
-<pre class="r"><code>factor(c(1:2, NA))</code></pre>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="#cb81-1"></a><span class="kw">factor</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>, <span class="ot">NA</span>))</span></code></pre></div>
 <pre><code>## [1] 1    2    &lt;NA&gt;
 ## Levels: 1 2</code></pre>
-<pre class="r"><code># mas é possível marter os NA 
-factor(c(1:2, NA), exclude =  &quot;&quot; ) </code></pre>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="#cb83-1"></a><span class="co"># mas é possível marter os NA </span></span>
+<span id="cb83-2"><a href="#cb83-2"></a><span class="kw">factor</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>, <span class="ot">NA</span>), <span class="dt">exclude =</span>  <span class="st">&quot;&quot;</span> ) </span></code></pre></div>
 <pre><code>## [1] 1    2    &lt;NA&gt;
 ## Levels: 1 2 &lt;NA&gt;</code></pre>
-<pre class="r"><code># factor(c(1:2, NA), exclude = NULL) </code></pre>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="#cb85-1"></a><span class="co"># factor(c(1:2, NA), exclude = NULL) </span></span></code></pre></div>
 </div>
 <div id="factor---ordered" class="section level2">
 <h2>Factor - ordered</h2>
 <ul>
 <li>define os labels (segue a ordenação - levels)</li>
 </ul>
-<pre class="r"><code>z &lt;- factor(LETTERS[3:1], ordered = TRUE)
-z</code></pre>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="#cb86-1"></a>z &lt;-<span class="st"> </span><span class="kw">factor</span>(LETTERS[<span class="dv">3</span><span class="op">:</span><span class="dv">1</span>], <span class="dt">ordered =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb86-2"><a href="#cb86-2"></a>z</span></code></pre></div>
 <pre><code>[1] C B A
 Levels: A &lt; B &lt; C</code></pre>
 </div>
@@ -667,22 +739,22 @@ Levels: A &lt; B &lt; C</code></pre>
 <ul>
 <li><span class="math inline">\(names()\)</span></li>
 </ul>
-<pre class="r"><code>v=1:4
-names(v)=c(&quot;A&quot;,&quot;B&quot;,&quot;C&quot;,&quot;D&quot;)
-v</code></pre>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="#cb88-1"></a>v=<span class="dv">1</span><span class="op">:</span><span class="dv">4</span></span>
+<span id="cb88-2"><a href="#cb88-2"></a><span class="kw">names</span>(v)=<span class="kw">c</span>(<span class="st">&quot;A&quot;</span>,<span class="st">&quot;B&quot;</span>,<span class="st">&quot;C&quot;</span>,<span class="st">&quot;D&quot;</span>)</span>
+<span id="cb88-3"><a href="#cb88-3"></a>v</span></code></pre></div>
 <pre><code>## A B C D 
 ## 1 2 3 4</code></pre>
 </div>
 <div id="selecionando-elemento-pelo-nome" class="section level2">
 <h2>Selecionando elemento pelo nome</h2>
-<pre class="r"><code># List
-L$A</code></pre>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="#cb90-1"></a><span class="co"># List</span></span>
+<span id="cb90-2"><a href="#cb90-2"></a>L<span class="op">$</span>A</span></code></pre></div>
 <pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
-<pre class="r"><code>#matrix
-m[,&quot;a&quot;] # uma coluna</code></pre>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="#cb92-1"></a><span class="co">#matrix</span></span>
+<span id="cb92-2"><a href="#cb92-2"></a>m[,<span class="st">&quot;a&quot;</span>] <span class="co"># uma coluna</span></span></code></pre></div>
 <pre><code>##  A  B 
 ## NA NA</code></pre>
-<pre class="r"><code>m[&quot;A&quot;,] # uma linha</code></pre>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="#cb94-1"></a>m[<span class="st">&quot;A&quot;</span>,] <span class="co"># uma linha</span></span></code></pre></div>
 <pre><code>##  a  b 
 ## NA NA</code></pre>
 </div>
@@ -718,9 +790,9 @@ m[,&quot;a&quot;] # uma coluna</code></pre>
 <ol style="list-style-type: decimal">
 <li>Crie uma matriz com 20 linhas e 20 colunas com diferentes números ímpares.</li>
 </ol>
-<pre class="r"><code># numareos ímpares
-imp = seq(1, 800, by = 2)
-m1 = matrix(imp, 20, 20)</code></pre>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="#cb96-1"></a><span class="co"># numareos ímpares</span></span>
+<span id="cb96-2"><a href="#cb96-2"></a>imp =<span class="st"> </span><span class="kw">seq</span>(<span class="dv">1</span>, <span class="dv">800</span>, <span class="dt">by =</span> <span class="dv">2</span>)</span>
+<span id="cb96-3"><a href="#cb96-3"></a>m1 =<span class="st"> </span><span class="kw">matrix</span>(imp, <span class="dv">20</span>, <span class="dv">20</span>)</span></code></pre></div>
 <p><a href="#59">Retorna</a></p>
 </div>
 <div id="solução_3.02" class="section level2">
@@ -728,8 +800,8 @@ m1 = matrix(imp, 20, 20)</code></pre>
 <ol start="2" style="list-style-type: decimal">
 <li>Crie uma nova matriz com as colunas pares da matriz do item 1</li>
 </ol>
-<pre class="r"><code>N = dim(m1)[2]
-m2 = m1[, seq(2, N, by = 2)]</code></pre>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="#cb97-1"></a>N =<span class="st"> </span><span class="kw">dim</span>(m1)[<span class="dv">2</span>]</span>
+<span id="cb97-2"><a href="#cb97-2"></a>m2 =<span class="st"> </span>m1[, <span class="kw">seq</span>(<span class="dv">2</span>, N, <span class="dt">by =</span> <span class="dv">2</span>)]</span></code></pre></div>
 <p><a href="#59">Retorna</a></p>
 </div>
 <div id="solução_3.03" class="section level2">
@@ -737,9 +809,9 @@ m2 = m1[, seq(2, N, by = 2)]</code></pre>
 <ol start="3" style="list-style-type: decimal">
 <li>Na matriz do item 2 inclua uma coluna, na última posição, com valores iguais ao número de linhas.</li>
 </ol>
-<pre class="r"><code>nl = nrow(m2)
-m3 = cbind(m2, nl)
-m3</code></pre>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="#cb98-1"></a>nl =<span class="st"> </span><span class="kw">nrow</span>(m2)</span>
+<span id="cb98-2"><a href="#cb98-2"></a>m3 =<span class="st"> </span><span class="kw">cbind</span>(m2, nl)</span>
+<span id="cb98-3"><a href="#cb98-3"></a>m3</span></code></pre></div>
 <pre><code>##                                     
 ##  [1,] 41 121 201 281 361 441 521 601
 ##  [2,] 43 123 203 283 363 443 523 603
@@ -789,9 +861,9 @@ m3</code></pre>
 <ol start="4" style="list-style-type: decimal">
 <li>Na matriz do item 3 inclua uma linha, na primeira posição, com valores iguais ao número de colunas.</li>
 </ol>
-<pre class="r"><code>nc = ncol(m3)
-m4 = rbind(nc, m3)
-m4</code></pre>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="#cb100-1"></a>nc =<span class="st"> </span><span class="kw">ncol</span>(m3)</span>
+<span id="cb100-2"><a href="#cb100-2"></a>m4 =<span class="st"> </span><span class="kw">rbind</span>(nc, m3)</span>
+<span id="cb100-3"><a href="#cb100-3"></a>m4</span></code></pre></div>
 <pre><code>##                                      
 ## nc 11  11  11  11  11  11  11  11  11
 ##    41 121 201 281 361 441 521 601 681
@@ -843,15 +915,15 @@ m4</code></pre>
 <ol start="5" style="list-style-type: decimal">
 <li>Crie uma matriz de 2 linhas e 2 colunas com letras e coloque-a (substitua) no centro da matriz do item 2. O que aconteceu com a matriz?</li>
 </ol>
-<pre class="r"><code>ml = matrix(letters, ncol = 2, nrow = 2)
-ml</code></pre>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="#cb102-1"></a>ml =<span class="st"> </span><span class="kw">matrix</span>(letters, <span class="dt">ncol =</span> <span class="dv">2</span>, <span class="dt">nrow =</span> <span class="dv">2</span>)</span>
+<span id="cb102-2"><a href="#cb102-2"></a>ml</span></code></pre></div>
 <pre><code>##      [,1] [,2]
 ## [1,] &quot;a&quot;  &quot;c&quot; 
 ## [2,] &quot;b&quot;  &quot;d&quot;</code></pre>
-<pre class="r"><code>dim(m2)</code></pre>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="#cb104-1"></a><span class="kw">dim</span>(m2)</span></code></pre></div>
 <pre><code>## [1] 20 10</code></pre>
-<pre class="r"><code>m2[c(10, 11), c(5, 6)] = ml
-m2</code></pre>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="#cb106-1"></a>m2[<span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">11</span>), <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">6</span>)] =<span class="st"> </span>ml</span>
+<span id="cb106-2"><a href="#cb106-2"></a>m2</span></code></pre></div>
 <pre><code>##       [,1] [,2]  [,3]  [,4]  [,5] 
 ##  [1,] &quot;41&quot; &quot;121&quot; &quot;201&quot; &quot;281&quot; &quot;361&quot;
 ##  [2,] &quot;43&quot; &quot;123&quot; &quot;203&quot; &quot;283&quot; &quot;363&quot;
@@ -901,14 +973,14 @@ m2</code></pre>
 <ol start="6" style="list-style-type: decimal">
 <li>Crie uma matriz com 4 linhas iguais a: 1,2,3,4. Faça um teste para verificar se todos os elementos da coluna 1 são iguais a 1.</li>
 </ol>
-<pre class="r"><code>m6 = matrix(c(1, 2, 3, 4), ncol = 4, nrow = 4, byrow = T)
-m6</code></pre>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="#cb108-1"></a>m6 =<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>), <span class="dt">ncol =</span> <span class="dv">4</span>, <span class="dt">nrow =</span> <span class="dv">4</span>, <span class="dt">byrow =</span> T)</span>
+<span id="cb108-2"><a href="#cb108-2"></a>m6</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3] [,4]
 ## [1,]    1    2    3    4
 ## [2,]    1    2    3    4
 ## [3,]    1    2    3    4
 ## [4,]    1    2    3    4</code></pre>
-<pre class="r"><code>m6[,1]==1</code></pre>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="#cb110-1"></a>m6[,<span class="dv">1</span>]<span class="op">==</span><span class="dv">1</span></span></code></pre></div>
 <pre><code>## [1] TRUE TRUE TRUE TRUE</code></pre>
 <p><a href="#59">Retorna</a></p>
 </div>
@@ -917,8 +989,8 @@ m6</code></pre>
 <ol start="7" style="list-style-type: decimal">
 <li>Suponha que a matriz do item 6 corresponda a dados de 4 pessoas ( Marcos, Pedro, Denis e Clara). Crie um objetos onde a primeira coluna seja os nomes e as demais os dados.</li>
 </ol>
-<pre class="r"><code>nomes = c(&quot;Marcos&quot;, &quot;Pedro&quot;, &quot;Denis&quot; , &quot;Clara&quot;)
-data.frame(nomes, m6)</code></pre>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="#cb112-1"></a>nomes =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Marcos&quot;</span>, <span class="st">&quot;Pedro&quot;</span>, <span class="st">&quot;Denis&quot;</span> , <span class="st">&quot;Clara&quot;</span>)</span>
+<span id="cb112-2"><a href="#cb112-2"></a><span class="kw">data.frame</span>(nomes, m6)</span></code></pre></div>
 <pre><code>##    nomes X1 X2 X3 X4
 ## 1 Marcos  1  2  3  4
 ## 2  Pedro  1  2  3  4
@@ -931,7 +1003,7 @@ data.frame(nomes, m6)</code></pre>
 <ol start="8" style="list-style-type: decimal">
 <li>Crie um objeto que agregue os resultados de todos os itens anteriores e ainda, inclua a data atual.</li>
 </ol>
-<pre class="r"><code>L=list(ex1=m1,ex2=m2,ex3=m3,ex4=m4,data=Sys.Date())</code></pre>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="#cb114-1"></a>L=<span class="kw">list</span>(<span class="dt">ex1=</span>m1,<span class="dt">ex2=</span>m2,<span class="dt">ex3=</span>m3,<span class="dt">ex4=</span>m4,<span class="dt">data=</span><span class="kw">Sys.Date</span>())</span></code></pre></div>
 <p><a href="#59">Retorna</a></p>
 </div>
 

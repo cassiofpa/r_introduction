@@ -20,25 +20,97 @@
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
-<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<script src="site_libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+
 
 <style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; } /* Alert */
+code span.an { color: #008000; } /* Annotation */
+code span.at { } /* Attribute */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #0000ff; } /* ControlFlow */
+code span.ch { color: #008080; } /* Char */
+code span.cn { } /* Constant */
+code span.co { color: #008000; } /* Comment */
+code span.cv { color: #008000; } /* CommentVar */
+code span.do { color: #008000; } /* Documentation */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.im { } /* Import */
+code span.in { color: #008000; } /* Information */
+code span.kw { color: #0000ff; } /* Keyword */
+code span.op { } /* Operator */
+code span.ot { color: #ff4000; } /* Other */
+code span.pp { color: #ff4000; } /* Preprocessor */
+code span.sc { color: #008080; } /* SpecialChar */
+code span.ss { color: #008080; } /* SpecialString */
+code span.st { color: #008080; } /* String */
+code span.va { } /* Variable */
+code span.vs { color: #008080; } /* VerbatimString */
+code span.wa { color: #008000; font-weight: bold; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
 <style type="text/css">
   pre:not([class]) {
     background-color: white;
   }
 </style>
-<script type="text/javascript">
-if (window.hljs) {
-  hljs.configure({languages: []});
-  hljs.initHighlightingOnLoad();
-  if (document.readyState && document.readyState === "complete") {
-    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
-  }
-}
-</script>
-
 
 
 <style type="text/css">
@@ -314,80 +386,80 @@ $(document).ready(function () {
 <ul>
 <li>Criando vectores com valores predeterminados - <strong>c()</strong></li>
 </ul>
-<pre class="r"><code>&gt; # criação: função é c(), abreviatura de concatenate
-&gt; # vetor de caracter
-&gt; names = c(&quot;Ana&quot;, &quot;Lisa&quot;, &quot;Paula&quot;, &quot;Carlos&quot;)
-&gt; #criação de um vetor de números
-&gt; ages = c(21, 15, 34, 30, 54, 44, 34)
-&gt; 
-&gt; names
-## [1] &quot;Ana&quot;    &quot;Lisa&quot;   &quot;Paula&quot;  &quot;Carlos&quot;
-&gt; ages
-## [1] 21 15 34 30 54 44 34</code></pre>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="op">&gt;</span><span class="st"> </span><span class="co"># criação: função é c(), abreviatura de concatenate</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="er">&gt;</span><span class="st"> </span><span class="co"># vetor de caracter</span></span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="er">&gt;</span><span class="st"> </span>names =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Ana&quot;</span>, <span class="st">&quot;Lisa&quot;</span>, <span class="st">&quot;Paula&quot;</span>, <span class="st">&quot;Carlos&quot;</span>)</span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="op">&gt;</span><span class="st"> </span><span class="co">#criação de um vetor de números</span></span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="er">&gt;</span><span class="st"> </span>ages =<span class="st"> </span><span class="kw">c</span>(<span class="dv">21</span>, <span class="dv">15</span>, <span class="dv">34</span>, <span class="dv">30</span>, <span class="dv">54</span>, <span class="dv">44</span>, <span class="dv">34</span>)</span>
+<span id="cb1-6"><a href="#cb1-6"></a><span class="op">&gt;</span><span class="st"> </span></span>
+<span id="cb1-7"><a href="#cb1-7"></a><span class="er">&gt;</span><span class="st"> </span>names</span>
+<span id="cb1-8"><a href="#cb1-8"></a><span class="co">## [1] &quot;Ana&quot;    &quot;Lisa&quot;   &quot;Paula&quot;  &quot;Carlos&quot;</span></span>
+<span id="cb1-9"><a href="#cb1-9"></a><span class="op">&gt;</span><span class="st"> </span>ages</span>
+<span id="cb1-10"><a href="#cb1-10"></a><span class="co">## [1] 21 15 34 30 54 44 34</span></span></code></pre></div>
 </div>
 <div id="vetor-sequencia-de-inteiros" class="section level2">
 <h2>Vetor: Sequencia de Inteiros</h2>
-<pre class="r"><code>&gt; x_int = 1:10</code></pre>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="op">&gt;</span><span class="st"> </span>x_int =<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">10</span></span></code></pre></div>
 </div>
 <div id="vetor-sequencia-numérica-regular" class="section level2">
 <h2>Vetor: Sequencia numérica regular</h2>
-<pre class="r"><code>&gt; x_num1 = seq (1, 10, by = 0.5)
-&gt; x_num1
-##  [1]  1.0  1.5  2.0  2.5  3.0  3.5  4.0
-##  [8]  4.5  5.0  5.5  6.0  6.5  7.0  7.5
-## [15]  8.0  8.5  9.0  9.5 10.0
-&gt; 
-&gt; x_num2 = seq(1, 10, length = 40)
-&gt; x_num2
-##  [1]  1.00  1.23  1.46  1.69  1.92  2.15
-##  [7]  2.38  2.62  2.85  3.08  3.31  3.54
-## [13]  3.77  4.00  4.23  4.46  4.69  4.92
-## [19]  5.15  5.38  5.62  5.85  6.08  6.31
-## [25]  6.54  6.77  7.00  7.23  7.46  7.69
-## [31]  7.92  8.15  8.38  8.62  8.85  9.08
-## [37]  9.31  9.54  9.77 10.00</code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="op">&gt;</span><span class="st"> </span>x_num1 =<span class="st"> </span><span class="kw">seq</span> (<span class="dv">1</span>, <span class="dv">10</span>, <span class="dt">by =</span> <span class="fl">0.5</span>)</span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="op">&gt;</span><span class="st"> </span>x_num1</span>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="co">##  [1]  1.0  1.5  2.0  2.5  3.0  3.5  4.0</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a><span class="co">##  [8]  4.5  5.0  5.5  6.0  6.5  7.0  7.5</span></span>
+<span id="cb3-5"><a href="#cb3-5"></a><span class="co">## [15]  8.0  8.5  9.0  9.5 10.0</span></span>
+<span id="cb3-6"><a href="#cb3-6"></a><span class="op">&gt;</span><span class="st"> </span></span>
+<span id="cb3-7"><a href="#cb3-7"></a><span class="er">&gt;</span><span class="st"> </span>x_num2 =<span class="st"> </span><span class="kw">seq</span>(<span class="dv">1</span>, <span class="dv">10</span>, <span class="dt">length =</span> <span class="dv">40</span>)</span>
+<span id="cb3-8"><a href="#cb3-8"></a><span class="op">&gt;</span><span class="st"> </span>x_num2</span>
+<span id="cb3-9"><a href="#cb3-9"></a><span class="co">##  [1]  1.00  1.23  1.46  1.69  1.92  2.15</span></span>
+<span id="cb3-10"><a href="#cb3-10"></a><span class="co">##  [7]  2.38  2.62  2.85  3.08  3.31  3.54</span></span>
+<span id="cb3-11"><a href="#cb3-11"></a><span class="co">## [13]  3.77  4.00  4.23  4.46  4.69  4.92</span></span>
+<span id="cb3-12"><a href="#cb3-12"></a><span class="co">## [19]  5.15  5.38  5.62  5.85  6.08  6.31</span></span>
+<span id="cb3-13"><a href="#cb3-13"></a><span class="co">## [25]  6.54  6.77  7.00  7.23  7.46  7.69</span></span>
+<span id="cb3-14"><a href="#cb3-14"></a><span class="co">## [31]  7.92  8.15  8.38  8.62  8.85  9.08</span></span>
+<span id="cb3-15"><a href="#cb3-15"></a><span class="co">## [37]  9.31  9.54  9.77 10.00</span></span></code></pre></div>
 </div>
 <div id="comprimento-do-vetor" class="section level2">
 <h2>Comprimento do Vetor</h2>
-<pre class="r"><code>&gt; length(x_num2)
-## [1] 40</code></pre>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="op">&gt;</span><span class="st"> </span><span class="kw">length</span>(x_num2)</span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="co">## [1] 40</span></span></code></pre></div>
 </div>
 <div id="selecionando-elementos-de-um-vetor" class="section level2">
 <h2>Selecionando elementos de um Vetor</h2>
-<pre class="r"><code>&gt; ages
-## [1] 21 15 34 30 54 44 34
-&gt; ages[3] # obtendo o valor da posição 3
-## [1] 34
-&gt; ages[3:6] # obtendo os valor da posição 3 a 6
-## [1] 34 30 54 44
-&gt; # obtendo os valores em posições específicas
-&gt; ages[c(2, 4, 5)] 
-## [1] 15 30 54</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="op">&gt;</span><span class="st"> </span>ages</span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="co">## [1] 21 15 34 30 54 44 34</span></span>
+<span id="cb5-3"><a href="#cb5-3"></a><span class="op">&gt;</span><span class="st"> </span>ages[<span class="dv">3</span>] <span class="co"># obtendo o valor da posição 3</span></span>
+<span id="cb5-4"><a href="#cb5-4"></a><span class="co">## [1] 34</span></span>
+<span id="cb5-5"><a href="#cb5-5"></a><span class="op">&gt;</span><span class="st"> </span>ages[<span class="dv">3</span><span class="op">:</span><span class="dv">6</span>] <span class="co"># obtendo os valor da posição 3 a 6</span></span>
+<span id="cb5-6"><a href="#cb5-6"></a><span class="co">## [1] 34 30 54 44</span></span>
+<span id="cb5-7"><a href="#cb5-7"></a><span class="op">&gt;</span><span class="st"> </span><span class="co"># obtendo os valores em posições específicas</span></span>
+<span id="cb5-8"><a href="#cb5-8"></a><span class="er">&gt;</span><span class="st"> </span>ages[<span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">5</span>)] </span>
+<span id="cb5-9"><a href="#cb5-9"></a><span class="co">## [1] 15 30 54</span></span></code></pre></div>
 </div>
 <div id="excluindo-elementos-de-um-vetor" class="section level2">
 <h2>Excluindo elementos de um Vetor</h2>
-<pre class="r"><code>&gt; ages
-## [1] 21 15 34 30 54 44 34
-&gt; ages[-3] # excluindo o valor da posição 3
-## [1] 21 15 30 54 44 34
-&gt; ages[-(2:5)] # excluindo os valor da posição 2 a 5
-## [1] 21 44 34
-&gt; # excluindo os valores em posições específicas
-&gt; ages[-c(2, 4, 5)] 
-## [1] 21 34 44 34</code></pre>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="op">&gt;</span><span class="st"> </span>ages</span>
+<span id="cb6-2"><a href="#cb6-2"></a><span class="co">## [1] 21 15 34 30 54 44 34</span></span>
+<span id="cb6-3"><a href="#cb6-3"></a><span class="op">&gt;</span><span class="st"> </span>ages[<span class="op">-</span><span class="dv">3</span>] <span class="co"># excluindo o valor da posição 3</span></span>
+<span id="cb6-4"><a href="#cb6-4"></a><span class="co">## [1] 21 15 30 54 44 34</span></span>
+<span id="cb6-5"><a href="#cb6-5"></a><span class="op">&gt;</span><span class="st"> </span>ages[<span class="op">-</span>(<span class="dv">2</span><span class="op">:</span><span class="dv">5</span>)] <span class="co"># excluindo os valor da posição 2 a 5</span></span>
+<span id="cb6-6"><a href="#cb6-6"></a><span class="co">## [1] 21 44 34</span></span>
+<span id="cb6-7"><a href="#cb6-7"></a><span class="op">&gt;</span><span class="st"> </span><span class="co"># excluindo os valores em posições específicas</span></span>
+<span id="cb6-8"><a href="#cb6-8"></a><span class="er">&gt;</span><span class="st"> </span>ages[<span class="op">-</span><span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">5</span>)] </span>
+<span id="cb6-9"><a href="#cb6-9"></a><span class="co">## [1] 21 34 44 34</span></span></code></pre></div>
 </div>
 <div id="substituindo-elementos-de-um-vetor" class="section level2">
 <h2>Substituindo elementos de um Vetor</h2>
-<pre class="r"><code>&gt; ages
-## [1] 21 15 34 30 54 44 34
-&gt; ages[3] = 99 # substituindo  o valor da posição 3
-&gt; # obtendo os valores em posições específicas
-&gt; ages[c(2, 4)] = c(98, 100) </code></pre>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="op">&gt;</span><span class="st"> </span>ages</span>
+<span id="cb7-2"><a href="#cb7-2"></a><span class="co">## [1] 21 15 34 30 54 44 34</span></span>
+<span id="cb7-3"><a href="#cb7-3"></a><span class="op">&gt;</span><span class="st"> </span>ages[<span class="dv">3</span>] =<span class="st"> </span><span class="dv">99</span> <span class="co"># substituindo  o valor da posição 3</span></span>
+<span id="cb7-4"><a href="#cb7-4"></a><span class="op">&gt;</span><span class="st"> </span><span class="co"># obtendo os valores em posições específicas</span></span>
+<span id="cb7-5"><a href="#cb7-5"></a><span class="er">&gt;</span><span class="st"> </span>ages[<span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">4</span>)] =<span class="st"> </span><span class="kw">c</span>(<span class="dv">98</span>, <span class="dv">100</span>) </span></code></pre></div>
 </div>
 <div id="operações-com-vetor" class="section level2">
 <h2>Operações com vetor</h2>
-<pre class="r"><code>&gt; 1:5 + 1 # gera a sequencia e soma 1
-## [1] 2 3 4 5 6</code></pre>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="op">&gt;</span><span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">5</span> <span class="op">+</span><span class="st"> </span><span class="dv">1</span> <span class="co"># gera a sequencia e soma 1</span></span>
+<span id="cb8-2"><a href="#cb8-2"></a><span class="co">## [1] 2 3 4 5 6</span></span></code></pre></div>
 <ul>
 <li>o R executa a operação repetindo os valores do menor elemento até coincidir com o maior.</li>
 </ul>
@@ -397,37 +469,37 @@ $(document).ready(function () {
 <ul>
 <li>o R executa uma operação reutilizando os valores do menor elemento até coincidir com o maior. (gera um <em>warnnig</em>)</li>
 </ul>
-<pre class="r"><code>&gt; 1:5 + 1:3 
-## Warning in 1:5 + 1:3: comprimento
-## do objeto maior não é múltiplo do
-## comprimento do objeto menor
-## [1] 2 4 6 5 7</code></pre>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="op">&gt;</span><span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">5</span> <span class="op">+</span><span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">3</span> </span>
+<span id="cb9-2"><a href="#cb9-2"></a><span class="co">## Warning in 1:5 + 1:3: comprimento</span></span>
+<span id="cb9-3"><a href="#cb9-3"></a><span class="co">## do objeto maior não é múltiplo do</span></span>
+<span id="cb9-4"><a href="#cb9-4"></a><span class="co">## comprimento do objeto menor</span></span>
+<span id="cb9-5"><a href="#cb9-5"></a><span class="co">## [1] 2 4 6 5 7</span></span></code></pre></div>
 </div>
 <div id="acrescentando-um-valor" class="section level2">
 <h2>Acrescentando um valor</h2>
-<pre class="r"><code>&gt; # adicionando valores em ages
-&gt; ages
-## [1]  21  98  99 100  54  44  34
-&gt; ages = c(ages, 15)
-&gt; ages
-## [1]  21  98  99 100  54  44  34  15</code></pre>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="op">&gt;</span><span class="st"> </span><span class="co"># adicionando valores em ages</span></span>
+<span id="cb10-2"><a href="#cb10-2"></a><span class="er">&gt;</span><span class="st"> </span>ages</span>
+<span id="cb10-3"><a href="#cb10-3"></a><span class="co">## [1]  21  98  99 100  54  44  34</span></span>
+<span id="cb10-4"><a href="#cb10-4"></a><span class="op">&gt;</span><span class="st"> </span>ages =<span class="st"> </span><span class="kw">c</span>(ages, <span class="dv">15</span>)</span>
+<span id="cb10-5"><a href="#cb10-5"></a><span class="op">&gt;</span><span class="st"> </span>ages</span>
+<span id="cb10-6"><a href="#cb10-6"></a><span class="co">## [1]  21  98  99 100  54  44  34  15</span></span></code></pre></div>
 </div>
 <div id="ordenando-vetores" class="section level2">
 <h2>Ordenando Vetores</h2>
-<pre class="r"><code>&gt; ages
-# [1]  21  98  99 100  54  44  34  15
-&gt; sort(ages) #ordena os elementos 
-# [1]  15  21  34  44  54  98  99 100</code></pre>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="op">&gt;</span><span class="st"> </span>ages</span>
+<span id="cb11-2"><a href="#cb11-2"></a><span class="co"># [1]  21  98  99 100  54  44  34  15</span></span>
+<span id="cb11-3"><a href="#cb11-3"></a><span class="op">&gt;</span><span class="st"> </span><span class="kw">sort</span>(ages) <span class="co">#ordena os elementos </span></span>
+<span id="cb11-4"><a href="#cb11-4"></a><span class="co"># [1]  15  21  34  44  54  98  99 100</span></span></code></pre></div>
 </div>
 <div id="permutação-que-ordena-o-vetor" class="section level2">
 <h2>Permutação que ordena o vetor</h2>
-<pre class="r"><code>&gt; ages
-## [1]  21  98  99 100  54  44  34  15
-&gt; p_ord = order(ages)
-&gt; p_ord
-## [1] 8 1 7 6 5 2 3 4
-&gt; ages[p_ord] #ordena ages pelo ordem de names
-## [1]  15  21  34  44  54  98  99 100</code></pre>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="op">&gt;</span><span class="st"> </span>ages</span>
+<span id="cb12-2"><a href="#cb12-2"></a><span class="co">## [1]  21  98  99 100  54  44  34  15</span></span>
+<span id="cb12-3"><a href="#cb12-3"></a><span class="op">&gt;</span><span class="st"> </span>p_ord =<span class="st"> </span><span class="kw">order</span>(ages)</span>
+<span id="cb12-4"><a href="#cb12-4"></a><span class="op">&gt;</span><span class="st"> </span>p_ord</span>
+<span id="cb12-5"><a href="#cb12-5"></a><span class="co">## [1] 8 1 7 6 5 2 3 4</span></span>
+<span id="cb12-6"><a href="#cb12-6"></a><span class="op">&gt;</span><span class="st"> </span>ages[p_ord] <span class="co">#ordena ages pelo ordem de names</span></span>
+<span id="cb12-7"><a href="#cb12-7"></a><span class="co">## [1]  15  21  34  44  54  98  99 100</span></span></code></pre></div>
 </div>
 <div id="Exercícios_02" class="section level2">
 <h2>Exercícios_02</h2>
@@ -457,9 +529,9 @@ $(document).ready(function () {
 <ol style="list-style-type: decimal">
 <li>Crie uma sequência regular de valores entre 0 e 3000 a cada 0.25.</li>
 </ol>
-<pre class="r"><code>&gt; e1 = seq(0, 3000, by = 0.25)
-&gt; e1[1:5]
-## [1] 0.00 0.25 0.50 0.75 1.00</code></pre>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="op">&gt;</span><span class="st"> </span>e1 =<span class="st"> </span><span class="kw">seq</span>(<span class="dv">0</span>, <span class="dv">3000</span>, <span class="dt">by =</span> <span class="fl">0.25</span>)</span>
+<span id="cb13-2"><a href="#cb13-2"></a><span class="op">&gt;</span><span class="st"> </span>e1[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]</span>
+<span id="cb13-3"><a href="#cb13-3"></a><span class="co">## [1] 0.00 0.25 0.50 0.75 1.00</span></span></code></pre></div>
 <p><a href="#17">Retorna</a></p>
 </div>
 <div id="solução_2.02" class="section level2">
@@ -467,8 +539,8 @@ $(document).ready(function () {
 <ol start="2" style="list-style-type: decimal">
 <li>Qual o tamanho do vetor criado no item 1?</li>
 </ol>
-<pre class="r"><code>&gt; length(e1)
-## [1] 12001</code></pre>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="op">&gt;</span><span class="st"> </span><span class="kw">length</span>(e1)</span>
+<span id="cb14-2"><a href="#cb14-2"></a><span class="co">## [1] 12001</span></span></code></pre></div>
 <p><a href="#17">Retorna</a></p>
 </div>
 <div id="solução_2.03" class="section level2">
@@ -476,15 +548,15 @@ $(document).ready(function () {
 <ol start="3" style="list-style-type: decimal">
 <li>Crie outro vetor com uma sequencia de 1 a 3000 com 20 elemento e subtraia do vetor da questão 1.</li>
 </ol>
-<pre class="r"><code>&gt; e3 = seq(1, 3000, length = 20)
-&gt; e3[1:5]
-## [1]   1 159 317 475 632
-&gt; e13 = e1 - e3  # vetores com tamanhos diferentes - mensagem &quot;longer object ...&quot;
-## Warning in e1 - e3: comprimento
-## do objeto maior não é múltiplo do
-## comprimento do objeto menor
-&gt; e13[1:5]
-## [1]   -1 -159 -316 -474 -631</code></pre>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="op">&gt;</span><span class="st"> </span>e3 =<span class="st"> </span><span class="kw">seq</span>(<span class="dv">1</span>, <span class="dv">3000</span>, <span class="dt">length =</span> <span class="dv">20</span>)</span>
+<span id="cb15-2"><a href="#cb15-2"></a><span class="op">&gt;</span><span class="st"> </span>e3[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]</span>
+<span id="cb15-3"><a href="#cb15-3"></a><span class="co">## [1]   1 159 317 475 632</span></span>
+<span id="cb15-4"><a href="#cb15-4"></a><span class="op">&gt;</span><span class="st"> </span>e13 =<span class="st"> </span>e1 <span class="op">-</span><span class="st"> </span>e3  <span class="co"># vetores com tamanhos diferentes - mensagem &quot;longer object ...&quot;</span></span>
+<span id="cb15-5"><a href="#cb15-5"></a><span class="co">## Warning in e1 - e3: comprimento</span></span>
+<span id="cb15-6"><a href="#cb15-6"></a><span class="co">## do objeto maior não é múltiplo do</span></span>
+<span id="cb15-7"><a href="#cb15-7"></a><span class="co">## comprimento do objeto menor</span></span>
+<span id="cb15-8"><a href="#cb15-8"></a><span class="op">&gt;</span><span class="st"> </span>e13[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]</span>
+<span id="cb15-9"><a href="#cb15-9"></a><span class="co">## [1]   -1 -159 -316 -474 -631</span></span></code></pre></div>
 <p><a href="#17">Retorna</a></p>
 </div>
 <div id="solução_2.04" class="section level2">
@@ -492,14 +564,14 @@ $(document).ready(function () {
 <ol start="4" style="list-style-type: decimal">
 <li>No vetor resultante no item 3, qual a posição do menor e do maior valor?</li>
 </ol>
-<pre class="r"><code>&gt; 
-&gt; # posição do menor
-&gt; order(e13)[1]
-## [1] 20
-&gt; 
-&gt; # posição do maior
-&gt; order(e13)[length(e13)]
-## [1] 12001</code></pre>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="op">&gt;</span><span class="st"> </span></span>
+<span id="cb16-2"><a href="#cb16-2"></a><span class="er">&gt;</span><span class="st"> </span><span class="co"># posição do menor</span></span>
+<span id="cb16-3"><a href="#cb16-3"></a><span class="er">&gt;</span><span class="st"> </span><span class="kw">order</span>(e13)[<span class="dv">1</span>]</span>
+<span id="cb16-4"><a href="#cb16-4"></a><span class="co">## [1] 20</span></span>
+<span id="cb16-5"><a href="#cb16-5"></a><span class="op">&gt;</span><span class="st"> </span></span>
+<span id="cb16-6"><a href="#cb16-6"></a><span class="er">&gt;</span><span class="st"> </span><span class="co"># posição do maior</span></span>
+<span id="cb16-7"><a href="#cb16-7"></a><span class="er">&gt;</span><span class="st"> </span><span class="kw">order</span>(e13)[<span class="kw">length</span>(e13)]</span>
+<span id="cb16-8"><a href="#cb16-8"></a><span class="co">## [1] 12001</span></span></code></pre></div>
 <p><a href="#17">Retorna</a></p>
 </div>
 <div id="solução_2.05" class="section level2">
@@ -507,15 +579,15 @@ $(document).ready(function () {
 <ol start="5" style="list-style-type: decimal">
 <li>Ordene o vetor do item 3 e separe em dois objetos os 10 menores e os 10 maiores valores.</li>
 </ol>
-<pre class="r"><code>&gt; N = length(e3)
-&gt; e3_maiores = sort(e3)[(N - 9):N]
-&gt; e3_maiores
-##  [1] 1579 1737 1895 2053 2211 2369 2526
-##  [8] 2684 2842 3000
-&gt; e3_menores = sort(e3)[1:10]
-&gt; e3_menores
-##  [1]    1  159  317  475  632  790  948
-##  [8] 1106 1264 1422</code></pre>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="op">&gt;</span><span class="st"> </span>N =<span class="st"> </span><span class="kw">length</span>(e3)</span>
+<span id="cb17-2"><a href="#cb17-2"></a><span class="op">&gt;</span><span class="st"> </span>e3_maiores =<span class="st"> </span><span class="kw">sort</span>(e3)[(N <span class="op">-</span><span class="st"> </span><span class="dv">9</span>)<span class="op">:</span>N]</span>
+<span id="cb17-3"><a href="#cb17-3"></a><span class="op">&gt;</span><span class="st"> </span>e3_maiores</span>
+<span id="cb17-4"><a href="#cb17-4"></a><span class="co">##  [1] 1579 1737 1895 2053 2211 2369 2526</span></span>
+<span id="cb17-5"><a href="#cb17-5"></a><span class="co">##  [8] 2684 2842 3000</span></span>
+<span id="cb17-6"><a href="#cb17-6"></a><span class="op">&gt;</span><span class="st"> </span>e3_menores =<span class="st"> </span><span class="kw">sort</span>(e3)[<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>]</span>
+<span id="cb17-7"><a href="#cb17-7"></a><span class="op">&gt;</span><span class="st"> </span>e3_menores</span>
+<span id="cb17-8"><a href="#cb17-8"></a><span class="co">##  [1]    1  159  317  475  632  790  948</span></span>
+<span id="cb17-9"><a href="#cb17-9"></a><span class="co">##  [8] 1106 1264 1422</span></span></code></pre></div>
 <p><a href="#17">Retorna</a></p>
 </div>
 <div id="solução_2.06" class="section level2">
@@ -523,7 +595,7 @@ $(document).ready(function () {
 <ol start="6" style="list-style-type: decimal">
 <li>Crie um vetor com uma sequência de inteiros de 1 a 100.</li>
 </ol>
-<pre class="r"><code>&gt; e6 = 1:100</code></pre>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="op">&gt;</span><span class="st"> </span>e6 =<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">100</span></span></code></pre></div>
 <p><a href="#17">Retorna</a></p>
 </div>
 <div id="solução_2.07" class="section level2">
@@ -531,21 +603,21 @@ $(document).ready(function () {
 <ol start="7" style="list-style-type: decimal">
 <li>Rearranje o vetor do item 6 de forma que o novo vetor inicie com os valores das posições 25 e 50 e termine como os valores da posições 60 a 72.</li>
 </ol>
-<pre class="r"><code>&gt; e7 = e6[c(25, 50, (1:length(e6))[-c(25, 50, 60:72)], 60:72)]
-&gt; e7
-##   [1]  25  50   1   2   3   4   5   6
-##   [9]   7   8   9  10  11  12  13  14
-##  [17]  15  16  17  18  19  20  21  22
-##  [25]  23  24  26  27  28  29  30  31
-##  [33]  32  33  34  35  36  37  38  39
-##  [41]  40  41  42  43  44  45  46  47
-##  [49]  48  49  51  52  53  54  55  56
-##  [57]  57  58  59  73  74  75  76  77
-##  [65]  78  79  80  81  82  83  84  85
-##  [73]  86  87  88  89  90  91  92  93
-##  [81]  94  95  96  97  98  99 100  60
-##  [89]  61  62  63  64  65  66  67  68
-##  [97]  69  70  71  72</code></pre>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="op">&gt;</span><span class="st"> </span>e7 =<span class="st"> </span>e6[<span class="kw">c</span>(<span class="dv">25</span>, <span class="dv">50</span>, (<span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(e6))[<span class="op">-</span><span class="kw">c</span>(<span class="dv">25</span>, <span class="dv">50</span>, <span class="dv">60</span><span class="op">:</span><span class="dv">72</span>)], <span class="dv">60</span><span class="op">:</span><span class="dv">72</span>)]</span>
+<span id="cb19-2"><a href="#cb19-2"></a><span class="op">&gt;</span><span class="st"> </span>e7</span>
+<span id="cb19-3"><a href="#cb19-3"></a><span class="co">##   [1]  25  50   1   2   3   4   5   6</span></span>
+<span id="cb19-4"><a href="#cb19-4"></a><span class="co">##   [9]   7   8   9  10  11  12  13  14</span></span>
+<span id="cb19-5"><a href="#cb19-5"></a><span class="co">##  [17]  15  16  17  18  19  20  21  22</span></span>
+<span id="cb19-6"><a href="#cb19-6"></a><span class="co">##  [25]  23  24  26  27  28  29  30  31</span></span>
+<span id="cb19-7"><a href="#cb19-7"></a><span class="co">##  [33]  32  33  34  35  36  37  38  39</span></span>
+<span id="cb19-8"><a href="#cb19-8"></a><span class="co">##  [41]  40  41  42  43  44  45  46  47</span></span>
+<span id="cb19-9"><a href="#cb19-9"></a><span class="co">##  [49]  48  49  51  52  53  54  55  56</span></span>
+<span id="cb19-10"><a href="#cb19-10"></a><span class="co">##  [57]  57  58  59  73  74  75  76  77</span></span>
+<span id="cb19-11"><a href="#cb19-11"></a><span class="co">##  [65]  78  79  80  81  82  83  84  85</span></span>
+<span id="cb19-12"><a href="#cb19-12"></a><span class="co">##  [73]  86  87  88  89  90  91  92  93</span></span>
+<span id="cb19-13"><a href="#cb19-13"></a><span class="co">##  [81]  94  95  96  97  98  99 100  60</span></span>
+<span id="cb19-14"><a href="#cb19-14"></a><span class="co">##  [89]  61  62  63  64  65  66  67  68</span></span>
+<span id="cb19-15"><a href="#cb19-15"></a><span class="co">##  [97]  69  70  71  72</span></span></code></pre></div>
 <p><a href="#17">Retorna</a></p>
 </div>
 <div id="solução_2.08" class="section level2">
@@ -553,20 +625,20 @@ $(document).ready(function () {
 <ol start="8" style="list-style-type: decimal">
 <li>Ordene o vetor do item 7 de forma decrescente.</li>
 </ol>
-<pre class="r"><code>&gt; sort(e7, decreasing = TRUE)
-##   [1] 100  99  98  97  96  95  94  93
-##   [9]  92  91  90  89  88  87  86  85
-##  [17]  84  83  82  81  80  79  78  77
-##  [25]  76  75  74  73  72  71  70  69
-##  [33]  68  67  66  65  64  63  62  61
-##  [41]  60  59  58  57  56  55  54  53
-##  [49]  52  51  50  49  48  47  46  45
-##  [57]  44  43  42  41  40  39  38  37
-##  [65]  36  35  34  33  32  31  30  29
-##  [73]  28  27  26  25  24  23  22  21
-##  [81]  20  19  18  17  16  15  14  13
-##  [89]  12  11  10   9   8   7   6   5
-##  [97]   4   3   2   1</code></pre>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="op">&gt;</span><span class="st"> </span><span class="kw">sort</span>(e7, <span class="dt">decreasing =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb20-2"><a href="#cb20-2"></a><span class="co">##   [1] 100  99  98  97  96  95  94  93</span></span>
+<span id="cb20-3"><a href="#cb20-3"></a><span class="co">##   [9]  92  91  90  89  88  87  86  85</span></span>
+<span id="cb20-4"><a href="#cb20-4"></a><span class="co">##  [17]  84  83  82  81  80  79  78  77</span></span>
+<span id="cb20-5"><a href="#cb20-5"></a><span class="co">##  [25]  76  75  74  73  72  71  70  69</span></span>
+<span id="cb20-6"><a href="#cb20-6"></a><span class="co">##  [33]  68  67  66  65  64  63  62  61</span></span>
+<span id="cb20-7"><a href="#cb20-7"></a><span class="co">##  [41]  60  59  58  57  56  55  54  53</span></span>
+<span id="cb20-8"><a href="#cb20-8"></a><span class="co">##  [49]  52  51  50  49  48  47  46  45</span></span>
+<span id="cb20-9"><a href="#cb20-9"></a><span class="co">##  [57]  44  43  42  41  40  39  38  37</span></span>
+<span id="cb20-10"><a href="#cb20-10"></a><span class="co">##  [65]  36  35  34  33  32  31  30  29</span></span>
+<span id="cb20-11"><a href="#cb20-11"></a><span class="co">##  [73]  28  27  26  25  24  23  22  21</span></span>
+<span id="cb20-12"><a href="#cb20-12"></a><span class="co">##  [81]  20  19  18  17  16  15  14  13</span></span>
+<span id="cb20-13"><a href="#cb20-13"></a><span class="co">##  [89]  12  11  10   9   8   7   6   5</span></span>
+<span id="cb20-14"><a href="#cb20-14"></a><span class="co">##  [97]   4   3   2   1</span></span></code></pre></div>
 <p><a href="#17">Retorna</a></p>
 </div>
 <div id="solução_2.09" class="section level2">
@@ -574,26 +646,26 @@ $(document).ready(function () {
 <ol start="9" style="list-style-type: decimal">
 <li>Crie um vetor de tamanho 200, onde os 80 primeiros tem valor 20 e os demais valor 37.</li>
 </ol>
-<pre class="r"><code>&gt; rep(c(20,37),c(80,120))
-##   [1] 20 20 20 20 20 20 20 20 20 20 20
-##  [12] 20 20 20 20 20 20 20 20 20 20 20
-##  [23] 20 20 20 20 20 20 20 20 20 20 20
-##  [34] 20 20 20 20 20 20 20 20 20 20 20
-##  [45] 20 20 20 20 20 20 20 20 20 20 20
-##  [56] 20 20 20 20 20 20 20 20 20 20 20
-##  [67] 20 20 20 20 20 20 20 20 20 20 20
-##  [78] 20 20 20 37 37 37 37 37 37 37 37
-##  [89] 37 37 37 37 37 37 37 37 37 37 37
-## [100] 37 37 37 37 37 37 37 37 37 37 37
-## [111] 37 37 37 37 37 37 37 37 37 37 37
-## [122] 37 37 37 37 37 37 37 37 37 37 37
-## [133] 37 37 37 37 37 37 37 37 37 37 37
-## [144] 37 37 37 37 37 37 37 37 37 37 37
-## [155] 37 37 37 37 37 37 37 37 37 37 37
-## [166] 37 37 37 37 37 37 37 37 37 37 37
-## [177] 37 37 37 37 37 37 37 37 37 37 37
-## [188] 37 37 37 37 37 37 37 37 37 37 37
-## [199] 37 37</code></pre>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="op">&gt;</span><span class="st"> </span><span class="kw">rep</span>(<span class="kw">c</span>(<span class="dv">20</span>,<span class="dv">37</span>),<span class="kw">c</span>(<span class="dv">80</span>,<span class="dv">120</span>))</span>
+<span id="cb21-2"><a href="#cb21-2"></a><span class="co">##   [1] 20 20 20 20 20 20 20 20 20 20 20</span></span>
+<span id="cb21-3"><a href="#cb21-3"></a><span class="co">##  [12] 20 20 20 20 20 20 20 20 20 20 20</span></span>
+<span id="cb21-4"><a href="#cb21-4"></a><span class="co">##  [23] 20 20 20 20 20 20 20 20 20 20 20</span></span>
+<span id="cb21-5"><a href="#cb21-5"></a><span class="co">##  [34] 20 20 20 20 20 20 20 20 20 20 20</span></span>
+<span id="cb21-6"><a href="#cb21-6"></a><span class="co">##  [45] 20 20 20 20 20 20 20 20 20 20 20</span></span>
+<span id="cb21-7"><a href="#cb21-7"></a><span class="co">##  [56] 20 20 20 20 20 20 20 20 20 20 20</span></span>
+<span id="cb21-8"><a href="#cb21-8"></a><span class="co">##  [67] 20 20 20 20 20 20 20 20 20 20 20</span></span>
+<span id="cb21-9"><a href="#cb21-9"></a><span class="co">##  [78] 20 20 20 37 37 37 37 37 37 37 37</span></span>
+<span id="cb21-10"><a href="#cb21-10"></a><span class="co">##  [89] 37 37 37 37 37 37 37 37 37 37 37</span></span>
+<span id="cb21-11"><a href="#cb21-11"></a><span class="co">## [100] 37 37 37 37 37 37 37 37 37 37 37</span></span>
+<span id="cb21-12"><a href="#cb21-12"></a><span class="co">## [111] 37 37 37 37 37 37 37 37 37 37 37</span></span>
+<span id="cb21-13"><a href="#cb21-13"></a><span class="co">## [122] 37 37 37 37 37 37 37 37 37 37 37</span></span>
+<span id="cb21-14"><a href="#cb21-14"></a><span class="co">## [133] 37 37 37 37 37 37 37 37 37 37 37</span></span>
+<span id="cb21-15"><a href="#cb21-15"></a><span class="co">## [144] 37 37 37 37 37 37 37 37 37 37 37</span></span>
+<span id="cb21-16"><a href="#cb21-16"></a><span class="co">## [155] 37 37 37 37 37 37 37 37 37 37 37</span></span>
+<span id="cb21-17"><a href="#cb21-17"></a><span class="co">## [166] 37 37 37 37 37 37 37 37 37 37 37</span></span>
+<span id="cb21-18"><a href="#cb21-18"></a><span class="co">## [177] 37 37 37 37 37 37 37 37 37 37 37</span></span>
+<span id="cb21-19"><a href="#cb21-19"></a><span class="co">## [188] 37 37 37 37 37 37 37 37 37 37 37</span></span>
+<span id="cb21-20"><a href="#cb21-20"></a><span class="co">## [199] 37 37</span></span></code></pre></div>
 <p><a href="#17">Retorna</a></p>
 </div>
 <div id="solução_2.10" class="section level2">
@@ -601,10 +673,10 @@ $(document).ready(function () {
 <ol start="10" style="list-style-type: decimal">
 <li>Crie um vetor tamanho 240 com valores na sequencia 12,4,13,33,121.</li>
 </ol>
-<pre class="r"><code>&gt; x=rep(c(12,4,13,33,121), length=240)
-&gt; length(x)
-## [1] 240
-&gt; # observe que rep(c(12,4,13,33,121),240) da um resultado diferente</code></pre>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="op">&gt;</span><span class="st"> </span>x=<span class="kw">rep</span>(<span class="kw">c</span>(<span class="dv">12</span>,<span class="dv">4</span>,<span class="dv">13</span>,<span class="dv">33</span>,<span class="dv">121</span>), <span class="dt">length=</span><span class="dv">240</span>)</span>
+<span id="cb22-2"><a href="#cb22-2"></a><span class="op">&gt;</span><span class="st"> </span><span class="kw">length</span>(x)</span>
+<span id="cb22-3"><a href="#cb22-3"></a><span class="co">## [1] 240</span></span>
+<span id="cb22-4"><a href="#cb22-4"></a><span class="op">&gt;</span><span class="st"> </span><span class="co"># observe que rep(c(12,4,13,33,121),240) da um resultado diferente</span></span></code></pre></div>
 <p><a href="#17">Retorna</a></p>
 </div>
 </div>
