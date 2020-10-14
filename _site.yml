@@ -4,13 +4,13 @@ navbar:
   left:
     - text: "R e RStudio"
       href: o_r_software.html
-    - text: "R Estruturas"
+    - text: "R - Estruturas"
       href: r_etruturas.html
-    - text: "R Leitura de Dados"
+    - text: "R - Leitura de Dados"
       href: read_data.html
-    - text: "R Estatística Básica"
+    - text: "R - Estatística Básica"
       href: estatistica.html
-    - text: "R Textos e Datas"
+    - text: "R - Textos e Datas"
       href: texto_e_data.html
 output_dir: "."
 output:
