@@ -10,7 +10,7 @@ output:
 # This is an R setup chunk, containing default options applied to all other chunks
 library(knitr)
 # This sets the chunk default options
-opts_chunk$set(echo=TRUE, cache=FALSE, collapse=TRUE, error=FALSE, prompt=TRUE,fig.align = "center")
+opts_chunk$set(echo=TRUE,  collapse=TRUE, error=FALSE, prompt=TRUE,fig.align = "center")
 # This sets the chunk display theme
 thm <- knit_theme$get("edit-kwrite")
 knit_theme$set(thm)
@@ -30,8 +30,8 @@ options(width=40)
 ```{r child = 'base/r_basico.Rmd'}
 ```
 
-```{r child = 'base/vectors(1).Rmd'}
+```{r child = 'base/vectors.Rmd'}
 ```
 
-```{r child = 'base/outras_estruturas(1).Rmd'}
+```{r child = 'base/outras_estruturas.Rmd'}
 ```

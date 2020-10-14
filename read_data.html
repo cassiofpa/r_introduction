@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Leitura de Dados</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/yeti.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; } /* Alert */
+code span.an { color: #008000; } /* Annotation */
+code span.at { } /* Attribute */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #0000ff; } /* ControlFlow */
+code span.ch { color: #008080; } /* Char */
+code span.cn { } /* Constant */
+code span.co { color: #008000; } /* Comment */
+code span.cv { color: #008000; } /* CommentVar */
+code span.do { color: #008000; } /* Documentation */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.im { } /* Import */
+code span.in { color: #008000; } /* Information */
+code span.kw { color: #0000ff; } /* Keyword */
+code span.op { } /* Operator */
+code span.ot { color: #ff4000; } /* Other */
+code span.pp { color: #ff4000; } /* Preprocessor */
+code span.sc { color: #008080; } /* SpecialChar */
+code span.ss { color: #008080; } /* SpecialString */
+code span.st { color: #008080; } /* String */
+code span.va { } /* Variable */
+code span.vs { color: #008080; } /* VerbatimString */
+code span.wa { color: #008000; font-weight: bold; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 45px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 50px;
+  margin-top: -50px;
+}
+.section h2 {
+  padding-top: 50px;
+  margin-top: -50px;
+}
+.section h3 {
+  padding-top: 50px;
+  margin-top: -50px;
+}
+.section h4 {
+  padding-top: 50px;
+  margin-top: -50px;
+}
+.section h5 {
+  padding-top: 50px;
+  margin-top: -50px;
+}
+.section h6 {
+  padding-top: 50px;
+  margin-top: -50px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">HOME</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="o_r_software.html">R e RStudio</a>
+</li>
+<li>
+  <a href="r_etruturas.html">R Estruturas</a>
+</li>
+<li>
+  <a href="read_data.html">R Leitura de Dados</a>
+</li>
+<li>
+  <a href="estatistica.html">R Estatística Básica</a>
+</li>
+<li>
+  <a href="texto_e_data.html">R Textos e Datas</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Leitura de Dados</h1>
+
+</div>
+
+
+<div id="r---acessando-dados" class="section level2">
+<h2>R - Acessando Dados</h2>
+<ul>
+<li>Leitura de Dados</li>
+</ul>
+</div>
+<div id="leitura-e-gravação-de-dados" class="section level1">
+<h1>Leitura e Gravação de Dados</h1>
+<div id="importação-de-dados" class="section level2">
+<h2>Importação de dados</h2>
+<ul>
+<li>O R permite importar e exportar dados em varios formatos (“xls”,“xlsx”,“csv”,“txt”, “dbf”)</li>
+<li>também arquivos de outros softwares: SAS, SPSS, STATA</li>
+</ul>
+</div>
+<div id="leitura-de-tabelas" class="section level2">
+<h2>leitura de tabelas</h2>
+<ul>
+<li>separador de colunas: <strong>vírgula(,)</strong>, <strong>ponto e vírgula(;)“<strong>, </strong>espaço(” ")</strong>, …</li>
+<li>separador decimal: <strong>“vírgula(,)”</strong> ou <strong>ponto(.)</strong></li>
+<li>valores não observados: <strong>“NA”</strong></li>
+<li>geralmente com os nomes das colunas na primeira linha (<em>header</em>)</li>
+</ul>
+</div>
+<div id="read.table" class="section level2">
+<h2><em>read.table()</em></h2>
+<p>read.table(file, header = FALSE, sep = "“, quote =”"’“, dec =”.“, numerals = c(”allow.loss“,”warn.loss“,”no.loss“), row.names, col.names, as.is = !stringsAsFactors, na.strings =”NA", …</p>
+</div>
+<div id="arquivos-csv" class="section level2">
+<h2>Arquivos csv</h2>
+<ul>
+<li>padrão nacional: <em>sep=“;”</em> e <em>dec=“,”</em> - <em>read.csv2()</em></li>
+<li>outros países: <em>sep=“,”</em> e <em>dec=“.”</em> - <em>read.csv()</em></li>
+</ul>
+</div>
+<div id="exportação-de-dados---csv" class="section level2">
+<h2>Exportação de dados - csv</h2>
+<ul>
+<li><em>write.csv()</em> ou <em>write.csv2()</em></li>
+</ul>
+</div>
+<div id="exercícios" class="section level2">
+<h2>Exercícios</h2>
+<p><strong>Download do arquivo</strong> [<a href="https://tinyurl.com/Int-R01-zip" class="uri">https://tinyurl.com/Int-R01-zip</a>]</p>
+<ol style="list-style-type: decimal">
+<li>sejam os vetores: x=rnorm(10) e y=rnorm(10,30), crie um objeto com x e y em duas colunas e nomeie como M. Exporte este objeto com write.csv(M,“M.csv”)e write.csv2 (M,“M2.csv”).</li>
+<li>Carregue o arquivo renda_BR_01</li>
+<li>Carregue o arquivo renda_BR_02</li>
+<li>Carregue o arquivo renda_BR_03</li>
+</ol>
+</div>
+<div id="resolução-01" class="section level2">
+<h2>Resolução 01</h2>
+<p>1- Sejam os vetores: x=rnorm(10) e y=rnorm(10,30), crie um objeto com x e y em duas colunas e nomeie como M. Exporte este objeto com write.csv(M,“M.csv”)e write.csv2 (M,“M2.csv”).</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="op">&gt;</span><span class="st"> </span>x=<span class="kw">rnorm</span>(<span class="dv">10</span>)</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="op">&gt;</span><span class="st"> </span>y=<span class="kw">rnorm</span>(<span class="dv">10</span>,<span class="dv">30</span>)</span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="op">&gt;</span><span class="st"> </span>M=<span class="kw">data.frame</span>(x,y)</span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="op">&gt;</span><span class="st"> </span><span class="kw">write.csv</span>(M,<span class="st">&quot;M.csv&quot;</span>)</span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="op">&gt;</span><span class="st"> </span><span class="kw">write.csv2</span>(M,<span class="st">&quot;M2.csv&quot;</span>)</span></code></pre></div>
+</div>
+<div id="resolução-02" class="section level2">
+<h2>Resolução 02</h2>
+<p>2- Carregue o arquivo renda_BR_01</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="op">&gt;</span><span class="st"> </span>x=<span class="kw">read.csv</span>(<span class="st">&quot;../data/renda_BR_01.csv&quot;</span>)</span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="op">&gt;</span><span class="st"> </span><span class="kw">head</span>(x)</span></code></pre></div>
+</div>
+<div id="resolução-03" class="section level2">
+<h2>Resolução 03</h2>
+<p>3- Carregue o arquivo renda_BR_02</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="op">&gt;</span><span class="st"> </span>x=<span class="kw">read.csv2</span>(<span class="st">&quot;../data/renda_BR_02.csv&quot;</span>,<span class="dt">header=</span>T)</span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="op">&gt;</span><span class="st"> </span><span class="kw">head</span>(x)</span></code></pre></div>
+</div>
+<div id="resolução-04" class="section level2">
+<h2>Resolução 04</h2>
+<p>4- Carregue o arquivo renda_BR_03</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="op">&gt;</span><span class="st"> </span>x=<span class="kw">read.table</span>(<span class="st">&quot;../data/renda_BR_03.txt&quot;</span>, <span class="dt">sep=</span><span class="st">&quot;&quot;</span>, <span class="dt">header=</span>T)</span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="op">&gt;</span><span class="st"> </span><span class="kw">head</span>(x)</span></code></pre></div>
+</div>
+</div>
+<div id="leitura-de-microdados-ibge" class="section level1">
+<h1>Leitura de Microdados IBGE</h1>
+<ul>
+<li>São Arquivos com formato especial <strong>largura fixa</strong></li>
+<li>A largura fixa é como se representa a divisão das variáveis em um registro</li>
+</ul>
+<p><img src="figures/formato_fixo.png" width="500px" style="display: block; margin: auto;" /></p>
+<div id="vantagens" class="section level2">
+<h2>Vantagens</h2>
+<ul>
+<li>muito compacta - menor tamanho do arquivo para armazenamento</li>
+<li>rápido de acessar com um software adequado</li>
+</ul>
+</div>
+<div id="desvantagem" class="section level2">
+<h2>Desvantagem</h2>
+<ul>
+<li>Necessita de um arquivo auxiliar (dicionário) com as <em>larguras</em> e identificação das variáveis</li>
+<li>É necessários construir o código descrevendo as posições</li>
+</ul>
+</div>
+<div id="lendo-arquivo-morador---pof" class="section level2">
+<h2>Lendo arquivo Morador - POF</h2>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="op">&gt;</span><span class="st"> </span>MORADOR &lt;-<span class="st"> </span></span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="op">+</span><span class="st">   </span><span class="kw">read.fwf</span>(<span class="st">&quot;../pof/MORADOR.txt&quot;</span> </span>
+<span id="cb5-3"><a href="#cb5-3"></a><span class="op">+</span><span class="st">     </span>, <span class="dt">widths =</span> <span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">1</span>,<span class="dv">9</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">14</span>,<span class="dv">14</span>,<span class="dv">10</span>)</span>
+<span id="cb5-4"><a href="#cb5-4"></a><span class="op">+</span><span class="st">     </span>, <span class="dt">na.strings=</span><span class="kw">c</span>(<span class="st">&quot; &quot;</span>)</span>
+<span id="cb5-5"><a href="#cb5-5"></a><span class="op">+</span><span class="st">     </span>, <span class="dt">col.names =</span> <span class="kw">c</span>(<span class="st">&quot;UF&quot;</span></span>
+<span id="cb5-6"><a href="#cb5-6"></a><span class="op">+</span><span class="st">                </span>, <span class="st">&quot;ESTRATO_POF&quot;</span>, <span class="st">&quot;TIPO_SITUACAO_REG&quot;</span></span>
+<span id="cb5-7"><a href="#cb5-7"></a><span class="op">+</span><span class="st">                </span>, <span class="st">&quot;COD_UPA&quot;</span>, <span class="st">&quot;NUM_DOM&quot;</span>, <span class="st">&quot;NUM_UC&quot;</span></span>
+<span id="cb5-8"><a href="#cb5-8"></a><span class="op">+</span><span class="st">                </span>, <span class="st">&quot;COD_INFORMANTE&quot;</span>, <span class="st">&quot;V0306&quot;</span>, <span class="st">&quot;V0401&quot;</span></span>
+<span id="cb5-9"><a href="#cb5-9"></a><span class="op">+</span><span class="st">                </span>, <span class="st">&quot;V04021&quot;</span>, <span class="st">&quot;V04022&quot;</span>, <span class="st">&quot;V04023&quot;</span>, <span class="st">&quot;V0403&quot;</span></span>
+<span id="cb5-10"><a href="#cb5-10"></a><span class="op">+</span><span class="st">                </span>, <span class="st">&quot;V0404&quot;</span>, <span class="st">&quot;V0405&quot;</span>, <span class="st">&quot;PESO&quot;</span>, <span class="st">&quot;PESO_FINAL&quot;</span></span>
+<span id="cb5-11"><a href="#cb5-11"></a><span class="op">+</span><span class="st">                </span>, <span class="st">&quot;RENDA_TOTAL&quot;</span>)</span>
+<span id="cb5-12"><a href="#cb5-12"></a><span class="op">+</span><span class="st">            </span>, <span class="dt">dec=</span><span class="st">&quot;.&quot;</span></span>
+<span id="cb5-13"><a href="#cb5-13"></a><span class="op">+</span><span class="st">            </span>)   </span>
+<span id="cb5-14"><a href="#cb5-14"></a><span class="op">&gt;</span><span class="st"> </span></span>
+<span id="cb5-15"><a href="#cb5-15"></a><span class="er">&gt;</span><span class="st"> </span></span></code></pre></div>
+</div>
+<div id="read.fwf" class="section level2">
+<h2>read.fwf</h2>
+<ul>
+<li>esta função faz o trabalho, mas tem baixa performance</li>
+<li>no arquivo Morador com 13.1MB (178431,18)</li>
+<li>no r: object.size(MORADOR) - ~14MB</li>
+<li>tempo de leitura: ~72s (com arquivo em HD)</li>
+</ul>
+</div>
+<div id="opção-mais-eficiente-read_fwf" class="section level2">
+<h2>Opção mais eficiente read_fwf</h2>
+<ul>
+<li>é uma função do package <strong>readr</strong></li>
+<li>observe que o comando é diferente (usa "_" como separador)</li>
+<li>os parâmetros também são diferentes</li>
+<li>é 300 vezes mais rápido (na leitura do exemplo MORADOR)</li>
+</ul>
+</div>
+<div id="lendo-arquivo-morador---pof-read_fwf" class="section level2">
+<h2>Lendo arquivo Morador - POF (read_fwf)</h2>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="op">&gt;</span><span class="st"> </span>w=<span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">1</span>,<span class="dv">9</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">14</span>,<span class="dv">14</span>,<span class="dv">10</span>)</span>
+<span id="cb6-2"><a href="#cb6-2"></a><span class="op">&gt;</span><span class="st"> </span>end1=<span class="kw">cumsum</span>(x)</span>
+<span id="cb6-3"><a href="#cb6-3"></a><span class="op">&gt;</span><span class="st"> </span>start1=end1<span class="op">-</span>(x<span class="dv">-1</span>)</span>
+<span id="cb6-4"><a href="#cb6-4"></a><span class="op">&gt;</span><span class="st"> </span>vars =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;UF&quot;</span>, <span class="st">&quot;ESTRATO_POF&quot;</span>, <span class="st">&quot;TIPO_SITUACAO_REG&quot;</span></span>
+<span id="cb6-5"><a href="#cb6-5"></a><span class="op">+</span><span class="st">               </span>, <span class="st">&quot;COD_UPA&quot;</span>, <span class="st">&quot;NUM_DOM&quot;</span>, <span class="st">&quot;NUM_UC&quot;</span></span>
+<span id="cb6-6"><a href="#cb6-6"></a><span class="op">+</span><span class="st">               </span>, <span class="st">&quot;COD_INFORMANTE&quot;</span>, <span class="st">&quot;V0306&quot;</span>, <span class="st">&quot;V0401&quot;</span></span>
+<span id="cb6-7"><a href="#cb6-7"></a><span class="op">+</span><span class="st">               </span>, <span class="st">&quot;V04021&quot;</span>, <span class="st">&quot;V04022&quot;</span>, <span class="st">&quot;V04023&quot;</span>, <span class="st">&quot;V0403&quot;</span></span>
+<span id="cb6-8"><a href="#cb6-8"></a><span class="op">+</span><span class="st">               </span>, <span class="st">&quot;V0404&quot;</span>, <span class="st">&quot;V0405&quot;</span>, <span class="st">&quot;PESO&quot;</span>, <span class="st">&quot;PESO_FINAL&quot;</span></span>
+<span id="cb6-9"><a href="#cb6-9"></a><span class="op">+</span><span class="st">               </span>, <span class="st">&quot;RENDA_TOTAL&quot;</span>)</span>
+<span id="cb6-10"><a href="#cb6-10"></a><span class="op">&gt;</span><span class="st"> </span></span>
+<span id="cb6-11"><a href="#cb6-11"></a><span class="er">&gt;</span><span class="st"> </span>MORADOR =<span class="st"> </span>readr<span class="op">::</span><span class="kw">read_fwf</span>(<span class="st">&quot;../pof/MORADOR.txt&quot;</span></span>
+<span id="cb6-12"><a href="#cb6-12"></a><span class="op">+</span><span class="st">           </span>,<span class="dt">col_positions =</span> readr<span class="op">::</span><span class="kw">fwf_widths</span>(w, vars) )  </span>
+<span id="cb6-13"><a href="#cb6-13"></a><span class="op">&gt;</span><span class="st"> </span></span></code></pre></div>
+</div>
+<div id="leitura-pnad-contínua" class="section level2">
+<h2>Leitura PNAD-Contínua</h2>
+<ul>
+<li>há um package que facilita a leitura: PNADcIBGE</li>
+<li>package feito pelo IBGE</li>
+<li>Está disponivel no site do R (CRAN)</li>
+<li>use: <strong>install.packages(“PNADcIBGE”)</strong></li>
+</ul>
+</div>
+<div id="pnadcibge---get_pnadc" class="section level2">
+<h2>PNADcIBGE - get_pnadc</h2>
+<ul>
+<li>get_pnadc: faz o download e leitura de um arquivo PNAD_c</li>
+</ul>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="op">&gt;</span><span class="st"> </span></span>
+<span id="cb7-2"><a href="#cb7-2"></a><span class="er">&gt;</span><span class="st"> </span><span class="kw">get_pnadc</span>(year, <span class="dt">quarter =</span> <span class="ot">NULL</span>, <span class="dt">interview =</span> <span class="ot">NULL</span>, </span>
+<span id="cb7-3"><a href="#cb7-3"></a><span class="op">+</span><span class="st">   </span><span class="dt">vars =</span> <span class="ot">NULL</span>,  <span class="dt">labels =</span> T, <span class="dt">design =</span> T,</span>
+<span id="cb7-4"><a href="#cb7-4"></a><span class="op">+</span><span class="st">   </span><span class="dt">savedir =</span> <span class="kw">tempdir</span>())</span></code></pre></div>
+</div>
+<div id="pnadcibge---read_pnadc" class="section level2">
+<h2>PNADcIBGE - read_pnadc</h2>
+<ul>
+<li>read_pnadc: faz leitura de um arquivo PNAD_c</li>
+</ul>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="op">&gt;</span><span class="st"> </span></span>
+<span id="cb8-2"><a href="#cb8-2"></a><span class="er">&gt;</span><span class="st"> </span><span class="kw">read_pnadc</span>(microdata, input_txt, <span class="dt">vars =</span> <span class="ot">NULL</span>)</span></code></pre></div>
+<ul>
+<li>microdata - arquivo txt da PNADc</li>
+<li>input_txt - arquivo txt com o código de leitura SAS</li>
+<li>vars - variáveis desejadas</li>
+</ul>
+</div>
+<div id="lendo-dados-pnadc---comandos" class="section level2">
+<h2>Lendo dados PNADc - comandos</h2>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="op">&gt;</span><span class="st"> </span>input_path &lt;-<span class="st"> </span><span class="kw">pnadc_example</span>(<span class="dt">path=</span><span class="st">&quot;input_example.txt&quot;</span>)</span>
+<span id="cb9-2"><a href="#cb9-2"></a><span class="op">&gt;</span><span class="st"> </span>data_path &lt;-<span class="st"> </span><span class="kw">pnadc_example</span>(<span class="dt">path=</span><span class="st">&quot;exampledata.txt&quot;</span>)</span>
+<span id="cb9-3"><a href="#cb9-3"></a><span class="op">&gt;</span><span class="st"> </span>pnadc.df &lt;-<span class="st"> </span><span class="kw">read_pnadc</span>(<span class="dt">microdata=</span>data_path, </span>
+<span id="cb9-4"><a href="#cb9-4"></a><span class="op">+</span><span class="st">                 </span><span class="dt">input_txt=</span>input_path, <span class="dt">vars=</span><span class="st">&quot;VD4002&quot;</span>)</span></code></pre></div>
+</div>
+<div id="input_example.txt" class="section level2">
+<h2>input_example.txt</h2>
+<p><img src="figures/input_txt.png" width="400px" style="display: block; margin: auto;" /></p>
+</div>
+<div id="exampledata.txt" class="section level2">
+<h2>exampledata.txt</h2>
+<p><img src="figures/exemplodata_txt.png" width="400px" style="display: block; margin: auto;" /></p>
+</div>
+<div id="lendo-dados-pnadc---comandos-1" class="section level2">
+<h2>Lendo dados PNADc - comandos</h2>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="op">&gt;</span><span class="st"> </span><span class="kw">library</span>(PNADcIBGE)</span>
+<span id="cb10-2"><a href="#cb10-2"></a><span class="op">&gt;</span><span class="st"> </span>input_path &lt;-<span class="st"> </span><span class="kw">pnadc_example</span>(<span class="dt">path=</span><span class="st">&quot;input_example.txt&quot;</span>)</span>
+<span id="cb10-3"><a href="#cb10-3"></a><span class="op">&gt;</span><span class="st"> </span>data_path &lt;-<span class="st"> </span><span class="kw">pnadc_example</span>(<span class="dt">path=</span><span class="st">&quot;exampledata.txt&quot;</span>)</span>
+<span id="cb10-4"><a href="#cb10-4"></a><span class="op">&gt;</span><span class="st"> </span>pnadc.df &lt;-<span class="st"> </span><span class="kw">read_pnadc</span>(<span class="dt">microdata=</span>data_path, </span>
+<span id="cb10-5"><a href="#cb10-5"></a><span class="op">+</span><span class="st">                   </span><span class="dt">input_txt=</span>input_path, <span class="dt">vars=</span><span class="st">&quot;VD4002&quot;</span>)</span>
+<span id="cb10-6"><a href="#cb10-6"></a><span class="op">&gt;</span><span class="st"> </span></span>
+<span id="cb10-7"><a href="#cb10-7"></a><span class="er">&gt;</span><span class="st"> </span><span class="kw">head</span>(pnadc.df,<span class="dv">3</span>)</span>
+<span id="cb10-8"><a href="#cb10-8"></a><span class="co">## # A tibble: 3 x 9</span></span>
+<span id="cb10-9"><a href="#cb10-9"></a><span class="co">##   Ano   Trimestre</span></span>
+<span id="cb10-10"><a href="#cb10-10"></a><span class="co">##   &lt;chr&gt; &lt;chr&gt;    </span></span>
+<span id="cb10-11"><a href="#cb10-11"></a><span class="co">## 1 2017  4        </span></span>
+<span id="cb10-12"><a href="#cb10-12"></a><span class="co">## 2 2017  4        </span></span>
+<span id="cb10-13"><a href="#cb10-13"></a><span class="co">## 3 2017  4        </span></span>
+<span id="cb10-14"><a href="#cb10-14"></a><span class="co">## # ... with 7 more</span></span>
+<span id="cb10-15"><a href="#cb10-15"></a><span class="co">## #   variables:</span></span>
+<span id="cb10-16"><a href="#cb10-16"></a><span class="co">## #   UF &lt;chr&gt;,</span></span>
+<span id="cb10-17"><a href="#cb10-17"></a><span class="co">## #   UPA &lt;chr&gt;,</span></span>
+<span id="cb10-18"><a href="#cb10-18"></a><span class="co">## #   Estrato &lt;chr&gt;,</span></span>
+<span id="cb10-19"><a href="#cb10-19"></a><span class="co">## #   V1027 &lt;dbl&gt;,</span></span>
+<span id="cb10-20"><a href="#cb10-20"></a><span class="co">## #   V1029 &lt;dbl&gt;,</span></span>
+<span id="cb10-21"><a href="#cb10-21"></a><span class="co">## #   posest &lt;chr&gt;,</span></span>
+<span id="cb10-22"><a href="#cb10-22"></a><span class="co">## #   VD4002 &lt;chr&gt;</span></span></code></pre></div>
+</div>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

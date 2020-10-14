@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Textos e Datas</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/yeti.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; } /* Alert */
+code span.an { color: #008000; } /* Annotation */
+code span.at { } /* Attribute */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #0000ff; } /* ControlFlow */
+code span.ch { color: #008080; } /* Char */
+code span.cn { } /* Constant */
+code span.co { color: #008000; } /* Comment */
+code span.cv { color: #008000; } /* CommentVar */
+code span.do { color: #008000; } /* Documentation */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.im { } /* Import */
+code span.in { color: #008000; } /* Information */
+code span.kw { color: #0000ff; } /* Keyword */
+code span.op { } /* Operator */
+code span.ot { color: #ff4000; } /* Other */
+code span.pp { color: #ff4000; } /* Preprocessor */
+code span.sc { color: #008080; } /* SpecialChar */
+code span.ss { color: #008080; } /* SpecialString */
+code span.st { color: #008080; } /* String */
+code span.va { } /* Variable */
+code span.vs { color: #008080; } /* VerbatimString */
+code span.wa { color: #008000; font-weight: bold; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 45px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 50px;
+  margin-top: -50px;
+}
+.section h2 {
+  padding-top: 50px;
+  margin-top: -50px;
+}
+.section h3 {
+  padding-top: 50px;
+  margin-top: -50px;
+}
+.section h4 {
+  padding-top: 50px;
+  margin-top: -50px;
+}
+.section h5 {
+  padding-top: 50px;
+  margin-top: -50px;
+}
+.section h6 {
+  padding-top: 50px;
+  margin-top: -50px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">HOME</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="o_r_software.html">R e RStudio</a>
+</li>
+<li>
+  <a href="r_etruturas.html">R Estruturas</a>
+</li>
+<li>
+  <a href="read_data.html">R Leitura de Dados</a>
+</li>
+<li>
+  <a href="estatistica.html">R Estatística Básica</a>
+</li>
+<li>
+  <a href="texto_e_data.html">R Textos e Datas</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Textos e Datas</h1>
+
+</div>
+
+
+<div id="r---textos-e-datas" class="section level2">
+<h2>R - Textos e Datas</h2>
+<ul>
+<li>Tratando Texto</li>
+<li>Tratando Datas</li>
+</ul>
+</div>
+<div id="trabalhando-com-texto" class="section level1">
+<h1>Trabalhando com Texto</h1>
+<div id="concatena-caracteres-paste" class="section level2">
+<h2>Concatena caracteres <em>paste()</em></h2>
+<p>Concatena caracteres:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="op">&gt;</span><span class="st"> </span>x=<span class="st"> &quot;Estatística&quot;</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="op">&gt;</span><span class="st"> </span><span class="kw">paste</span>(x,<span class="st">&quot;Computacional&quot;</span>)</span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="co">## [1] &quot;Estatística Computacional&quot;</span></span></code></pre></div>
+</div>
+<div id="paste---separação-de-palavras" class="section level2">
+<h2><em>paste()</em> - separação de palavras</h2>
+<p>Concatena caracteres:</p>
+<ol style="list-style-type: lower-alpha">
+<li>sem espaço entre palavras
+<ul>
+<li><em>paste(x,“Computacional”,sep="")</em> <span class="math display">\[EstatísticaComputacional\]</span></li>
+</ul></li>
+<li>outros separadores entre palavras
+<ul>
+<li><em>paste(x,“Computacional”,sep=“;”)</em> <span class="math display">\[Estatística;Computacional\]</span></li>
+</ul></li>
+</ol>
+</div>
+<div id="paste---escolhendo-o-separados" class="section level2">
+<h2><em>paste()</em> - escolhendo o separados</h2>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="op">&gt;</span><span class="st"> </span></span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="er">&gt;</span><span class="st"> </span><span class="kw">paste</span>(<span class="st">&quot;Prezado&quot;</span>, <span class="st">&quot;Sr.&quot;</span>, <span class="st">&quot;R&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;-&quot;</span>)</span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="co">## [1] &quot;Prezado-Sr.-R&quot;</span></span></code></pre></div>
+</div>
+<div id="paste---objetos-de-tamanho-diferentes" class="section level2">
+<h2><em>paste()</em> - objetos de tamanho diferentes</h2>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="op">&gt;</span><span class="st"> </span><span class="kw">paste</span>(<span class="st">&quot;V&quot;</span>, <span class="dv">101</span><span class="op">:</span><span class="dv">105</span>, <span class="dt">sep =</span> <span class="st">&quot;.&quot;</span>)</span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="co">## [1] &quot;V.101&quot; &quot;V.102&quot;</span></span>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="co">## [3] &quot;V.103&quot; &quot;V.104&quot;</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a><span class="co">## [5] &quot;V.105&quot;</span></span></code></pre></div>
+</div>
+<div id="paste---com-collapse" class="section level2">
+<h2><em>paste()</em> - com <em>collapse</em></h2>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="op">&gt;</span><span class="st"> </span><span class="co"># collapse = &quot;&quot;)</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="er">&gt;</span><span class="st"> </span><span class="kw">paste</span>(<span class="st">&quot;V&quot;</span>, <span class="dv">101</span><span class="op">:</span><span class="dv">105</span>, <span class="dt">sep =</span> <span class="st">&quot;.&quot;</span>, <span class="dt">collapse =</span> <span class="st">&quot;&quot;</span>)</span>
+<span id="cb4-3"><a href="#cb4-3"></a><span class="co">## [1] &quot;V.101V.102V.103V.104V.105&quot;</span></span>
+<span id="cb4-4"><a href="#cb4-4"></a><span class="op">&gt;</span><span class="st"> </span></span>
+<span id="cb4-5"><a href="#cb4-5"></a><span class="er">&gt;</span><span class="st"> </span><span class="co"># collapse = &quot;/&quot;)</span></span>
+<span id="cb4-6"><a href="#cb4-6"></a><span class="er">&gt;</span><span class="st"> </span><span class="kw">paste</span>(<span class="st">&quot;V&quot;</span>, <span class="dv">101</span><span class="op">:</span><span class="dv">105</span>, <span class="dt">sep =</span> <span class="st">&quot;.&quot;</span>, <span class="dt">collapse =</span> <span class="st">&quot;/&quot;</span>)</span>
+<span id="cb4-7"><a href="#cb4-7"></a><span class="co">## [1] &quot;V.101/V.102/V.103/V.104/V.105&quot;</span></span></code></pre></div>
+</div>
+<div id="cat---concatena-e-print" class="section level2">
+<h2><em>cat()</em> - concatena e “print”</h2>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="op">&gt;</span><span class="st"> </span>nome=<span class="st">&quot;Jorge&quot;</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="op">&gt;</span><span class="st"> </span></span>
+<span id="cb5-3"><a href="#cb5-3"></a><span class="er">&gt;</span><span class="st"> </span><span class="kw">cat</span>(nome, <span class="st">&quot;Aprovado&quot;</span>,  <span class="dt">sep =</span> <span class="st">&quot; -&gt; &quot;</span>)</span>
+<span id="cb5-4"><a href="#cb5-4"></a><span class="co">## Jorge -&gt; Aprovado</span></span></code></pre></div>
+</div>
+<div id="subdivide-caracteres---strsplit" class="section level2">
+<h2>Subdivide caracteres - <em>strsplit()</em></h2>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="op">&gt;</span><span class="st"> </span>x=<span class="kw">c</span>(<span class="st">&quot;romualdo/ronaldo&quot;</span>)</span>
+<span id="cb6-2"><a href="#cb6-2"></a><span class="op">&gt;</span><span class="st"> </span><span class="kw">strsplit</span>(x,<span class="st">&quot;/&quot;</span>)</span>
+<span id="cb6-3"><a href="#cb6-3"></a><span class="co">## [[1]]</span></span>
+<span id="cb6-4"><a href="#cb6-4"></a><span class="co">## [1] &quot;romualdo&quot;</span></span>
+<span id="cb6-5"><a href="#cb6-5"></a><span class="co">## [2] &quot;ronaldo&quot;</span></span></code></pre></div>
+</div>
+<div id="substitui-caracteres---sub" class="section level2">
+<h2>Substitui caracteres - <em>sub()</em></h2>
+<p>Substitui caracteres:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="op">&gt;</span><span class="st"> </span>x=<span class="kw">c</span>(<span class="st">&quot;rondonia&quot;</span>, <span class="st">&quot;roraima&quot;</span>)</span>
+<span id="cb7-2"><a href="#cb7-2"></a><span class="op">&gt;</span><span class="st"> </span><span class="kw">sub</span>(<span class="st">&quot;r&quot;</span>,<span class="st">&quot;R&quot;</span>,x)</span>
+<span id="cb7-3"><a href="#cb7-3"></a><span class="co">## [1] &quot;Rondonia&quot;</span></span>
+<span id="cb7-4"><a href="#cb7-4"></a><span class="co">## [2] &quot;Roraima&quot;</span></span>
+<span id="cb7-5"><a href="#cb7-5"></a><span class="op">&gt;</span><span class="st"> </span></span>
+<span id="cb7-6"><a href="#cb7-6"></a><span class="er">&gt;</span><span class="st"> </span><span class="co">#veja também o gsub()</span></span></code></pre></div>
+</div>
+<div id="número-de-caracteres---nchar" class="section level2">
+<h2>Número de caracteres - <em>nchar()</em></h2>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="op">&gt;</span><span class="st"> </span>x=<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;caracter&quot;</span>,<span class="st">&quot;outro caracter&quot;</span>)</span>
+<span id="cb8-2"><a href="#cb8-2"></a><span class="op">&gt;</span><span class="st"> </span><span class="kw">nchar</span>(x)</span>
+<span id="cb8-3"><a href="#cb8-3"></a><span class="co">## [1]  8 14</span></span></code></pre></div>
+</div>
+<div id="subdividindo-palavras---substr" class="section level2">
+<h2>Subdividindo palavras - <em>substr()</em></h2>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="op">&gt;</span><span class="st"> </span>x=<span class="kw">c</span>(<span class="st">&quot;nome01&quot;</span>,<span class="st">&quot;nome02&quot;</span>)</span>
+<span id="cb9-2"><a href="#cb9-2"></a><span class="op">&gt;</span><span class="st"> </span><span class="kw">substr</span>(x, <span class="dt">start=</span><span class="dv">1</span>, <span class="dt">stop=</span><span class="dv">4</span>)</span>
+<span id="cb9-3"><a href="#cb9-3"></a><span class="co">## [1] &quot;nome&quot; &quot;nome&quot;</span></span></code></pre></div>
+</div>
+<div id="substr" class="section level2">
+<h2><em>substr()</em></h2>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="op">&gt;</span><span class="st"> </span>x=<span class="kw">c</span>(<span class="st">&quot;nome01&quot;</span>,<span class="st">&quot;nome02&quot;</span>)</span>
+<span id="cb10-2"><a href="#cb10-2"></a><span class="op">&gt;</span><span class="st"> </span><span class="kw">substr</span>(x, <span class="dt">start=</span><span class="dv">5</span>,<span class="dt">stop=</span><span class="dv">6</span>)</span>
+<span id="cb10-3"><a href="#cb10-3"></a><span class="co">## [1] &quot;01&quot; &quot;02&quot;</span></span></code></pre></div>
+</div>
+<div id="combinação-formatada---sprintf" class="section level2">
+<h2>combinação formatada - <em>sprintf()</em></h2>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="op">&gt;</span><span class="st"> </span>a &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">1</span>,<span class="dv">101</span>,<span class="dv">25</span>)</span>
+<span id="cb11-2"><a href="#cb11-2"></a><span class="op">&gt;</span><span class="st"> </span><span class="kw">sprintf</span>(<span class="st">&quot;%03d&quot;</span>, a)</span>
+<span id="cb11-3"><a href="#cb11-3"></a><span class="co">## [1] &quot;001&quot; &quot;026&quot;</span></span>
+<span id="cb11-4"><a href="#cb11-4"></a><span class="co">## [3] &quot;051&quot; &quot;076&quot;</span></span>
+<span id="cb11-5"><a href="#cb11-5"></a><span class="co">## [5] &quot;101&quot;</span></span>
+<span id="cb11-6"><a href="#cb11-6"></a><span class="op">&gt;</span><span class="st"> </span></span>
+<span id="cb11-7"><a href="#cb11-7"></a><span class="er">&gt;</span><span class="st"> </span><span class="kw">sprintf</span>(<span class="st">&quot;name_%03d&quot;</span>, a)</span>
+<span id="cb11-8"><a href="#cb11-8"></a><span class="co">## [1] &quot;name_001&quot;</span></span>
+<span id="cb11-9"><a href="#cb11-9"></a><span class="co">## [2] &quot;name_026&quot;</span></span>
+<span id="cb11-10"><a href="#cb11-10"></a><span class="co">## [3] &quot;name_051&quot;</span></span>
+<span id="cb11-11"><a href="#cb11-11"></a><span class="co">## [4] &quot;name_076&quot;</span></span>
+<span id="cb11-12"><a href="#cb11-12"></a><span class="co">## [5] &quot;name_101&quot;</span></span></code></pre></div>
+</div>
+<div id="maiúsculas---toupper-e-tolower" class="section level2">
+<h2>Maiúsculas - <em>toupper() e tolower()</em></h2>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="op">&gt;</span><span class="st"> </span>x=<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;maiuscula&quot;</span>, <span class="st">&quot;minuscula&quot;</span>)</span>
+<span id="cb12-2"><a href="#cb12-2"></a><span class="op">&gt;</span><span class="st"> </span><span class="co"># tudo minúsculo</span></span>
+<span id="cb12-3"><a href="#cb12-3"></a><span class="er">&gt;</span><span class="st"> </span><span class="kw">toupper</span>(x)</span>
+<span id="cb12-4"><a href="#cb12-4"></a><span class="co">## [1] &quot;MAIUSCULA&quot;</span></span>
+<span id="cb12-5"><a href="#cb12-5"></a><span class="co">## [2] &quot;MINUSCULA&quot;</span></span></code></pre></div>
+</div>
+<div id="minúsculas---tolower" class="section level2">
+<h2>Minúsculas - tolower()*</h2>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="op">&gt;</span><span class="st"> </span>x=<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;MAIUSCULA&quot;</span>,<span class="st">&quot;MINUSCULA&quot;</span>)</span>
+<span id="cb13-2"><a href="#cb13-2"></a><span class="op">&gt;</span><span class="st"> </span><span class="kw">tolower</span>(x)</span>
+<span id="cb13-3"><a href="#cb13-3"></a><span class="co">## [1] &quot;maiuscula&quot;</span></span>
+<span id="cb13-4"><a href="#cb13-4"></a><span class="co">## [2] &quot;minuscula&quot;</span></span></code></pre></div>
+</div>
+<div id="Exercícios_04" class="section level2">
+<h2>Exercício</h2>
+<ol style="list-style-type: decimal">
+<li><p>Seja o vetor de códigos x = 0012,0013,0014,0015. Construa um novo vetor incluindo o prefixo 33 a cada elemento de x.(<a href="#solução_4.01">Solução_4.01</a>)</p></li>
+<li><p>Sejam os usuários de um sistema: alm33, jcc41 e wrg17. Construa um vetor com os e-mails sabendo que o provedor é o “gmai.com”. (<a href="#solução_4.02">Solução_4.02</a>)</p></li>
+</ol>
+</div>
+<div id="exercício-continuação" class="section level2">
+<h2>Exercício (continuação)</h2>
+<ol start="3" style="list-style-type: decimal">
+<li><p>E um diretório tem os arquivos Aj1.csv,Aj2.xls,Bf1.csv,bf2.csv,Bg3.xls. Quantos são os “xls” e os “csv”. Construa uma tabela. (<a href="#solução_4.03">Solução_4.03</a>)</p></li>
+<li><p>Uma lista de nomes: jose, antonio, paula e marita devem iniciar com maiúscula. Construa um programa para isso. (<a href="#solução_4.04">Solução_4.04</a>)</p></li>
+<li><p>Seja o vetor com o nome de tabelas: tabela1,tabela2,tabela11,tabela101. Crie um vetor com o nome das tabelas. Ordene de forma crescente. A tabela101 é a última? Como deve ser arrumado a nomenclatura das tabelas para correta ordenação? (<a href="#solução_4.05">Solução_4.05</a>)</p></li>
+</ol>
+</div>
+<div id="solução_4.01" class="section level2">
+<h2>Solução_4.01</h2>
+<ol style="list-style-type: decimal">
+<li>Seja o vetor de códigos x = 0012,0013,0014,0015. Construa um novo vetor incluindo o prefixo 33 a cada elemento de x.</li>
+</ol>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="op">&gt;</span><span class="st"> </span>x=<span class="kw">c</span>(<span class="st">&quot;0012&quot;</span>,<span class="st">&quot;0013&quot;</span>,<span class="st">&quot;0014&quot;</span>,<span class="st">&quot;0015&quot;</span>)</span>
+<span id="cb14-2"><a href="#cb14-2"></a><span class="op">&gt;</span><span class="st"> </span><span class="kw">paste</span>(<span class="st">&quot;33&quot;</span>,x,<span class="dt">sep=</span><span class="st">&quot;&quot;</span>)</span>
+<span id="cb14-3"><a href="#cb14-3"></a><span class="co">## [1] &quot;330012&quot;</span></span>
+<span id="cb14-4"><a href="#cb14-4"></a><span class="co">## [2] &quot;330013&quot;</span></span>
+<span id="cb14-5"><a href="#cb14-5"></a><span class="co">## [3] &quot;330014&quot;</span></span>
+<span id="cb14-6"><a href="#cb14-6"></a><span class="co">## [4] &quot;330015&quot;</span></span></code></pre></div>
+<p><a href="#Exercícios_04">Retorna</a></p>
+</div>
+<div id="solução_4.02" class="section level2">
+<h2>Solução_4.02</h2>
+<ol start="2" style="list-style-type: decimal">
+<li>Sejam os usuários de um sistema: alm33, jcc41 e wrg17. Construa um vetor com os e-mails sabendo que o provedor é o “gmai.com”.</li>
+</ol>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="op">&gt;</span><span class="st"> </span>user=<span class="kw">c</span>(<span class="st">&quot;alm33&quot;</span>, <span class="st">&quot;jcc41&quot;</span>, <span class="st">&quot;wrg17&quot;</span>)</span>
+<span id="cb15-2"><a href="#cb15-2"></a><span class="op">&gt;</span><span class="st"> </span>email=<span class="kw">paste</span>(user,<span class="st">&quot;gmail.com&quot;</span>,<span class="dt">sep=</span><span class="st">&quot;@&quot;</span>)</span></code></pre></div>
+<p><a href="#Exercícios_04">Retorna</a></p>
+</div>
+<div id="solução_4.03" class="section level2">
+<h2>Solução_4.03</h2>
+<ol start="3" style="list-style-type: decimal">
+<li>E um diretório tem os arquivos Aj1.csv,Aj2.xls,Bf1.csv,bf2.csv,Bg3.xls. Quantos são os “xls” e os “csv”. Construa uma tabela.</li>
+</ol>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="op">&gt;</span><span class="st"> </span>files=<span class="kw">c</span>(<span class="st">&quot;A1.csv&quot;</span>,<span class="st">&quot;A2.xls&quot;</span>,<span class="st">&quot;B1.csv&quot;</span>,<span class="st">&quot;b2.csv&quot;</span>,<span class="st">&quot;B3.xls&quot;</span>)</span>
+<span id="cb16-2"><a href="#cb16-2"></a><span class="op">&gt;</span><span class="st"> </span>sep_file=<span class="kw">strsplit</span>(files,<span class="st">&quot;[.]&quot;</span>)</span>
+<span id="cb16-3"><a href="#cb16-3"></a><span class="op">&gt;</span><span class="st"> </span>extent=<span class="kw">unlist</span>(sep_file)[<span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">6</span>,<span class="dv">8</span>,<span class="dv">10</span>)]</span>
+<span id="cb16-4"><a href="#cb16-4"></a><span class="op">&gt;</span><span class="st"> </span><span class="kw">table</span>(extent)</span>
+<span id="cb16-5"><a href="#cb16-5"></a><span class="co">## extent</span></span>
+<span id="cb16-6"><a href="#cb16-6"></a><span class="co">## csv xls </span></span>
+<span id="cb16-7"><a href="#cb16-7"></a><span class="co">##   3   2</span></span></code></pre></div>
+<p><a href="#Exercícios_04">Retorna</a></p>
+</div>
+<div id="solução_4.04" class="section level2">
+<h2>Solução_4.04</h2>
+<ol start="4" style="list-style-type: decimal">
+<li>Uma lista de nomes: jose, antonio, paula e marita devem iniciar com maiúscula. Construa um programa para isso.</li>
+</ol>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="op">&gt;</span><span class="st"> </span>nomes=<span class="kw">c</span>(<span class="st">&quot;jose&quot;</span>, <span class="st">&quot;antonio&quot;</span>, <span class="st">&quot;paula&quot;</span> , <span class="st">&quot;marita&quot;</span>)</span>
+<span id="cb17-2"><a href="#cb17-2"></a><span class="op">&gt;</span><span class="st"> </span><span class="kw">substr</span>(nomes,<span class="dv">1</span>,<span class="dv">1</span>)=<span class="kw">toupper</span>(<span class="kw">substr</span>(nomes,<span class="dv">1</span>,<span class="dv">1</span>))</span>
+<span id="cb17-3"><a href="#cb17-3"></a><span class="op">&gt;</span><span class="st"> </span>nomes</span>
+<span id="cb17-4"><a href="#cb17-4"></a><span class="co">## [1] &quot;Jose&quot;   </span></span>
+<span id="cb17-5"><a href="#cb17-5"></a><span class="co">## [2] &quot;Antonio&quot;</span></span>
+<span id="cb17-6"><a href="#cb17-6"></a><span class="co">## [3] &quot;Paula&quot;  </span></span>
+<span id="cb17-7"><a href="#cb17-7"></a><span class="co">## [4] &quot;Marita&quot;</span></span></code></pre></div>
+<p><a href="#Exercícios_04">Retorna</a></p>
+</div>
+<div id="solução_4.05" class="section level2">
+<h2>Solução_4.05</h2>
+<ol start="5" style="list-style-type: decimal">
+<li>Seja o vetor com o nome de tabelas: tabela1,tabela2,tabela11,tabela101. Crie um vetor com o nome das tabelas. Ordene de forma crescente. A tabela101 é a última? Como deve ser arrumado a nomenclatura das tabelas para correta ordenação?</li>
+</ol>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="op">&gt;</span><span class="st"> </span>tabelas=<span class="kw">c</span>(<span class="st">&quot;tabela1&quot;</span>,<span class="st">&quot;tabela2&quot;</span>,<span class="st">&quot;tabela11&quot;</span>,<span class="st">&quot;tabela101&quot;</span>)</span>
+<span id="cb18-2"><a href="#cb18-2"></a><span class="op">&gt;</span><span class="st"> </span><span class="kw">sort</span>(tabelas)</span>
+<span id="cb18-3"><a href="#cb18-3"></a><span class="co">## [1] &quot;tabela1&quot;  </span></span>
+<span id="cb18-4"><a href="#cb18-4"></a><span class="co">## [2] &quot;tabela101&quot;</span></span>
+<span id="cb18-5"><a href="#cb18-5"></a><span class="co">## [3] &quot;tabela11&quot; </span></span>
+<span id="cb18-6"><a href="#cb18-6"></a><span class="co">## [4] &quot;tabela2&quot;</span></span>
+<span id="cb18-7"><a href="#cb18-7"></a><span class="op">&gt;</span><span class="st"> </span><span class="co"># tabela101 é a segunda (ordem lexicográfica)</span></span>
+<span id="cb18-8"><a href="#cb18-8"></a><span class="er">&gt;</span><span class="st"> </span>ord=<span class="kw">sub</span>(<span class="st">&quot;tabela&quot;</span>,<span class="st">&quot;&quot;</span>,tabelas)</span>
+<span id="cb18-9"><a href="#cb18-9"></a><span class="op">&gt;</span><span class="st"> </span>ord</span>
+<span id="cb18-10"><a href="#cb18-10"></a><span class="co">## [1] &quot;1&quot;   &quot;2&quot;  </span></span>
+<span id="cb18-11"><a href="#cb18-11"></a><span class="co">## [3] &quot;11&quot;  &quot;101&quot;</span></span>
+<span id="cb18-12"><a href="#cb18-12"></a><span class="op">&gt;</span><span class="st"> </span><span class="kw">sprintf</span>(<span class="st">&quot;tabela_%03i&quot;</span>, <span class="kw">as.numeric</span>(ord)) </span>
+<span id="cb18-13"><a href="#cb18-13"></a><span class="co">## [1] &quot;tabela_001&quot;</span></span>
+<span id="cb18-14"><a href="#cb18-14"></a><span class="co">## [2] &quot;tabela_002&quot;</span></span>
+<span id="cb18-15"><a href="#cb18-15"></a><span class="co">## [3] &quot;tabela_011&quot;</span></span>
+<span id="cb18-16"><a href="#cb18-16"></a><span class="co">## [4] &quot;tabela_101&quot;</span></span></code></pre></div>
+<p><a href="#Exercícios_04">Retorna</a></p>
+</div>
+</div>
+<div id="trabalhando-com-datas" class="section level1">
+<h1>Trabalhando com Datas</h1>
+<div id="as.date" class="section level2">
+<h2><em>as.Date()</em></h2>
+<p>Transformando <em>character</em> em <em>Date</em></p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="op">&gt;</span><span class="st"> </span>xd =<span class="st"> </span><span class="kw">as.Date</span>(<span class="st">&quot;2017-09-13&quot;</span>)</span>
+<span id="cb19-2"><a href="#cb19-2"></a><span class="op">&gt;</span><span class="st"> </span>xd</span>
+<span id="cb19-3"><a href="#cb19-3"></a><span class="co">## [1] &quot;2017-09-13&quot;</span></span>
+<span id="cb19-4"><a href="#cb19-4"></a><span class="op">&gt;</span><span class="st"> </span><span class="kw">class</span>(xd)</span>
+<span id="cb19-5"><a href="#cb19-5"></a><span class="co">## [1] &quot;Date&quot;</span></span></code></pre></div>
+</div>
+<div id="as.date-formato" class="section level2">
+<h2><em>as.Date()</em> formato</h2>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="op">&gt;</span><span class="st"> </span>xd =<span class="st"> &quot;2017/09/13&quot;</span></span>
+<span id="cb20-2"><a href="#cb20-2"></a><span class="op">&gt;</span><span class="st"> </span><span class="kw">as.Date</span>(xd, <span class="st">&quot;%Y/%m/%d&quot;</span>)</span>
+<span id="cb20-3"><a href="#cb20-3"></a><span class="co">## [1] &quot;2017-09-13&quot;</span></span></code></pre></div>
+</div>
+<div id="as.date-formato-1" class="section level2">
+<h2><em>as.Date()</em> formato</h2>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="op">&gt;</span><span class="st"> </span>xd =<span class="st"> &quot;13/09/17&quot;</span></span>
+<span id="cb21-2"><a href="#cb21-2"></a><span class="op">&gt;</span><span class="st"> </span><span class="kw">as.Date</span>(xd, <span class="st">&quot;%d/%m/%y&quot;</span>)</span>
+<span id="cb21-3"><a href="#cb21-3"></a><span class="co">## [1] &quot;2017-09-13&quot;</span></span></code></pre></div>
+</div>
+<div id="weekdays" class="section level2">
+<h2><em>weekdays()</em></h2>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="op">&gt;</span><span class="st"> </span>xd =<span class="st"> </span><span class="kw">as.Date</span>(<span class="st">&quot;2017-09-13&quot;</span>)</span>
+<span id="cb22-2"><a href="#cb22-2"></a><span class="op">&gt;</span><span class="st"> </span><span class="kw">weekdays</span>(xd)</span>
+<span id="cb22-3"><a href="#cb22-3"></a><span class="co">## [1] &quot;quarta-feira&quot;</span></span></code></pre></div>
+</div>
+<div id="soma-e-subtração-com-datas" class="section level2">
+<h2>Soma e Subtração com datas</h2>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="op">&gt;</span><span class="st"> </span>xd <span class="op">+</span><span class="st"> </span><span class="dv">7</span></span>
+<span id="cb23-2"><a href="#cb23-2"></a><span class="co">## [1] &quot;2017-09-20&quot;</span></span></code></pre></div>
+</div>
+<div id="sequencias-de-datas" class="section level2">
+<h2>Sequencias de datas</h2>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="op">&gt;</span><span class="st"> </span>xd<span class="op">+</span><span class="st"> </span><span class="dv">0</span><span class="op">:</span><span class="dv">6</span></span>
+<span id="cb24-2"><a href="#cb24-2"></a><span class="co">## [1] &quot;2017-09-13&quot;</span></span>
+<span id="cb24-3"><a href="#cb24-3"></a><span class="co">## [2] &quot;2017-09-14&quot;</span></span>
+<span id="cb24-4"><a href="#cb24-4"></a><span class="co">## [3] &quot;2017-09-15&quot;</span></span>
+<span id="cb24-5"><a href="#cb24-5"></a><span class="co">## [4] &quot;2017-09-16&quot;</span></span>
+<span id="cb24-6"><a href="#cb24-6"></a><span class="co">## [5] &quot;2017-09-17&quot;</span></span>
+<span id="cb24-7"><a href="#cb24-7"></a><span class="co">## [6] &quot;2017-09-18&quot;</span></span>
+<span id="cb24-8"><a href="#cb24-8"></a><span class="co">## [7] &quot;2017-09-19&quot;</span></span></code></pre></div>
+</div>
+<div id="datas-com-seq" class="section level2">
+<h2>Datas com <em>seq()</em></h2>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="op">&gt;</span><span class="st"> </span>ini=<span class="kw">as.Date</span>(<span class="st">&quot;2015-01-01&quot;</span>)</span>
+<span id="cb25-2"><a href="#cb25-2"></a><span class="op">&gt;</span><span class="st"> </span>xm =<span class="st"> </span><span class="kw">seq</span>(ini, <span class="dt">by=</span><span class="st">&quot;6 months&quot;</span>, <span class="dt">length.out=</span><span class="dv">6</span>)</span>
+<span id="cb25-3"><a href="#cb25-3"></a><span class="op">&gt;</span><span class="st"> </span>xm</span>
+<span id="cb25-4"><a href="#cb25-4"></a><span class="co">## [1] &quot;2015-01-01&quot;</span></span>
+<span id="cb25-5"><a href="#cb25-5"></a><span class="co">## [2] &quot;2015-07-01&quot;</span></span>
+<span id="cb25-6"><a href="#cb25-6"></a><span class="co">## [3] &quot;2016-01-01&quot;</span></span>
+<span id="cb25-7"><a href="#cb25-7"></a><span class="co">## [4] &quot;2016-07-01&quot;</span></span>
+<span id="cb25-8"><a href="#cb25-8"></a><span class="co">## [5] &quot;2017-01-01&quot;</span></span>
+<span id="cb25-9"><a href="#cb25-9"></a><span class="co">## [6] &quot;2017-07-01&quot;</span></span></code></pre></div>
+</div>
+<div id="months" class="section level2">
+<h2><em>months()</em></h2>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a><span class="op">&gt;</span><span class="st"> </span><span class="kw">months</span>(xm)</span>
+<span id="cb26-2"><a href="#cb26-2"></a><span class="co">## [1] &quot;janeiro&quot;</span></span>
+<span id="cb26-3"><a href="#cb26-3"></a><span class="co">## [2] &quot;julho&quot;  </span></span>
+<span id="cb26-4"><a href="#cb26-4"></a><span class="co">## [3] &quot;janeiro&quot;</span></span>
+<span id="cb26-5"><a href="#cb26-5"></a><span class="co">## [4] &quot;julho&quot;  </span></span>
+<span id="cb26-6"><a href="#cb26-6"></a><span class="co">## [5] &quot;janeiro&quot;</span></span>
+<span id="cb26-7"><a href="#cb26-7"></a><span class="co">## [6] &quot;julho&quot;</span></span></code></pre></div>
+</div>
+<div id="data-do-sistema-operacional" class="section level2">
+<h2>data do sistema operacional</h2>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a><span class="op">&gt;</span><span class="st"> </span><span class="kw">Sys.Date</span>()</span>
+<span id="cb27-2"><a href="#cb27-2"></a><span class="co">## [1] &quot;2020-10-14&quot;</span></span></code></pre></div>
+</div>
+<div id="data-do-sistema-operacional-format" class="section level2">
+<h2>data do sistema operacional (format)</h2>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a><span class="op">&gt;</span><span class="st"> </span><span class="kw">format</span>(<span class="kw">Sys.Date</span>(), <span class="st">&quot;%d %b %Y&quot;</span>) </span>
+<span id="cb28-2"><a href="#cb28-2"></a><span class="co">## [1] &quot;14 out 2020&quot;</span></span></code></pre></div>
+</div>
+<div id="data-e-hora" class="section level2">
+<h2>Data e hora</h2>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a><span class="op">&gt;</span><span class="st"> </span><span class="co">## read in date/time info in format &#39;m/d/y h:m:s&#39;</span></span>
+<span id="cb29-2"><a href="#cb29-2"></a><span class="er">&gt;</span><span class="st"> </span>dates &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;02/27/92&quot;</span>, <span class="st">&quot;02/27/92&quot;</span>, <span class="st">&quot;01/14/92&quot;</span>, <span class="st">&quot;02/28/92&quot;</span>, <span class="st">&quot;02/01/92&quot;</span>)</span>
+<span id="cb29-3"><a href="#cb29-3"></a><span class="op">&gt;</span><span class="st"> </span>times &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;23:03:20&quot;</span>, <span class="st">&quot;22:29:56&quot;</span>, <span class="st">&quot;01:03:30&quot;</span>, <span class="st">&quot;18:21:03&quot;</span>, <span class="st">&quot;16:56:26&quot;</span>)</span>
+<span id="cb29-4"><a href="#cb29-4"></a><span class="op">&gt;</span><span class="st"> </span>x &lt;-<span class="st"> </span><span class="kw">paste</span>(dates, times)</span>
+<span id="cb29-5"><a href="#cb29-5"></a><span class="op">&gt;</span><span class="st"> </span><span class="kw">strptime</span>(x, <span class="st">&quot;%m/%d/%y %H:%M:%S&quot;</span>)</span>
+<span id="cb29-6"><a href="#cb29-6"></a><span class="co">## [1] &quot;1992-02-27 23:03:20 -03&quot;</span></span>
+<span id="cb29-7"><a href="#cb29-7"></a><span class="co">## [2] &quot;1992-02-27 22:29:56 -03&quot;</span></span>
+<span id="cb29-8"><a href="#cb29-8"></a><span class="co">## [3] &quot;1992-01-14 01:03:30 -02&quot;</span></span>
+<span id="cb29-9"><a href="#cb29-9"></a><span class="co">## [4] &quot;1992-02-28 18:21:03 -03&quot;</span></span>
+<span id="cb29-10"><a href="#cb29-10"></a><span class="co">## [5] &quot;1992-02-01 16:56:26 -02&quot;</span></span></code></pre></div>
+</div>
+<div id="funções-com-datas" class="section level2">
+<h2>funções com datas</h2>
+<ul>
+<li>são dependentes das configurações do comptador (local, lingua…)</li>
+<li>para mais informações sobre formatação de data e hora (<em>?strptime</em>)</li>
+</ul>
+</div>
+<div id="Exercícios_05" class="section level2">
+<h2>Exercícios</h2>
+<ol style="list-style-type: decimal">
+<li><p>Crie o vetor de datas: 10.09.17, 11.09.17, 12.09.17, 13.09.17. (<a href="#solução_5.01">Solução_5.01</a>)</p></li>
+<li><p>Usando o vetor do item 01. Quantos dias úteis tem no referido mês? (<a href="#solução_5.02">Solução_5.02</a>)</p></li>
+<li><p>Construa um programa para calcular o tempo, em dias, de uma data de referencia até o dia de hoje. Quantos dias se passaram desde o Mundial da Russia (15 de julho de 2018)? Quantos dias faltam para o Mundial do Catar (21/11/2022)? (<a href="#solução_5.03">Solução_5.03</a>)</p></li>
+</ol>
+</div>
+<div id="solução_5.01" class="section level2">
+<h2>Solução_5.01</h2>
+<ol style="list-style-type: decimal">
+<li>Crie o vetor de datas: 10.09.17, 11.09.17, 12.09.17, 13.09.17.</li>
+</ol>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a><span class="op">&gt;</span><span class="st"> </span>x=<span class="kw">as.Date</span>(<span class="kw">c</span>(<span class="st">&quot;10.09.17&quot;</span>, <span class="st">&quot;11.09.17&quot;</span>, </span>
+<span id="cb30-2"><a href="#cb30-2"></a><span class="op">+</span><span class="st">             &quot;12.09.17&quot;</span>, <span class="st">&quot;13.09.17&quot;</span>),<span class="st">&quot;%d.%m.%y&quot;</span>)</span></code></pre></div>
+<p><a href="#Exercícios_05">Retorna</a></p>
+</div>
+<div id="solução_5.02" class="section level2">
+<h2>Solução_5.02</h2>
+<ol start="2" style="list-style-type: decimal">
+<li>Usando o vetor do item 01. Quantos dias úteis tem o mês de setembro no referido ano?</li>
+</ol>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a><span class="op">&gt;</span><span class="st"> </span><span class="co"># considerando que não há feriados</span></span>
+<span id="cb31-2"><a href="#cb31-2"></a><span class="er">&gt;</span><span class="st"> </span><span class="co">#</span></span>
+<span id="cb31-3"><a href="#cb31-3"></a><span class="er">&gt;</span><span class="st"> </span>x1=<span class="kw">seq</span>(x[<span class="dv">1</span>]<span class="op">-</span><span class="dv">9</span>, x[<span class="dv">1</span>]<span class="op">+</span><span class="dv">20</span>, <span class="dt">by=</span> <span class="st">&quot;day&quot;</span> )</span>
+<span id="cb31-4"><a href="#cb31-4"></a><span class="op">&gt;</span><span class="st"> </span><span class="kw">weekdays</span>(x1)</span>
+<span id="cb31-5"><a href="#cb31-5"></a><span class="co">##  [1] &quot;sexta-feira&quot;  </span></span>
+<span id="cb31-6"><a href="#cb31-6"></a><span class="co">##  [2] &quot;sábado&quot;       </span></span>
+<span id="cb31-7"><a href="#cb31-7"></a><span class="co">##  [3] &quot;domingo&quot;      </span></span>
+<span id="cb31-8"><a href="#cb31-8"></a><span class="co">##  [4] &quot;segunda-feira&quot;</span></span>
+<span id="cb31-9"><a href="#cb31-9"></a><span class="co">##  [5] &quot;terça-feira&quot;  </span></span>
+<span id="cb31-10"><a href="#cb31-10"></a><span class="co">##  [6] &quot;quarta-feira&quot; </span></span>
+<span id="cb31-11"><a href="#cb31-11"></a><span class="co">##  [7] &quot;quinta-feira&quot; </span></span>
+<span id="cb31-12"><a href="#cb31-12"></a><span class="co">##  [8] &quot;sexta-feira&quot;  </span></span>
+<span id="cb31-13"><a href="#cb31-13"></a><span class="co">##  [9] &quot;sábado&quot;       </span></span>
+<span id="cb31-14"><a href="#cb31-14"></a><span class="co">## [10] &quot;domingo&quot;      </span></span>
+<span id="cb31-15"><a href="#cb31-15"></a><span class="co">## [11] &quot;segunda-feira&quot;</span></span>
+<span id="cb31-16"><a href="#cb31-16"></a><span class="co">## [12] &quot;terça-feira&quot;  </span></span>
+<span id="cb31-17"><a href="#cb31-17"></a><span class="co">## [13] &quot;quarta-feira&quot; </span></span>
+<span id="cb31-18"><a href="#cb31-18"></a><span class="co">## [14] &quot;quinta-feira&quot; </span></span>
+<span id="cb31-19"><a href="#cb31-19"></a><span class="co">## [15] &quot;sexta-feira&quot;  </span></span>
+<span id="cb31-20"><a href="#cb31-20"></a><span class="co">## [16] &quot;sábado&quot;       </span></span>
+<span id="cb31-21"><a href="#cb31-21"></a><span class="co">## [17] &quot;domingo&quot;      </span></span>
+<span id="cb31-22"><a href="#cb31-22"></a><span class="co">## [18] &quot;segunda-feira&quot;</span></span>
+<span id="cb31-23"><a href="#cb31-23"></a><span class="co">## [19] &quot;terça-feira&quot;  </span></span>
+<span id="cb31-24"><a href="#cb31-24"></a><span class="co">## [20] &quot;quarta-feira&quot; </span></span>
+<span id="cb31-25"><a href="#cb31-25"></a><span class="co">## [21] &quot;quinta-feira&quot; </span></span>
+<span id="cb31-26"><a href="#cb31-26"></a><span class="co">## [22] &quot;sexta-feira&quot;  </span></span>
+<span id="cb31-27"><a href="#cb31-27"></a><span class="co">## [23] &quot;sábado&quot;       </span></span>
+<span id="cb31-28"><a href="#cb31-28"></a><span class="co">## [24] &quot;domingo&quot;      </span></span>
+<span id="cb31-29"><a href="#cb31-29"></a><span class="co">## [25] &quot;segunda-feira&quot;</span></span>
+<span id="cb31-30"><a href="#cb31-30"></a><span class="co">## [26] &quot;terça-feira&quot;  </span></span>
+<span id="cb31-31"><a href="#cb31-31"></a><span class="co">## [27] &quot;quarta-feira&quot; </span></span>
+<span id="cb31-32"><a href="#cb31-32"></a><span class="co">## [28] &quot;quinta-feira&quot; </span></span>
+<span id="cb31-33"><a href="#cb31-33"></a><span class="co">## [29] &quot;sexta-feira&quot;  </span></span>
+<span id="cb31-34"><a href="#cb31-34"></a><span class="co">## [30] &quot;sábado&quot;</span></span>
+<span id="cb31-35"><a href="#cb31-35"></a><span class="op">&gt;</span><span class="st"> </span><span class="co"># considerando os dias como números</span></span>
+<span id="cb31-36"><a href="#cb31-36"></a><span class="er">&gt;</span><span class="st"> </span>wd=<span class="kw">strftime</span>(x1,<span class="st">&quot;%u&quot;</span>) <span class="co">#(7 = &quot;domingo&quot;)</span></span>
+<span id="cb31-37"><a href="#cb31-37"></a><span class="op">&gt;</span><span class="st"> </span><span class="kw">length</span>(<span class="kw">as.numeric</span>(wd)<span class="op">&lt;</span><span class="dv">6</span>)</span>
+<span id="cb31-38"><a href="#cb31-38"></a><span class="co">## [1] 30</span></span></code></pre></div>
+<p><a href="#Exercícios_05">Retorna</a></p>
+</div>
+<div id="solução_5.03" class="section level2">
+<h2>Solução_5.03</h2>
+<ol start="3" style="list-style-type: decimal">
+<li>Construa um programa para calcular o tempo, em dias, de uma data de referencia até o dia de hoje. Quantos dias se passaram do Mundial da Russia (15 de julho de 2018)? Quantos dias faltam para o Mundial do Catar (21/11/2022)?</li>
+</ol>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a><span class="op">&gt;</span><span class="st"> </span><span class="kw">as.Date</span>(<span class="st">&quot;2018-07-15&quot;</span>)<span class="op">-</span><span class="kw">Sys.Date</span>()</span>
+<span id="cb32-2"><a href="#cb32-2"></a><span class="co">## Time difference of -822 days</span></span>
+<span id="cb32-3"><a href="#cb32-3"></a><span class="op">&gt;</span><span class="st"> </span><span class="kw">as.Date</span>(<span class="st">&quot;2022-11-21&quot;</span>)<span class="op">-</span><span class="kw">Sys.Date</span>()</span>
+<span id="cb32-4"><a href="#cb32-4"></a><span class="co">## Time difference of 768 days</span></span></code></pre></div>
+<p><a href="#Exercícios_05">Retorna</a></p>
+</div>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

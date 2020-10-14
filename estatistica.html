@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Estatística Básica</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/yeti.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; } /* Alert */
+code span.an { color: #008000; } /* Annotation */
+code span.at { } /* Attribute */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #0000ff; } /* ControlFlow */
+code span.ch { color: #008080; } /* Char */
+code span.cn { } /* Constant */
+code span.co { color: #008000; } /* Comment */
+code span.cv { color: #008000; } /* CommentVar */
+code span.do { color: #008000; } /* Documentation */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.im { } /* Import */
+code span.in { color: #008000; } /* Information */
+code span.kw { color: #0000ff; } /* Keyword */
+code span.op { } /* Operator */
+code span.ot { color: #ff4000; } /* Other */
+code span.pp { color: #ff4000; } /* Preprocessor */
+code span.sc { color: #008080; } /* SpecialChar */
+code span.ss { color: #008080; } /* SpecialString */
+code span.st { color: #008080; } /* String */
+code span.va { } /* Variable */
+code span.vs { color: #008080; } /* VerbatimString */
+code span.wa { color: #008000; font-weight: bold; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 45px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 50px;
+  margin-top: -50px;
+}
+.section h2 {
+  padding-top: 50px;
+  margin-top: -50px;
+}
+.section h3 {
+  padding-top: 50px;
+  margin-top: -50px;
+}
+.section h4 {
+  padding-top: 50px;
+  margin-top: -50px;
+}
+.section h5 {
+  padding-top: 50px;
+  margin-top: -50px;
+}
+.section h6 {
+  padding-top: 50px;
+  margin-top: -50px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">HOME</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="o_r_software.html">R e RStudio</a>
+</li>
+<li>
+  <a href="r_etruturas.html">R Estruturas</a>
+</li>
+<li>
+  <a href="read_data.html">R Leitura de Dados</a>
+</li>
+<li>
+  <a href="estatistica.html">R Estatística Básica</a>
+</li>
+<li>
+  <a href="texto_e_data.html">R Textos e Datas</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Estatística Básica</h1>
+
+</div>
+
+
+<div id="r---estatística-básica" class="section level2">
+<h2>R - Estatística Básica</h2>
+<ul>
+<li>Estatística Básica</li>
+<li>Gráficos</li>
+</ul>
+</div>
+<div id="medidas-estatísticas-básicas" class="section level1">
+<h1>Medidas Estatísticas Básicas</h1>
+<div id="funções-básicas" class="section level2">
+<h2>Funções Básicas</h2>
+<ul>
+<li>min() , max()</li>
+<li>sum()</li>
+<li>mean(), median()</li>
+<li>quantile()</li>
+<li>var(), sd()</li>
+<li>summary()</li>
+<li>table()</li>
+</ul>
+</div>
+<div id="mean" class="section level2">
+<h2>mean</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="op">&gt;</span><span class="st"> </span>x=<span class="dv">1</span><span class="op">:</span><span class="dv">11</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="op">&gt;</span><span class="st"> </span>x</span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="co">##  [1]  1  2  3  4  5</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="co">##  [6]  6  7  8  9 10</span></span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="co">## [11] 11</span></span>
+<span id="cb1-6"><a href="#cb1-6"></a><span class="op">&gt;</span><span class="st"> </span><span class="kw">mean</span>(x)</span>
+<span id="cb1-7"><a href="#cb1-7"></a><span class="co">## [1] 6</span></span></code></pre></div>
+</div>
+<div id="median" class="section level2">
+<h2>median</h2>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="op">&gt;</span><span class="st"> </span></span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="er">&gt;</span><span class="st"> </span>x</span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="co">##  [1]  1  2  3  4  5</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a><span class="co">##  [6]  6  7  8  9 10</span></span>
+<span id="cb2-5"><a href="#cb2-5"></a><span class="co">## [11] 11</span></span>
+<span id="cb2-6"><a href="#cb2-6"></a><span class="op">&gt;</span><span class="st"> </span><span class="kw">median</span>(x)</span>
+<span id="cb2-7"><a href="#cb2-7"></a><span class="co">## [1] 6</span></span></code></pre></div>
+</div>
+<div id="quaintile" class="section level2">
+<h2>quaintile</h2>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="op">&gt;</span><span class="st"> </span>x</span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="co">##  [1]  1  2  3  4  5</span></span>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="co">##  [6]  6  7  8  9 10</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a><span class="co">## [11] 11</span></span>
+<span id="cb3-5"><a href="#cb3-5"></a><span class="op">&gt;</span><span class="st"> </span><span class="kw">quantile</span>(x,<span class="kw">c</span>(<span class="fl">0.2</span>,<span class="fl">0.5</span>))</span>
+<span id="cb3-6"><a href="#cb3-6"></a><span class="co">## 20% 50% </span></span>
+<span id="cb3-7"><a href="#cb3-7"></a><span class="co">##   3   6</span></span></code></pre></div>
+</div>
+<div id="summary" class="section level2">
+<h2>summary</h2>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="op">&gt;</span><span class="st"> </span>x</span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="co">##  [1]  1  2  3  4  5</span></span>
+<span id="cb4-3"><a href="#cb4-3"></a><span class="co">##  [6]  6  7  8  9 10</span></span>
+<span id="cb4-4"><a href="#cb4-4"></a><span class="co">## [11] 11</span></span>
+<span id="cb4-5"><a href="#cb4-5"></a><span class="op">&gt;</span><span class="st"> </span><span class="kw">summary</span>(x)</span>
+<span id="cb4-6"><a href="#cb4-6"></a><span class="co">##    Min. 1st Qu. </span></span>
+<span id="cb4-7"><a href="#cb4-7"></a><span class="co">##     1.0     3.5 </span></span>
+<span id="cb4-8"><a href="#cb4-8"></a><span class="co">##  Median    Mean </span></span>
+<span id="cb4-9"><a href="#cb4-9"></a><span class="co">##     6.0     6.0 </span></span>
+<span id="cb4-10"><a href="#cb4-10"></a><span class="co">## 3rd Qu.    Max. </span></span>
+<span id="cb4-11"><a href="#cb4-11"></a><span class="co">##     8.5    11.0</span></span></code></pre></div>
+</div>
+<div id="dados-com-na" class="section level2">
+<h2>Dados com NA</h2>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="op">&gt;</span><span class="st"> </span>x1=<span class="kw">c</span>(x,<span class="ot">NA</span>)</span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="op">&gt;</span><span class="st"> </span><span class="kw">mean</span>(x1)</span>
+<span id="cb5-3"><a href="#cb5-3"></a><span class="co">## [1] NA</span></span>
+<span id="cb5-4"><a href="#cb5-4"></a><span class="op">&gt;</span><span class="st"> </span><span class="kw">mean</span>(x1, <span class="dt">na.rm=</span>T)</span>
+<span id="cb5-5"><a href="#cb5-5"></a><span class="co">## [1] 6</span></span></code></pre></div>
+</div>
+<div id="tabela-de-frequencia" class="section level2">
+<h2>tabela de frequencia</h2>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="op">&gt;</span><span class="st"> </span>x=<span class="kw">sample</span>(letters[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>],<span class="dv">60</span>,<span class="dt">replace=</span>T) <span class="co">#?sample</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a><span class="op">&gt;</span><span class="st"> </span>x</span>
+<span id="cb6-3"><a href="#cb6-3"></a><span class="co">##  [1] &quot;d&quot; &quot;d&quot; &quot;e&quot; &quot;c&quot;</span></span>
+<span id="cb6-4"><a href="#cb6-4"></a><span class="co">##  [5] &quot;c&quot; &quot;d&quot; &quot;a&quot; &quot;d&quot;</span></span>
+<span id="cb6-5"><a href="#cb6-5"></a><span class="co">##  [9] &quot;c&quot; &quot;a&quot; &quot;d&quot; &quot;e&quot;</span></span>
+<span id="cb6-6"><a href="#cb6-6"></a><span class="co">## [13] &quot;a&quot; &quot;e&quot; &quot;a&quot; &quot;d&quot;</span></span>
+<span id="cb6-7"><a href="#cb6-7"></a><span class="co">## [17] &quot;e&quot; &quot;b&quot; &quot;b&quot; &quot;c&quot;</span></span>
+<span id="cb6-8"><a href="#cb6-8"></a><span class="co">## [21] &quot;e&quot; &quot;c&quot; &quot;e&quot; &quot;c&quot;</span></span>
+<span id="cb6-9"><a href="#cb6-9"></a><span class="co">## [25] &quot;a&quot; &quot;c&quot; &quot;b&quot; &quot;b&quot;</span></span>
+<span id="cb6-10"><a href="#cb6-10"></a><span class="co">## [29] &quot;b&quot; &quot;a&quot; &quot;c&quot; &quot;c&quot;</span></span>
+<span id="cb6-11"><a href="#cb6-11"></a><span class="co">## [33] &quot;b&quot; &quot;e&quot; &quot;b&quot; &quot;e&quot;</span></span>
+<span id="cb6-12"><a href="#cb6-12"></a><span class="co">## [37] &quot;d&quot; &quot;a&quot; &quot;a&quot; &quot;d&quot;</span></span>
+<span id="cb6-13"><a href="#cb6-13"></a><span class="co">## [41] &quot;c&quot; &quot;c&quot; &quot;c&quot; &quot;b&quot;</span></span>
+<span id="cb6-14"><a href="#cb6-14"></a><span class="co">## [45] &quot;d&quot; &quot;e&quot; &quot;b&quot; &quot;b&quot;</span></span>
+<span id="cb6-15"><a href="#cb6-15"></a><span class="co">## [49] &quot;a&quot; &quot;b&quot; &quot;e&quot; &quot;c&quot;</span></span>
+<span id="cb6-16"><a href="#cb6-16"></a><span class="co">## [53] &quot;d&quot; &quot;e&quot; &quot;c&quot; &quot;c&quot;</span></span>
+<span id="cb6-17"><a href="#cb6-17"></a><span class="co">## [57] &quot;b&quot; &quot;c&quot; &quot;a&quot; &quot;b&quot;</span></span>
+<span id="cb6-18"><a href="#cb6-18"></a><span class="op">&gt;</span><span class="st"> </span><span class="kw">table</span>(x)</span>
+<span id="cb6-19"><a href="#cb6-19"></a><span class="co">## x</span></span>
+<span id="cb6-20"><a href="#cb6-20"></a><span class="co">##  a  b  c  d  e </span></span>
+<span id="cb6-21"><a href="#cb6-21"></a><span class="co">## 10 13 16 10 11</span></span></code></pre></div>
+</div>
+<div id="exercícios" class="section level2">
+<h2>Exercícios</h2>
+<ol style="list-style-type: decimal">
+<li>Carregue a base de dados votos.txt ([<a href="https://tinyurl.com/votos-txt" class="uri">https://tinyurl.com/votos-txt</a>])</li>
+<li>Qual a dimensão do objeto? (linhas e colunas)</li>
+<li>Quais são as variáveis?</li>
+<li>Corrija os nomes das colunas como segue: uf, candidatos, partido, log_votos, sexo, resultado</li>
+<li>Qual a frequencia de partidos e de sexo dos candidatos?</li>
+<li>Qual o partido com a representatividade por sexo mais equilibrada?</li>
+<li>Qual a media de votos dos eleitos?</li>
+</ol>
+</div>
+</div>
+<div id="gráficos" class="section level1">
+<h1>Gráficos</h1>
+<div id="gráficos-1" class="section level2">
+<h2>Gráficos</h2>
+<ul>
+<li>Os gráficos são apresentados em janelas gráficas.</li>
+<li>Normalmente há uma única janela gráfica e esta sempre apresentará o último gráfico solicitado.</li>
+<li>No R Studio, estas janelas ficam acumuladas na aba <em>Plots</em></li>
+</ul>
+</div>
+<div id="a-função-plot" class="section level2">
+<h2>A função plot()</h2>
+<ul>
+<li>Função gráfica genérica do R.</li>
+</ul>
+<p><em>plot(x, y, type=“p”, …)</em></p>
+</div>
+<div id="multiplos-gráficos-na-janela-ativa" class="section level2">
+<h2>Multiplos gráficos na Janela ativa</h2>
+<p>par(mfrow=c(l ,c ))</p>
+</div>
+<div id="criando-dados-simulados" class="section level2">
+<h2>Criando dados simulados</h2>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="op">&gt;</span><span class="st">  </span><span class="kw">set.seed</span>(<span class="dv">333</span>)</span>
+<span id="cb7-2"><a href="#cb7-2"></a><span class="op">&gt;</span><span class="st">  </span>x =<span class="st"> </span><span class="kw">runif</span>(<span class="dv">100</span>)</span>
+<span id="cb7-3"><a href="#cb7-3"></a><span class="op">&gt;</span><span class="st">  </span>y =<span class="st"> </span><span class="dv">4</span><span class="op">*</span>x<span class="op">+</span><span class="kw">rnorm</span>(<span class="dv">100</span>)</span>
+<span id="cb7-4"><a href="#cb7-4"></a><span class="op">&gt;</span><span class="st">  </span>grp =<span class="st"> </span><span class="kw">factor</span>(<span class="kw">rep</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>,<span class="dv">20</span>))</span>
+<span id="cb7-5"><a href="#cb7-5"></a><span class="op">&gt;</span><span class="st">  </span>grpl =<span class="st"> </span><span class="kw">factor</span>(<span class="kw">rep</span>(LETTERS[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>],<span class="kw">c</span>(<span class="dv">15</span>,<span class="dv">35</span>,<span class="dv">22</span>,<span class="dv">40</span>,<span class="dv">8</span>)))</span>
+<span id="cb7-6"><a href="#cb7-6"></a><span class="op">&gt;</span><span class="st">  </span>gg=<span class="kw">factor</span>(<span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&quot;G_A&quot;</span>,<span class="st">&quot;G_B&quot;</span>,<span class="st">&quot;G_C&quot;</span>),<span class="kw">c</span>(<span class="dv">40</span>,<span class="dv">45</span>,<span class="dv">35</span>)))</span>
+<span id="cb7-7"><a href="#cb7-7"></a><span class="op">&gt;</span><span class="st"> </span>gg=<span class="kw">sample</span>(gg)</span></code></pre></div>
+</div>
+<div id="plot---argumentos-principais" class="section level2">
+<h2>plot - Argumentos (principais)</h2>
+<p>Os principais argumentos da função <em>plot()</em></p>
+<ul>
+<li><em>type</em>: tipo de gráfico (linhas, pontos, …)</li>
+<li><em>main</em>: título</li>
+<li><em>xlab</em> e <em>ylab</em>: título dos eixos</li>
+<li><em>col</em>: cor (veja <em>colors()</em>)</li>
+</ul>
+</div>
+<div id="gráfico-de-pontos" class="section level2">
+<h2>Gráfico de pontos</h2>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="op">&gt;</span><span class="st"> </span><span class="kw">plot</span>(x,y,<span class="dt">type=</span><span class="st">&quot;p&quot;</span>,<span class="dt">main=</span><span class="st">&quot;Título do Gráfico&quot;</span>,</span>
+<span id="cb8-2"><a href="#cb8-2"></a><span class="op">+</span><span class="st"> </span><span class="dt">xlab=</span><span class="st">&quot;x&quot;</span>,<span class="dt">ylab=</span><span class="st">&quot;y&quot;</span>,<span class="dt">col=</span><span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
+<p><img src="estatistica_files/figure-html/unnamed-chunk-10-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+<div id="gráfico-de-pontos-1" class="section level2">
+<h2>Gráfico de pontos</h2>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="op">&gt;</span><span class="st"> </span><span class="kw">plot</span>(x,y,<span class="dt">type=</span><span class="st">&quot;p&quot;</span>,<span class="dt">main=</span><span class="st">&quot;Título do Gráfico&quot;</span>,</span>
+<span id="cb9-2"><a href="#cb9-2"></a><span class="op">+</span><span class="st"> </span><span class="dt">xlab=</span><span class="st">&quot;x&quot;</span>,<span class="dt">ylab=</span><span class="st">&quot;y&quot;</span>,<span class="dt">col=</span><span class="st">&quot;blue&quot;</span>, <span class="dt">pch=</span><span class="st">&quot;*&quot;</span>,<span class="dt">cex=</span><span class="dv">3</span>)</span></code></pre></div>
+<p><img src="estatistica_files/figure-html/unnamed-chunk-12-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+<div id="gráfico-de-linhas" class="section level2">
+<h2>Gráfico de linhas</h2>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="op">&gt;</span><span class="st"> </span><span class="kw">plot</span>(y,<span class="dt">type=</span><span class="st">&quot;l&quot;</span>,<span class="dt">main=</span><span class="st">&quot;Título do Gráfico&quot;</span>,</span>
+<span id="cb10-2"><a href="#cb10-2"></a><span class="op">+</span><span class="st"> </span><span class="dt">xlab=</span><span class="st">&quot;x&quot;</span>,<span class="dt">ylab=</span><span class="st">&quot;y&quot;</span>,<span class="dt">col=</span><span class="st">&quot;red&quot;</span>)</span></code></pre></div>
+<p><img src="estatistica_files/figure-html/unnamed-chunk-13-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+<div id="gráfico-de-linhas--opções" class="section level2">
+<h2>Gráfico de linhas- opções</h2>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="op">&gt;</span><span class="st"> </span><span class="kw">plot</span>(y,<span class="dt">type=</span><span class="st">&quot;l&quot;</span>,<span class="dt">main=</span><span class="st">&quot;Título do Gráfico&quot;</span>,</span>
+<span id="cb11-2"><a href="#cb11-2"></a><span class="op">+</span><span class="st"> </span><span class="dt">xlab=</span><span class="st">&quot;x&quot;</span>,<span class="dt">ylab=</span><span class="st">&quot;y&quot;</span>,<span class="dt">col=</span><span class="st">&quot;red&quot;</span>,<span class="dt">lty=</span><span class="dv">3</span>, <span class="dt">lwd=</span><span class="dv">3</span>)</span></code></pre></div>
+<p><img src="estatistica_files/figure-html/unnamed-chunk-15-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+<div id="barplot" class="section level2">
+<h2>barplot</h2>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="op">&gt;</span><span class="st">  </span><span class="kw">barplot</span>(<span class="kw">table</span>(grpl),<span class="dt">angle =</span> <span class="dv">15</span><span class="op">+</span><span class="dv">10</span><span class="op">*</span><span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dt">density =</span> <span class="dv">20</span>,</span>
+<span id="cb12-2"><a href="#cb12-2"></a><span class="op">+</span><span class="st">          </span><span class="dt">main=</span><span class="st">&quot;barplot&quot;</span>,<span class="dt">col=</span><span class="st">&quot;red&quot;</span>)</span></code></pre></div>
+<p><img src="estatistica_files/figure-html/unnamed-chunk-16-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+<div id="barplot--vertical" class="section level2">
+<h2>barplot -vertical</h2>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="op">&gt;</span><span class="st">  </span><span class="kw">barplot</span>(<span class="kw">table</span>(grpl),<span class="dt">col=</span><span class="st">&quot;black&quot;</span>,  <span class="dt">main=</span><span class="st">&quot;barplot&quot;</span>)</span></code></pre></div>
+<p><img src="estatistica_files/figure-html/unnamed-chunk-17-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+<div id="barplot---horizontal" class="section level2">
+<h2>barplot - horizontal</h2>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="op">&gt;</span><span class="st">  </span><span class="kw">barplot</span>(<span class="kw">table</span>(grpl),<span class="dt">col=</span><span class="st">&quot;black&quot;</span>,<span class="dt">horiz=</span><span class="ot">TRUE</span>, </span>
+<span id="cb14-2"><a href="#cb14-2"></a><span class="op">+</span><span class="st">          </span><span class="dt">main=</span><span class="st">&quot;barplot Horizontal&quot;</span>)</span></code></pre></div>
+<p><img src="estatistica_files/figure-html/unnamed-chunk-18-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+<div id="barplot--variáveis-agrupadas" class="section level2">
+<h2>barplot -variáveis agrupadas</h2>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="op">&gt;</span><span class="st">  </span><span class="kw">barplot</span>(<span class="kw">table</span>(gg,grpl),<span class="dt">beside=</span><span class="ot">TRUE</span>,<span class="dt">col=</span><span class="kw">heat.colors</span>(<span class="dv">3</span>),</span>
+<span id="cb15-2"><a href="#cb15-2"></a><span class="op">+</span><span class="st"> </span><span class="dt">border=</span><span class="st">&quot;white&quot;</span>,<span class="dt">legend=</span><span class="kw">unique</span>(gg),  <span class="dt">main=</span><span class="st">&quot;barplot&quot;</span>)</span></code></pre></div>
+<p><img src="estatistica_files/figure-html/unnamed-chunk-19-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+<div id="histograma" class="section level2">
+<h2>histograma</h2>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="op">&gt;</span><span class="st"> </span><span class="kw">hist</span>(y,<span class="dt">density=</span><span class="dv">10</span>,<span class="dt">main=</span><span class="st">&quot;hist&quot;</span>, <span class="dt">col=</span><span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
+<p><img src="estatistica_files/figure-html/unnamed-chunk-20-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+<div id="boxplot" class="section level2">
+<h2>boxplot</h2>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="op">&gt;</span><span class="st">  </span><span class="kw">boxplot</span>(<span class="kw">split</span>(y,grp),<span class="dt">names=</span><span class="kw">paste</span>(<span class="st">&quot;Grp &quot;</span>,<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>,<span class="dt">sep=</span><span class="st">&quot;&quot;</span>),</span>
+<span id="cb17-2"><a href="#cb17-2"></a><span class="op">+</span><span class="st">          </span><span class="dt">main=</span><span class="st">&quot;boxplot&quot;</span>)</span></code></pre></div>
+<p><img src="estatistica_files/figure-html/unnamed-chunk-21-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+<div id="points--adiciona-pontos" class="section level2">
+<h2>points- adiciona pontos</h2>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="op">&gt;</span><span class="st">  </span><span class="kw">plot</span>(x,y,<span class="dt">type=</span><span class="st">&quot;p&quot;</span>,<span class="dt">main=</span><span class="st">&quot;points&quot;</span>)</span>
+<span id="cb18-2"><a href="#cb18-2"></a><span class="op">&gt;</span><span class="st">  </span><span class="kw">points</span>(<span class="kw">c</span>(<span class="fl">0.2</span>,<span class="fl">0.4</span>,<span class="fl">0.6</span>),<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>),<span class="dt">pch=</span><span class="dv">9</span>,<span class="dt">cex=</span><span class="dv">4</span>, <span class="dt">col=</span><span class="st">&quot;red&quot;</span>)</span></code></pre></div>
+<p><img src="estatistica_files/figure-html/unnamed-chunk-22-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+<div id="abline---adiciona-uma-reta" class="section level2">
+<h2>abline - adiciona uma reta</h2>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="op">&gt;</span><span class="st">  </span><span class="kw">plot</span>(x,y,<span class="dt">main=</span><span class="st">&quot;abline&quot;</span>)</span>
+<span id="cb19-2"><a href="#cb19-2"></a><span class="op">&gt;</span><span class="st">  </span><span class="kw">abline</span>(<span class="kw">lsfit</span>(x,y))</span>
+<span id="cb19-3"><a href="#cb19-3"></a><span class="op">&gt;</span><span class="st">  </span><span class="kw">abline</span>(<span class="dt">a=</span><span class="dv">0</span>,<span class="dt">b=</span><span class="fl">4.5</span>,<span class="dt">col=</span><span class="st">&quot;red&quot;</span>)</span></code></pre></div>
+<p><img src="estatistica_files/figure-html/unnamed-chunk-23-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+<div id="lines---adiciona-linhas" class="section level2">
+<h2>lines - adiciona linhas</h2>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="op">&gt;</span><span class="st"> </span><span class="kw">plot</span>(y,<span class="dt">type=</span><span class="st">&quot;l&quot;</span>,<span class="dt">main=</span><span class="st">&quot;lines&quot;</span>)</span>
+<span id="cb20-2"><a href="#cb20-2"></a><span class="op">&gt;</span><span class="st">  </span><span class="kw">lines</span>(<span class="kw">c</span>(y[<span class="op">-</span><span class="dv">1</span>]<span class="op">+</span><span class="dv">1</span>,<span class="dv">0</span>), <span class="dt">col=</span><span class="st">&quot;red&quot;</span>)</span></code></pre></div>
+<p><img src="estatistica_files/figure-html/unnamed-chunk-24-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+<div id="text---adiciona-texto" class="section level2">
+<h2>text - adiciona texto</h2>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="op">&gt;</span><span class="st"> </span><span class="kw">plot</span>(x,y,<span class="dt">type=</span><span class="st">&quot;n&quot;</span>,<span class="dt">main=</span><span class="st">&quot;text&quot;</span>)</span>
+<span id="cb21-2"><a href="#cb21-2"></a><span class="op">&gt;</span><span class="st"> </span><span class="kw">text</span>(x,y,<span class="dt">cex=</span><span class="dv">2</span>)</span>
+<span id="cb21-3"><a href="#cb21-3"></a><span class="op">&gt;</span><span class="st"> </span><span class="kw">text</span>(<span class="fl">0.02</span>,<span class="fl">5.5</span>,<span class="st">&quot;detalhes: ?text&quot;</span>, <span class="dt">pos=</span><span class="dv">4</span>, <span class="dt">cex=</span><span class="dv">3</span>,<span class="dt">col=</span><span class="st">&quot;red&quot;</span>)</span></code></pre></div>
+<p><img src="estatistica_files/figure-html/unnamed-chunk-25-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+<div id="title---gerenciando-títulos" class="section level2">
+<h2>title - gerenciando títulos</h2>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="op">&gt;</span><span class="st"> </span><span class="kw">plot</span>(x,y,<span class="dt">xlab=</span><span class="ot">NA</span>, <span class="dt">ylab=</span><span class="ot">NA</span>)</span>
+<span id="cb22-2"><a href="#cb22-2"></a><span class="op">&gt;</span><span class="st"> </span><span class="kw">title</span>(<span class="st">&quot;Título&quot;</span>, <span class="dt">cex.main =</span> <span class="dv">2</span>,   <span class="dt">font.main=</span> <span class="dv">4</span>, </span>
+<span id="cb22-3"><a href="#cb22-3"></a><span class="op">+</span><span class="st">       </span><span class="dt">col.main=</span> <span class="st">&quot;blue&quot;</span>,<span class="dt">xlab =</span> <span class="st">&quot;Eixo x&quot;</span>,<span class="dt">ylab =</span> <span class="st">&quot;Eixo y&quot;</span>,</span>
+<span id="cb22-4"><a href="#cb22-4"></a><span class="op">+</span><span class="st">       </span><span class="dt">cex.lab =</span> <span class="fl">0.75</span>, <span class="dt">font.lab =</span> <span class="dv">3</span>, <span class="dt">col.lab =</span> <span class="st">&quot;red&quot;</span>)</span></code></pre></div>
+<p><img src="estatistica_files/figure-html/unnamed-chunk-26-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+<div id="parâmetros-gráficos" class="section level2">
+<h2>Parâmetros Gráficos</h2>
+<ul>
+<li>para detalhes veja <em>?par</em></li>
+<li>font: 1(plain text), 2(bold face), 3 (italic) e 4 (bold italic)</li>
+<li>lty: 0=blank, 1=solid (default), 2=dashed, 3=dotted, 4=dotdash, 5=longdash, 6=twodash</li>
+<li>pch: veja <em>?points</em></li>
+</ul>
+</div>
+<div id="funções-gráficas-de-baixo-nível" class="section level2">
+<h2>Funções Gráficas de Baixo Nível</h2>
+<ul>
+<li>Points - Adiciona pontos<br />
+</li>
+<li>text - Adiciona texto<br />
+</li>
+<li>lines - Adiciona linhas conectando pontos<br />
+</li>
+<li>abline - Adiciona linha reta</li>
+</ul>
+<p>##Funções Gráficas de Baixo Nível - Title - Adiciona título - legend - Adiciona legenda<br />
+- identify - identifica pontos interativamente</p>
+</div>
+<div id="multiplos-gráficos-na-janela-ativa-1" class="section level2">
+<h2>Multiplos gráficos na Janela ativa</h2>
+<p>par(mfrow=c(l ,c ))</p>
+</div>
+<div id="funções-de-gráficos" class="section level2">
+<h2>Funções de Gráficos</h2>
+<ul>
+<li>barplot() Gráfico de barras simples</li>
+<li>boxplot() - box plot simples</li>
+<li>hist() - histograma</li>
+<li>dotchart() - Gráfico de pontos<br />
+</li>
+<li>piechart() - Gráfico de pizza</li>
+<li>qqnorm() - Gráfico quantile-quantile para uma amostra contra a normal padrão</li>
+<li>qqplot quantile-quantile plot para duas amostras</li>
+</ul>
+</div>
+<div id="gráficos-melhores" class="section level2">
+<h2>Gráficos melhores</h2>
+<ul>
+<li>Para melhores resultados com gráficos use o package <span class="math display">\[**ggplot2**\]</span></li>
+<li><a href="http://www.r-graph-gallery.com/portfolio/ggplot2-package/" class="uri">http://www.r-graph-gallery.com/portfolio/ggplot2-package/</a></li>
+</ul>
+</div>
+<div id="Exercícios_07" class="section level2">
+<h2>Exercícios</h2>
+<ol style="list-style-type: decimal">
+<li>Suponha a variável v2=rnorm(150,1,2). Represente-a em um gráfico de linhas. ([Solução_7.01])</li>
+<li>No gráfico do item 1, inclua outra série, v3=rnorm(150,1,4), em verde escuro. As duas series ficaram bem representadas? ([Solução_7.02])</li>
+<li>Sejam os dados referenes a tres marcas de carros.Faça um gráfico de pontos identificando cada marca. ([Solução_7.03])</li>
+</ol>
+<table>
+<thead>
+<tr class="header">
+<th>Marca</th>
+<th>Vel</th>
+<th>Dist</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>A</td>
+<td>4</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<td>B</td>
+<td>10</td>
+<td>18</td>
+</tr>
+<tr class="odd">
+<td>C</td>
+<td>15</td>
+<td>20</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<ol start="4" style="list-style-type: decimal">
+<li><p>Inclua mais um resultado no gráfico do item 03. Marca D, Velocidade 35 e Distância 25. Use a cor amarela. ([Solução_7.04])</p></li>
+<li><p>Faça um gráfico de pontos relacionando x e y identificando por cores os grupos <strong>grp</strong>. (dados simulados - slide <em>Criando dados Simulados</em>) ([Solução_7.05])</p></li>
+</ol>
+</div>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

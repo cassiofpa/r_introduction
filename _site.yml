@@ -1,4 +1,4 @@
-name: "R Markdown Websites Tutorial"
+name: "Introdução ao R"
 navbar:
   title: "HOME"
   left:
@@ -6,6 +6,12 @@ navbar:
       href: o_r_software.html
     - text: "R Estruturas"
       href: r_etruturas.html
+    - text: "R Leitura de Dados"
+      href: read_data.html
+    - text: "R Estatística Básica"
+      href: estatistica.html
+    - text: "R Textos e Datas"
+      href: texto_e_data.html
 output_dir: "."
 output:
   html_document:

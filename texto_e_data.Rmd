@@ -1,0 +1,29 @@
+---
+title: "Textos e Datas"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+```{r setup, include=FALSE}
+# This is an R setup chunk, containing default options applied to all other chunks
+library(knitr)
+# This sets the chunk default options
+opts_chunk$set(echo=TRUE,  collapse=TRUE, error=FALSE, prompt=TRUE,fig.align = "center")
+# This sets the chunk display theme
+thm <- knit_theme$get("edit-kwrite")
+knit_theme$set(thm)
+# This sets some display options
+options(digits=3)
+options(width=20)
+```
+
+## R - Textos e Datas
+- Tratando Texto
+- Tratando Datas
+
+
+
+```{r child = 'base/texto_e_data.Rmd'}
+```

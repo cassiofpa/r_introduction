@@ -1,0 +1,18 @@
+
+## Crie um notebook!
+
+Crie um notebook conforme segue:
+
+1. O titulo deve ser: "Primeiro Notebook"
+1. Inclua seu nome como autor (author:)
+1. Inclua a data (date:)
+1. A primeira seção de ter o título: "Amostra da Distribuição Normal"
+1. Então simule 100 valores de uma distribuição Normal(0,1).(use: x=rnorm(100))
+1. Outra seção: "Histograma"
+1. Faça um histograma (hist(x))
+1. Outra seção: "Medidas descritivas"
+1. Escreva um paragrafo explicitando:
+    - valor da média (mean(x)), 
+    - desvio padrão (sd(x)), 
+    - mínimo e máximo (min(x) e max(x)).
+    

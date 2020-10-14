@@ -1,46 +1,24 @@
 
-```{r include=FALSE}
-# This is an R setup chunk, containing default options applied to all other chunks
-library(knitr)
-# This sets the chunk default options
-opts_chunk$set(echo=TRUE, cache=FALSE, collapse=TRUE, error=FALSE, prompt=TRUE,fig.align = "center")
-# This sets the chunk display theme
-thm <- knit_theme$get("edit-kwrite")
-knit_theme$set(thm)
-# This sets some display options
-options(digits=3)
-options(width=40)
-```
-
-# Principais Estruturas
-- Vetores
-- Matrizes
-- Data Frame
-- Listas
-- Factor
-
-
 # Vetores
+
+## Vetores
 - É uma seqüências ordenada de elementos de mesmo modo
 - *modo* -> \{*character, numeric, logic, Date*\}
-
-----
 
 ## Criando Vetores
 - Criando vectores com valores predeterminados - **c()**
 ```{r}
-# criação: função é c(), abreviatura de concatenate
+# criação: função é c(), abreviatura de 
+#                                  concatenate
 # vetor de caracter
 names = c("Ana", "Lisa", "Paula", "Carlos")
 #criação de um vetor de números
 ages = c(21, 15, 34, 30, 54, 44, 34)
-
 names
 ages
 
 ```
 
-----
 
 ## Vetor: Sequencia de Inteiros
 
@@ -49,28 +27,21 @@ x_int = 1:10
 
 ```
 
-----
-
 ## Vetor: Sequencia numérica regular
 
 ```{r}
 x_num1 = seq (1, 10, by = 0.5)
 x_num1
 
-x_num2 = seq(1, 10, length = 40)
+x_num2 = seq(1, 10, length = 15)
 x_num2
 
 ```
-
-----
-
 ## Comprimento do Vetor
 
 ```{r}
 length(x_num2)
 ```
-
-----
 
 ## Selecionando elementos de um Vetor
 ```{r}
@@ -81,37 +52,36 @@ ages[3:6] # obtendo os valor da posição 3 a 6
 ages[c(2, 4, 5)] 
 ```
 
-----
-
 ## Excluindo elementos de um Vetor
 ```{r}
 ages
-ages[-3] # excluindo o valor da posição 3
-ages[-(2:5)] # excluindo os valor da posição 2 a 5
+# excluindo o valor da posição 3
+ages[-3] 
+# excluindo os valor da posição 2 a 5
+ages[-(2:5)]
 # excluindo os valores em posições específicas
 ages[-c(2, 4, 5)] 
 ```
 
-----
 
 ## Substituindo elementos de um Vetor
 ```{r}
 ages
-ages[3] = 99 # substituindo  o valor da posição 3
-# obtendo os valores em posições específicas
+# substituindo  o valor da posição 3
+ages[3] = 99 
+#obtendo os valores em posições específicas
 ages[c(2, 4)] = c(98, 100) 
 ```
 
-----
 
 ## Operações com vetor
 ```{r}
-1:5 + 1 # gera a sequencia e soma 1
+# gera a sequencia somando 1 
+1:5 + 1 
 
 ```
 - o R executa a operação repetindo os valores do menor elemento até coincidir com o maior.
 
-----
 
 ## Recycling Rule 
 - o R executa uma operação reutilizando os valores do menor elemento até coincidir com o maior. (gera um *warnnig*)
@@ -122,30 +92,38 @@ ages[c(2, 4)] = c(98, 100)
 ```
 
 
-----
-
-
-
 
 ## Acrescentando um valor
 ```{r}
-# adicionando valores em ages
+# acrescentando valores em ages
 ages
 ages = c(ages, 15)
 ages
 
 ```
 
-----
-
 ## Ordenando Vetores
 ```{r comment="#"}
 ages
-sort(ages) #ordena os elementos 
+# ordena os elementos
+sort(ages)  
 
 ```
 
-----
+
+## Permutação que ordena o vetor
+```{r}
+# um vetor 
+x= c(7,2,4)
+x
+
+# permutação que ordena o vetor
+# são as posições no vetor x
+order(x)
+
+```
+
+
 
 ## Permutação que ordena o vetor
 ```{r}
@@ -155,135 +133,126 @@ p_ord
 ages[p_ord] #ordena ages pelo ordem de names
 ```
 
------
+## Exercícios_02 {#Exercícios_02}
 
-# Exercícios_02 {#Exercícios_02}
+1. Crie uma sequencia regular de valores entre 0 e 3 a cada 0.25. [Solução](#19) 
+2. Crie outro vetor com uma sequencia de 1 a 3 com 20 elemento. Faça a subtração do vetor da questão 1 e do vetor que acabou de criar. [Solução](#20)
+3. No vetor resultante no item 2, qual a posição do menor e do maior valor?[Solução](#21)
+4. Ordene o vetor do item 2 e separe em dois objetos os 3 menores e os 3 maiores valores[Solução](#22)
+5. Rearranje o vetor **x = 1:30** de forma que o novo vetor inicie com os valores das posições 25 e 29 e termine como os valores da posições 15 a 22. [Solução](#23)
+6. Ordene o vetor do item 2 de forma decrescente. [Solução](#24)
 
-1. Crie uma sequencia regular de valores entre 0 e 3000 a cada 0.25. [Solução](#Solução2.01) 
-2. Qual o tamanho do vetor criado no item 1? [Solução](#20)
-3. Crie outro vetor com uma sequencia de 1 a 3000 com 20 elemento e subtraia do vetor da questão 1. [Solução](#21)
-4. No vetor resultante no item 3, qual a posição do menor e do maior valor?[Solução](#22)
-5. Ordene o vetor do item 3 e separe em dois objetos os 10 menores e os 10 maiores valores[Solução](#23)
-6. Crie um vetor com uma sequencia de inteiros de 1 a 100.[Solução](#24)
-7. Rearranje o vetor do item 6 de forma que o novo vetor inicie com os valores das posições 25 e 50 e termine como os valores da posições 60 a 72. [Solução](#25)
-8. Ordene o vetor do item 7 de forma decrescente. [Solução](#26)
-9. Crie um vetor de tamanho 200, onde os 80 primeiros tem valor 20 e os demais valor 37. [Solução](#27)
-10. Crie um vetor tamanho 240 com valores na sequencia 12,4,13,33,121.[Solução](#28)
 
-----
+## Exercícios_02 - continuação {#Exercícios_02.1}
 
-----
+7. Crie um vetor de tamanho 20, onde todos os elementos tem valor 25.[Solução](#25)
+
+8. Crie um vetor de tamanho 20, onde os 8 primeiros tem valor 20 e os demais valor 37.[Solução](#26)
+
+9. Crie um vetor tamanho 7 com valores na sequencia 3,7,11.[Solução](#27)
+
 
 ## Soluções da Lista de Exercícios R - Vetores
 
 
-----
-
-## Solução 2.01  {#Solução2.01}
+## Solução_2.01
 1. Crie uma sequência regular de valores entre 0 e 3000 a cada 0.25.
 
 ```{r}
-e1 = seq(0, 3000, by = 0.25)
+e1 = seq(0, 3, by = 0.25)
 e1[1:5]
 ```
-[Retorna](#Exercícios_02) 
-
-----
-
-----
+[Retorna](#19)
 
 ## Solução_2.02
-2. Qual o tamanho do vetor criado no item 1?
+Crie outro vetor com uma sequencia de 1 a 3 com 20 elemento. Faça a subtração do vetor da questão 1 e do vetor que acabou de criar.
 ```{r}
-length(e1)
+e2 = seq(1, 3, length = 20)
+e2[1:5]
+e12 = e1 - e2 #vetores com tamanhos diferentes
+e12[1:5]
 ```
 [Retorna](#20)
 
-----
-
 ## Solução_2.03
-3. Crie outro vetor com uma sequencia de 1 a 3000 com 20 elemento e subtraia do vetor da questão 1.
-```{r}
-e3 = seq(1, 3000, length = 20)
-e3[1:5]
-e13 = e1 - e3  # vetores com tamanhos diferentes - mensagem "longer object ..."
-e13[1:5]
-```
-[Retorna](#21)
-
-----
-
-## Solução_2.04
-4. No vetor resultante no item 3, qual a posição do menor e do maior valor?
+3. No vetor resultante no item 2, qual a posição do menor e do maior valor?
 
 ```{r}
 
 # posição do menor
-order(e13)[1]
+order(e12)[1]
 
 # posição do maior
-order(e13)[length(e13)]
+order(e12)[length(e12)]
+```
+[Retorna](#21)
+
+## Solução_2.04
+
+4. Ordene o vetor do item 2 e separe em dois objetos os 3 menores e os 3 maiores valores
+
+```{r}
+N = length(e12)
+e12_maiores = sort(e12)[(N - 2):N]
+e12_maiores
+e12_menores = sort(e12)[1:3]
+e12_menores
 ```
 [Retorna](#22)
 
-----
 
 ## Solução_2.05
-5. Ordene o vetor do item 3 e separe em dois objetos os 10 menores e os 10 maiores valores.
+
+5. Rearranje o vetor **x = 1:30** de forma que o novo vetor inicie com os valores das posições 25 e 29 e termine como os valores da posições 15 a 22. 
+
 ```{r}
-N = length(e3)
-e3_maiores = sort(e3)[(N - 9):N]
-e3_maiores
-e3_menores = sort(e3)[1:10]
-e3_menores
+x=1:30
+e5 = x[c(25, 29, 
+       (1:length(x))[-c(25, 29, 15:22)], 15:22)]
+e5
 ```
 [Retorna](#23)
 
-----
-
 ## Solução_2.06
-6. Crie um vetor com uma sequência de inteiros de 1 a 100.
+6. Ordene o vetor do item 5 de forma decrescente.
 ```{r}
-e6 = 1:100
+e6=sort(e5, decreasing = TRUE)
+e6
 ```
 [Retorna](#24)
 
-----
-
 ## Solução_2.07
-7. Rearranje o vetor do item 6 de forma que o novo vetor inicie com os valores das posições 25 e 50 e termine como os valores da posições 60 a 72.
+
+7. Crie um vetor de tamanho 20, onde todos os elementos tem valor 25.
+
+
 ```{r}
-e7 = e6[c(25, 50, (1:length(e6))[-c(25, 50, 60:72)], 60:72)]
+e7=rep(25,20)
 e7
 ```
 [Retorna](#25)
 
-----
 
 ## Solução_2.08
-8. Ordene o vetor do item 7 de forma decrescente.
+8. Crie um vetor de tamanho 20, onde os 8 primeiros tem valor 20 e os demais valor 37.
+
+
 ```{r}
-sort(e7, decreasing = TRUE)
+e8=rep(c(12,4,13,33,121), length=240)
+length(e8)
+
 ```
 [Retorna](#26)
 
-----
-
 ## Solução_2.09
-9. Crie um vetor de tamanho 200, onde os 80 primeiros tem valor 20 e os demais valor 37.
+9. Crie um vetor tamanho 7 com valores na sequencia 3,7,11.
+
+
 ```{r}
-rep(c(20,37),c(80,120))
+e9=rep(c(3,7,11),7)
+e9
 ```
 [Retorna](#27)
 
-----
 
-## Solução_2.10
-10. Crie um vetor tamanho 240 com valores na sequencia 12,4,13,33,121.
 
-```{r}
-x=rep(c(12,4,13,33,121), length=240)
-length(x)
-# observe que rep(c(12,4,13,33,121),240) da um resultado diferente
-```
-[Retorna](#28)
