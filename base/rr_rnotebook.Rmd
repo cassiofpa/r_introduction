@@ -1,7 +1,7 @@
 
 # R Notebook
 
-## Nível 1: Usuário Iniciante em R 
+## Nível 1: Usuário Básico em R 
 
 
 ```{r, out.width = "70%",fig.cap= ""}
@@ -99,8 +99,8 @@ knitr::include_graphics("figures/yaml.png")
 
 ## Cabeçalho - Complementos
 
-- "author: nome "
-- "date: 11/09/2017"
+- author: "nome"
+- date: "11/09/2017"
 
 ## O *chunk* 
 
@@ -128,17 +128,10 @@ knitr::include_graphics("figures/rnotexto.png")
 
 
 
-## Crie um notebook!
+```{r child = 'rr_rnotebook_atividade.Rmd'}
 
-Crie um documento html conforme segue:
 
-1. Simule 100 valores de uma distribuição Normal(0,1).(x=rnorm(100))
-1. Faça um histograma (hist(x))
-1. Escreva um paragrafo explicitando:
-    - valor da média (mean(x)), 
-    - desvio padrão (sd(x)), 
-    - mínimo e máximo (min(x) e max(x)).
-    
+```
 
 
 

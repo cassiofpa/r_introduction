@@ -19,3 +19,7 @@ output:
 
 **Bibliografia**
 
+VENABLES, William N. et al. **An introduction to R**. 2009.
+
+
+

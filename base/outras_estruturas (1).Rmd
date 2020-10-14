@@ -1,5 +1,6 @@
 
 
+# Matrizes
 
 
 ## Matrizes
@@ -60,28 +61,40 @@ ms
 
 ```
 
-## Adicionando Colunas e linhas 
+## Adicionando Colunas
 
 ```{r}
 # adicionando nova coluna
 ms = cbind(ms, c(3, 3, 3)) 
-
-# adicionando nova linha
-ms = rbind(ms, c(1, 1, 1, 1)) 
-
 ms
-
-
 ```
 
-## Combinando matrizes
+
+## Adicionando Linhas 
+
+```{r}
+# adicionando nova linha
+ms = rbind(ms, c(1, 1, 1, 1)) 
+ms
+```
+
+
+
+## Combinando matrizes por Colunas
 ```{r}
 m = matrix(2, 2, 3)
 m
 cbind(m, m) # novas colunas
-rbind(m, m) # novas linhas
+
 ```
 
+
+## Combinando matrizes por linhas
+```{r}
+m = matrix(2, 2, 3)
+m
+rbind(m, m) # novas linhas
+```
 
 ## Operações com Matrizes
 ```{r}
@@ -95,7 +108,7 @@ ms %*% t(ms) # produto matricial
 ```
 
 
-## Identificando elementos de objetos
+## Identificando linhas e colunas
 
 - $dimnames()$
 ```{r}
@@ -118,6 +131,124 @@ m
 ```
 
 
+## Resumo de Funções
+- $c(object,object,...)$:  **combine objects into a vector**
+- $length(object)$: **number of elements or components**
+- $class(object)$:  **class or type of an object**
+- $names(object)$:  **names**
+- $rownames() / colnames()$: **nomes de linhas e colunas**
+- $cbind(object, object, ...)$: **combine objects as columns**
+- $rbind(object, object, ...)$: **combine objects as rows** 
+- $seq()$: **sequencia regular**
+- $rep()$: **repetições** 
+
+
+## Exercícios {#Exercícios_03}
+
+1. Crie uma matriz com 20 linhas e 20 colunas com diferentes números ímpares. ([Solução_3.01])
+2. Crie uma nova matriz com as colunas pares da matriz do item 1. ([Solução_3.02]) 
+3. Na matriz do item 2 inclua uma coluna, na última posição, com valores iguais ao número de linhas. ([Solução_3.03])
+4. Na matriz do item 3 inclua uma linha, na primeira posição, com valores iguais ao número de colunas. ([Solução_3.04])
+5. Crie uma matriz de 2 linhas e 2 colunas com letras e coloque-a (substitua) no centro da matriz do item 2. O que aconteceu com a matriz?  ([Solução_3.05])
+6. Crie uma matriz com 4 linhas iguais a: 1,2,3,4. Faça um teste para verificar se todos os elementos da coluna 1 são iguais a 1. ([Solução_3.06])
+
+
+## Exercícios Continuação {#Exercícios_03.1}
+
+7. Suponha que a matriz do item 6 corresponda a dados de 4 pessoas ( Marcos, Pedro, Denis e Clara). Crie um objetos onde a primeira coluna seja os nomes e as demais os dados. ([Solução_3.07])
+8. Crie um objeto que agregue os resultados de todos os itens anteriores e ainda, inclua a data atual. ([Solução_3.08])
+
+
+
+
+## Solução_3.01
+1. Crie uma matriz com 10 linhas e 10 colunas com diferentes números ímpares.
+```{r}
+# numareos ímpares
+imp = seq(1, 200, by = 2)
+m1 = matrix(imp, 10, 10)
+
+```
+[Retorna](#59)
+
+## Solução_3.02
+2. Crie uma nova matriz com as colunas pares da matriz do item 1
+```{r}
+N = dim(m1)[2]
+m2 = m1[, seq(2, N, by = 2)]
+
+```
+[Retorna](#59)
+
+## Solução_3.03
+3. Na matriz do item 2 inclua uma coluna, na última posição, com valores iguais ao número de linhas.
+```{r}
+nl = nrow(m2)
+m3 = cbind(m2, nl)
+m3
+
+```
+[Retorna](#59)
+
+## Solução_3.04
+4. Na matriz do item 3 inclua uma linha, na primeira posição, com valores iguais ao número de colunas.
+```{r}
+nc = ncol(m3)
+m4 = rbind(nc, m3)
+m4
+
+```
+[Retorna](#59)
+
+## Solução_3.05
+5. Crie uma matriz de 2 linhas e 3 colunas com letras e coloque-a (substitua) no centro da matriz do item 2. O que aconteceu com a matriz? 
+```{r}
+ml = matrix(letters, ncol = 3, nrow = 2)
+ml
+dim(m2)
+
+```
+[Retorna](#59)
+
+## Solução_3.05 - continuação
+
+- O que aconteceu com a matriz? 
+
+```{r}
+m2[c(5, 6), c(2: 4)] = ml
+m2
+```
+[Retorna](#59)
+
+## Solução_3.06
+6. Crie uma matriz com 4 linhas iguais a: 1,2,3,4. Faça um teste para verificar se todos os elementos da coluna 1 são iguais a 1.
+```{r}
+m6 = matrix(c(1, 2, 3, 4), ncol = 4, nrow = 4,
+            byrow = T)
+m6
+m6[,1]==1
+```
+[Retorna](#59)
+
+## Solução_3.07
+7. Suponha que a matriz do item 6 corresponda a dados de 4 pessoas ( Marcos, Pedro, Denis e Clara). Crie um objetos onde a primeira coluna seja os nomes e as demais os dados.
+```{r}
+nomes = c("Marcos", "Pedro", "Denis" , "Clara")
+data.frame(nomes, m6)
+
+```
+[Retorna](#59)
+
+## Solução_3.08
+8. Crie um objeto que agregue os resultados de todos os itens anteriores e ainda, inclua a data atual.
+```{r}
+L=list(ex1=m1,ex2=m2,ex3=m3,ex4=m4,
+       data=Sys.Date())
+```
+[Retorna](#59)
+
+
+#  Data Frame
 
 ##  Data Frame
 - É uma disposição bidimensional dos dados
@@ -171,6 +302,8 @@ colnames(df)=c("Nome", "Nota01", "Nota02")
 df
 ```
 
+# Listas
+
 
 ## Listas
 - Coleção ordenada de componentes 
@@ -210,6 +343,7 @@ L
 ```
 
 
+# Factor
 
 
 ## Factor
@@ -331,112 +465,4 @@ m[,"a"] # uma coluna
 m["A",] # uma linha
 ```
 
-
-## Resumo de Funções
-- $c(object,object,...)$:  **combine objects into a vector**
-- $length(object)$: **number of elements or components**
-- $class(object)$:  **class or type of an object**
-- $names(object)$:  **names**
-- $rownames() / colnames()$: **nomes de linhas e colunas**
-- $cbind(object, object, ...)$: **combine objects as columns**
-- $rbind(object, object, ...)$: **combine objects as rows** 
-- $seq()$: **sequencia regular**
-- $rep()$: **repetições** 
-
-
-## Exercícios {#Exercícios_03}
-
-1. Crie uma matriz com 20 linhas e 20 colunas com diferentes números ímpares. ([Solução_3.01])
-2. Crie uma nova matriz com as colunas pares da matriz do item 1. ([Solução_3.02]) 
-3. Na matriz do item 2 inclua uma coluna, na última posição, com valores iguais ao número de linhas. ([Solução_3.03])
-4. Na matriz do item 3 inclua uma linha, na primeira posição, com valores iguais ao número de colunas. ([Solução_3.04])
-5. Crie uma matriz de 2 linhas e 2 colunas com letras e coloque-a (substitua) no centro da matriz do item 2. O que aconteceu com a matriz?  ([Solução_3.05])
-6. Crie uma matriz com 4 linhas iguais a: 1,2,3,4. Faça um teste para verificar se todos os elementos da coluna 1 são iguais a 1. ([Solução_3.06])
-
-
-## Exercícios Continuação {#Exercícios_03.1}
-
-7. Suponha que a matriz do item 6 corresponda a dados de 4 pessoas ( Marcos, Pedro, Denis e Clara). Crie um objetos onde a primeira coluna seja os nomes e as demais os dados. ([Solução_3.07])
-8. Crie um objeto que agregue os resultados de todos os itens anteriores e ainda, inclua a data atual. ([Solução_3.08])
-
-
-
-
-## Solução_3.01
-1. Crie uma matriz com 20 linhas e 20 colunas com diferentes números ímpares.
-```{r}
-# numareos ímpares
-imp = seq(1, 800, by = 2)
-m1 = matrix(imp, 20, 20)
-
-```
-[Retorna](#59)
-
-## Solução_3.02
-2. Crie uma nova matriz com as colunas pares da matriz do item 1
-```{r}
-N = dim(m1)[2]
-m2 = m1[, seq(2, N, by = 2)]
-
-```
-[Retorna](#59)
-
-## Solução_3.03
-3. Na matriz do item 2 inclua uma coluna, na última posição, com valores iguais ao número de linhas.
-```{r}
-nl = nrow(m2)
-m3 = cbind(m2, nl)
-m3
-
-```
-[Retorna](#59)
-
-## Solução_3.04
-4. Na matriz do item 3 inclua uma linha, na primeira posição, com valores iguais ao número de colunas.
-```{r}
-nc = ncol(m3)
-m4 = rbind(nc, m3)
-m4
-
-```
-[Retorna](#59)
-
-## Solução_3.05
-5. Crie uma matriz de 2 linhas e 2 colunas com letras e coloque-a (substitua) no centro da matriz do item 2. O que aconteceu com a matriz? 
-```{r}
-ml = matrix(letters, ncol = 2, nrow = 2)
-ml
-dim(m2)
-
-m2[c(10, 11), c(5, 6)] = ml
-m2
-```
-[Retorna](#59)
-
-## Solução_3.06
-6. Crie uma matriz com 4 linhas iguais a: 1,2,3,4. Faça um teste para verificar se todos os elementos da coluna 1 são iguais a 1.
-```{r}
-m6 = matrix(c(1, 2, 3, 4), ncol = 4, nrow = 4,
-            byrow = T)
-m6
-m6[,1]==1
-```
-[Retorna](#59)
-
-## Solução_3.07
-7. Suponha que a matriz do item 6 corresponda a dados de 4 pessoas ( Marcos, Pedro, Denis e Clara). Crie um objetos onde a primeira coluna seja os nomes e as demais os dados.
-```{r}
-nomes = c("Marcos", "Pedro", "Denis" , "Clara")
-data.frame(nomes, m6)
-
-```
-[Retorna](#59)
-
-## Solução_3.08
-8. Crie um objeto que agregue os resultados de todos os itens anteriores e ainda, inclua a data atual.
-```{r}
-L=list(ex1=m1,ex2=m2,ex3=m3,ex4=m4,
-       data=Sys.Date())
-```
-[Retorna](#59)
 

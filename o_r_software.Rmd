@@ -36,3 +36,5 @@ options(width=40)
 ```{r child = 'base/r_software.Rmd'}
 ```
 
+```{r child = 'base/rr_notebook.Rmd'}
+```

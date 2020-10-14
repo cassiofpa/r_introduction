@@ -18,6 +18,9 @@ options(digits=3)
 
 ## O Software R 
 
+```{r out.width = "90%"}
+knitr::include_graphics("figures/logo_r.jpg")
+```
 
 ## Histórico
 - R foi criado em 1990 na Universidade de Auckland por Ross Ihaka e Robert Gentleman
@@ -42,7 +45,7 @@ options(digits=3)
 ## Packages  
 **R pode ser estendido (facilmente) através de pacotes**
 - alguns (oito)  pacotes fornecidos com a distribuição R
-- e muitos outros (14763) estão disponíveis no sites
+- e mais 16333 disponíveis no sites (em set./2020)
 
 ## Documentation
 **R tem seu próprio formato de documentação tipo LaTeX**
@@ -53,27 +56,29 @@ options(digits=3)
  - CRAN -  Comprehensive R Archive Network (URLs)
  - ex. *https://cran.fiocruz.br/*
 
-## Download e Instalação
-
-
-```{r, fig.cap= ""}
-knitr::include_graphics("figures/r_01.png")
-```
-
-
-## Subdiretorios e versões
-
-
-```{r }
-knitr::include_graphics("figures/r_02.png")
-```
-
 
 ## Sistemas Operacionais
 
 ```{r }
 knitr::include_graphics("figures/r_03.png")
 ```
+
+
+## Subdiretorios e versões
+
+
+```{r out.width = "90%"}
+knitr::include_graphics("figures/r_02.png")
+```
+
+
+## Download e Instalação
+
+```{r, out.width = "90%", fig.cap= ""}
+knitr::include_graphics("figures/r_01.png")
+```
+
+
 
 
 # RStudio
@@ -93,70 +98,84 @@ knitr::include_graphics("figures/r_03.png")
 
 ## RStudio - Site
 
- - *https://https://www.rstudio.com/*
+ - *https://www.rstudio.com/*
  - *https://www.rstudio.com/products/rstudio/download/*
 
 
 ## Download
 
-```{r}
+```{r out.width = "80%"}
 knitr::include_graphics("figures/rs_01.png")
 ```
 
 ## Escolha do instalador (Sistema Operacional)
 
-```{r }
+```{r out.width = "80%"}
 knitr::include_graphics("figures/rs_02.png")
+```
+
+
+## Instalador (Windows)
+
+```{r out.width = "80%"}
+knitr::include_graphics("figures/rs_02_1.png")
 ```
 
 
 ## Principais Funções
 
 
-```{r}
+```{r out.width = "90%"}
 knitr::include_graphics("figures/rs_03_1.png")
 ```
 
 
 ## Usando o Script
 
-```{r}
+```{r out.width = "90%"}
 knitr::include_graphics("figures/rs_04.png")
 ```
 
 
 ## Criando um Script
 
-```{r}
+```{r out.width = "80%"}
 knitr::include_graphics("figures/rstudio_script.png")
 ```
 
 ## Salvando o Script
 
-```{r}
+```{r out.width = "80%"}
 knitr::include_graphics("figures/rstudio_salvar.png")
 ```
 
 ## O Script Salvo
 
-```{r}
+```{r out.width = "80%"}
 knitr::include_graphics("figures/rstudio_script_salvo.png")
 ```
 
 ## Código no Script
 
-```{r}
-knitr::include_graphics("figures/rstudio_script_comentarios.png")
+```{r out.width = "80%"}
+knitr::include_graphics("figures/rstudio_script_comentarios1.png")
 ```
 
 ## Executando comandos 
 
-```{r}
-knitr::include_graphics("figures/rstudio_script_run_line.png")
+```{r out.width = "80%" }
+knitr::include_graphics("figures/rstudio_script_run_line1.png")
 ```
 
 ## Resultados na Console 
 
-```{r}
-knitr::include_graphics("figures/rstudio_console.png")
+```{r out.width = "80%"}
+knitr::include_graphics("figures/rstudio_console1.png")
 ```
+
+
+## Atividade
+
+1. Faça a instalação do R
+1. Instale o RStudio
+1. Explore o RStudio criando um script básico

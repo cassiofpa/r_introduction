@@ -30,8 +30,8 @@ options(width=40)
 ```{r child = 'base/r_basico.Rmd'}
 ```
 
-```{r child = 'base/vectors.Rmd'}
+```{r child = 'base/vectors(1).Rmd'}
 ```
 
-```{r child = 'base/outras_estruturas.Rmd'}
+```{r child = 'base/outras_estruturas(1).Rmd'}
 ```

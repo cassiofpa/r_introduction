@@ -78,7 +78,7 @@ head(x)
 
 4- Carregue o arquivo renda_BR_03
 
-```{r}
+```{r eval=FALSE}
 x=read.table("../data/renda_BR_03.txt", sep="", header=T)
 head(x)
 ```

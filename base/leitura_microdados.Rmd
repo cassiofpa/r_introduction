@@ -6,7 +6,7 @@
 - A largura fixa é como se representa a divisão das variáveis em um registro 
 
 
-```{r out.width = "200px" , echo=FALSE}
+```{r out.width = "500px" , echo=FALSE}
 knitr::include_graphics("figures/formato_fixo.png",)
 ```
 
@@ -125,13 +125,13 @@ pnadc.df <- read_pnadc(microdata=data_path,
 
 ## input_example.txt
 
-```{r out.width = "400px"}
+```{r out.width = "400px", echo=FALSE}
 knitr::include_graphics("figures/input_txt.png")
 ```
 
 ##  exampledata.txt
 
-```{r out.width = "400px"}
+```{r out.width = "400px" , echo=FALSE}
 knitr::include_graphics("figures/exemplodata_txt.png")
 ```
 
